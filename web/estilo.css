@@ -1,7 +1,54 @@
-h1 {
-  color: blue;
+body{
+
+  background-image: url("images_src/stars-black-bg-1.gif");
+  background-size: 500px;
+  background-position: center;
+
+  margin: 0px;
 }
 
-.clase {
-  color: red;
+.header-top{ 
+
+  position: sticky;
+  z-index: 1000; /*para que este delante del todo*/
+  top: 0px; /*quitar espacio fantasma*/
+  min-width: 100%; /*ocupa todo el ancho de la ventana*/
+  width: max-content; /*se estira si hay elementos dentro que se pudieran salir*/
+  height: 120px;
+  border: none;
+  background: black;
+  display: flex; /*para ordenar de manera horizontal los elementos*/
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  box-sizing: border-box;
+  margin: 0px;
+
+  /*imagenes*/
+  .deco{
+    width: 600px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .title-web{
+    flex: 1;
+    text-align: center;
+    min-width: 250px;
+
+    h1{
+    color:#e6ebf5;
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    }
+    h2{
+      color:#fcb1c4;
+      font-size: 20px;
+      font-family: fantasy;
+      margin-top: 0px;
+      margin-bottom: 5px;
+    }
+  }
 }
