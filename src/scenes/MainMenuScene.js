@@ -22,6 +22,9 @@ export class MainMenuScene extends Phaser.Scene
        CreditsButton.on('pointerout',()=>{CreditsButton.setScale(1)});
        //Manejo del botón de start
      
+       StartButton.on('pointerdown',()=>{this.scene.start('MainGameScene')})
+      StartButton.on('pointerover',()=>{StartButton.setScale(1.1)});
+       StartButton.on('pointerout',()=>{StartButton.setScale(1)});
     }
     update()
     {

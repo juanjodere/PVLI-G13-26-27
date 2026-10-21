@@ -1,6 +1,7 @@
 //Importante poner la extension del archivo js
 import { MainMenuScene } from "./scenes/MainMenuScene.js";
 import { CreditsScene } from "./scenes/CreditsScene.js";
+import { MainGameScene } from "./scenes/MainGameScene.js";
 
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
@@ -15,7 +16,7 @@ let config = {
 	scale: {
 		autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
 	},
-	scene: [MainMenuScene,CreditsScene],	// Decimos a Phaser cual es nuestra escena, en este caso la escena es un 
+	scene: [MainMenuScene,CreditsScene,MainGameScene],	// Decimos a Phaser cual es nuestra escena, en este caso la escena es un 
 												//objeto formado por el método preload y create definidos más abajo en 
 												//este mismo archivo
 	physics: { 
