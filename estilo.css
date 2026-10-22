@@ -95,7 +95,13 @@ body{
         scale: 1.2;
       }
     }
-
+    .gameButton{
+      scale:0.5;
+    }
+    .gameButton:hover{
+      scale: 0.6;
+      transform: rotate(15deg);
+    }
     .description{
       display: flex;
       flex-direction: row;

@@ -6,7 +6,7 @@ export class MainGameScene extends Phaser.Scene
     }
     preload()
     {
-        this.load.image('playerSkin','assets/ObjectAssets/player/player.png');
+        
     }
     create()
     {

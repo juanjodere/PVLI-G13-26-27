@@ -1,6 +1,8 @@
+//Objeto que nos permtie crear nodos en el mapa por los que irnos moviendo, un nodo se puede conectar a un maximo de 4 nodos
+//dos nodos no necesitan estar conectados entre si 
 export default class mapNode extends Phaser.GameObjects.Sprite
 {
-    constructor(scene,x,y,sprite,targetScene,_nodeUp,_nodeDown,_nodeLeft,_nodeRight)
+    constructor(scene,x,y,sprite,targetScene,_nodeUp = null,_nodeDown = null,_nodeLeft = null,_nodeRight = null)
     {
 
         super(scene,x,y,sprite,0);
@@ -51,8 +53,8 @@ export default class mapNode extends Phaser.GameObjects.Sprite
     enter()
     {
         //TODO FIX LOADING SCENE IN OBEJCTS
-        if(this.enterKey.isDown){
-        this.scene.start(this.targetSceneName);
+        if(this.enterKey.isDown && this.selected){
+        this.scene.scene.start(this.targetSceneName);
         }
     }
     resize()
