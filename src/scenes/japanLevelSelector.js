@@ -14,7 +14,7 @@ export class japanLevelSelector extends Phaser.Scene{
     create(){
        
         //Creamos los nodos sin conectar
-        this.store1 = new mapNode(this,0,0,'startButton','MainMenuScene',null,null,null);
+        this.store1 = new mapNode(this,0,0,'startButton','testSong',null,null,null);
         this.level1A = new mapNode(this,500,500,'creditsButton','CreditsScene',null,null,null,null);
         this.level1B = new mapNode(this,0,500,'playerSkin','CreditsScene',null,null,null,null);
 

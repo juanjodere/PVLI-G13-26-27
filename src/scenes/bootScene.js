@@ -9,9 +9,11 @@ export class bootScene extends Phaser.Scene{
     {
            //MainGameSceneAssets(PLACEHOLDER)
        this.load.image('playerSkin','assets/ObjectAssets/player/player.png');
-        //MainMenuAssets
+        //ButtonAssets
       this.load.image('startButton','assets/MainMenuSceneAssets/StartButton.jpg');
       this.load.image('creditsButton','assets/MainMenuSceneAssets/CreditsButton.jpg');
+      //Arrow
+      this.load.image('arrow','assets/ObjectAssets/arrow.png');
 
         //TODO REVISAR COMO FUNCIONA
          // Crear elementos visuales de la barra de carga
