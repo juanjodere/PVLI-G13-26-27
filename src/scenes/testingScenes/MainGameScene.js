@@ -10,6 +10,8 @@ export class MainGameScene extends Phaser.Scene
     }
     create()
     {
+
+   
         //Las flechas para los controles
         
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -56,6 +58,7 @@ export class MainGameScene extends Phaser.Scene
 
        } 
        
+       //this.cameras.main.startFollow(this.player.sprite);
        
     }
     update(time,delta)
