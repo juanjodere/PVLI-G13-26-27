@@ -32,8 +32,8 @@ export class japanLevelSelector extends Phaser.Scene{
 
     }
 
-    update()
+    update(time,deltaTime)
     {
-        
+       
     }
 };
