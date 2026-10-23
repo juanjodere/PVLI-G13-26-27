@@ -15,37 +15,46 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
         this.dirX = dirX;
         this.dirY = dirY;
         
+        //Fisica, la añadimos aqui para ajustar el tamaño de lcolliderr segun la dir
+          scene.physics.add.existing(this);
+
+          //Ajustamos el tamaño del collider y la direccion de la flecha
     switch(this.arrowType)
     {   
     
     case 'd':
         this.angle = 180;
+        this.body.setSize(1000,1500);
+        
     break;
     case 'l':
         this.angle = -90;
+        this.body.setSize(1500,100);
     break;
     case 'r':
          this.angle = 90;
+         this.body.setSize(1500,100);
     break;
     case 'u':
         this.angle = 0;
+        this.body.setSize(1000,1500);
     break;
     default:
     console.log("INCORRECT ARROWTYPE");
     break;
     
     }
+    //SI la felcha tiene "estado" (es verde) se colorea verde
         if(this.arrowState)
         {
-            this.setTint(0x0000ff);
+            this.setTint(0x008000);
         }
         else
         {
-             this.setTint(0x008000);
+            this.setTint(0x0000ff);
         }
-        //Fisica
-          scene.physics.add.existing(this);
-        this.body.allowGravity = false;
+        
+        
         //DEBUG
          this.body.showBody = true;
         //añadri a la escena
@@ -56,6 +65,7 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
 
     move(time,deltaTime)
     {
+        //TODO BORRAR FLECHA AL SALIR DE LA PANTALLA
         this.x += this.dirX*this.speed*deltaTime;
         this.y += this.dirY**this.speed*deltaTime;
     }
