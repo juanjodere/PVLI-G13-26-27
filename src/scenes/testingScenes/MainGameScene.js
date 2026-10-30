@@ -58,7 +58,7 @@ export class MainGameScene extends Phaser.Scene
 
        } 
        
-       //this.cameras.main.startFollow(this.player.sprite);
+       //npthis.cameras.main.startFollow(this.player.sprite);
        
     }
     update(time,delta)

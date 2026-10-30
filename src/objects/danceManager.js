@@ -2,7 +2,7 @@ import arrow from "./arrow.js";
 export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     //TODAS LAS COSAS ESTETICAS SE MANEJARAN EN OTROS OBJETOS; AQUI TENEMOS LA MUSICA EL SPRITE DE LA LINEA DE JUEZ (DONDE COLISIONAN LAS FLECHAS)
     //EL CONTROL DEL SPAWN DE FLECHAS Y EL MANEJO DEL INPUT PARA REVISAR LAS FLECHAS
-    constructor(scene, judgeLineSprite, x, y, judgeLineSize, movesArray, music, arrowSpawnerX, arrowSpawnerY) {
+    constructor(scene, {judgeLineSprite, x, y, judgeLineSize, movesArray, music, arrowSpawnerX, arrowSpawnerY}) {
 
 
         //CREAMOS EL SPRITE

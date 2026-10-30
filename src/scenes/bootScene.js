@@ -1,22 +1,44 @@
-export class bootScene extends Phaser.Scene{
+export class bootScene extends Phaser.Scene {
 
-        constructor()
+    constructor() {
+        super({ key: "bootScene" })
+    }
+
+    preload() {
+        //MainGameSceneAssets(PLACEHOLDER)
+        this.load.image('playerSkin', 'assets/ObjectAssets/player/player.png');
+        //MainMenuAssets
         {
-            super({key: "bootScene"})
-        }
-
-    preload()
-    {
-           //MainGameSceneAssets(PLACEHOLDER)
-       this.load.image('playerSkin','assets/ObjectAssets/player/player.png');
+        //MainMenuBackground
+        this.load.image('menuBG', 'assets/MainMenuSceneAssets/mainMenuBackground.png')
         //ButtonAssets
-      this.load.image('startButton','assets/MainMenuSceneAssets/StartButton.jpg');
-      this.load.image('creditsButton','assets/MainMenuSceneAssets/CreditsButton.jpg');
-      //Arrow
-      this.load.image('arrow','assets/ObjectAssets/arrow.png');
+        this.load.image('startButton', 'assets/MainMenuSceneAssets/StartButton.jpg');
+        this.load.image('creditsButton', 'assets/MainMenuSceneAssets/CreditsButton.jpg');
+        }
+        //Arrow
+        this.load.image('arrow', 'assets/ObjectAssets/arrow.png');
+        //Iconos LevelSelector
+        this.load.image('trainStationIco', 'assets/worldMapBuildings/trainStation_MapIcon.png');
+        this.load.image('shibuyaCrossIco', 'assets/worldMapBuildigs/shibuyaCrossroad_MapIcon.png');
+        this.load.image('alleyIco', 'assets/worldMapBuildings/alley_MapIcon.png');
+        this.load.image('donQuijoteIco', 'assets/worldMapBuildings/donQuijoteStore_MapIcon.png');
+        this.load.image('67elevenIco', 'assets/worldMapBuildings/67Eleven_MapIcon.png');
+        this.load.image('arcadeIco','assets/worldMapBuildings/arcade_MapIcon.png');
+        //MainMapBackground
+        this.load.image('levelSelectorBG','./assets/ScenesBackgrounds/JapanLevelSelector/japanLevelSelectorMap.png')
+        //levelBackgrounds
 
+        //Carga de los spritesheets de los profesores y sus skins, se cargan con un nombre (nombre+skin)
+        //Test
+        this.load.spritesheet('defaultDefault','assets/ObjectAssets/player/testPlayer.png', {
+            frameWidth:100,
+            frameHeight:180,
+            
+            endFrame:4
+        });
+       
         //TODO REVISAR COMO FUNCIONA
-         // Crear elementos visuales de la barra de carga
+        // Crear elementos visuales de la barra de carga
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
 
@@ -37,7 +59,7 @@ export class bootScene extends Phaser.Scene{
             progressBox.destroy();
             this.scene.start('MainMenuScene');
         });
-       //////////////////////////
-    
+        //////////////////////////
+
     }
-    }
+}

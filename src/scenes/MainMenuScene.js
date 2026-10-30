@@ -10,6 +10,8 @@ export class MainMenuScene extends Phaser.Scene
     }
     create()
     {
+      //Añadimos la imagen del fondo
+      this.add.image(500,350,'menuBG')
      const StartButton = this.add.image(400,150,'startButton').setInteractive();
      const CreditsButton = this.add.image(400,350,'creditsButton').setInteractive();
 

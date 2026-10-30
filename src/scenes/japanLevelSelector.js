@@ -7,16 +7,13 @@ export class japanLevelSelector extends Phaser.Scene{
         super({key:'japanLevelSelector'})
     }
     
-    preload()
-    {
-
-    }
     create(){
-       
+       //Creamos el fondo
+        this.Background = this.add.image(0,0,'levelSelectorBG').setScale(1.2,1.2);
         //Creamos los nodos sin conectar
-        this.store1 = new mapNode(this,0,0,'startButton','testSong',null,null,null).setOrigin(0,0);
-        this.level1A = new mapNode(this,400,100,'creditsButton','CreditsScene',null,null,null,null).setOrigin(0,0).setScale(0.4);
-        this.level1B = new mapNode(this,200,300,'playerSkin','MainGameScene',null,null,null,null).setOrigin(0,0);
+        this.store1 = new mapNode(this,0,0,'alleyIco','testSong',null,null,null).setOrigin(0,0);
+        this.level1A = new mapNode(this,400,100,'67elevenIco','CreditsScene',null,null,null,null).setOrigin(0,0).setScale(0.4);
+        this.level1B = new mapNode(this,200,300,'arcadeIco','MainGameScene',null,null,null,null).setOrigin(0,0);
 
         //Conectamos los nodos
         this.store1.nodeDown = this.level1B;

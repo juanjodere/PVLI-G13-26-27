@@ -61,11 +61,11 @@ export default class mapNode extends Phaser.GameObjects.Sprite
     {
         if (this.selected)
         {
-            this.setScale(1.3,1.3);
+            this.setScale(0.5,0.5);
         }
         else
         {
-            this.setScale(1,1);
+            this.setScale(0.35,0.35);
         }
     }
 
