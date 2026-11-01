@@ -17,7 +17,22 @@ export default class player extends Phaser.GameObjects.Sprite{
 
     dance()
     {
-        
+        if(this.AKey.isDown)
+        {
+
+        }
+         if(this.SKey.isDown)
+        {
+            
+        }
+         if(this.WKey.isDown)
+        {
+            
+        }
+         if(this.DKey.isDown)
+        {
+            
+        }
           
 
     }

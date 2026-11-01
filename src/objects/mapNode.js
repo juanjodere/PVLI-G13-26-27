@@ -36,16 +36,20 @@ export default class mapNode extends Phaser.GameObjects.Sprite
         if (Phaser.Input.Keyboard.JustDown(this.cursors.left) && this.nodeLeft != null) {
             this.selected = false;
             this.nodeLeft.selected = true;
+            this.scene.selectedNode = this.nodeLeft;
         } else if (Phaser.Input.Keyboard.JustDown(this.cursors.right)&& this.nodeRight != null) {
             this.selected = false;
             this.nodeRight.selected = true;
+             this.scene.selectedNode = this.nodeRight;
         }
         if (Phaser.Input.Keyboard.JustDown(this.cursors.up) && this.nodeUp != null) {
             this.selected = false;
             this.nodeUp.selected = true;
+             this.scene.selectedNode = this.nodeUp;
         } else if (Phaser.Input.Keyboard.JustDown(this.cursors.down)&& this.nodeDown != null) {
             this.selected = false;
             this.nodeDown.selected = true;
+             this.scene.selectedNode = this.nodeDown;
         }
         }
     }

@@ -1,4 +1,5 @@
 import mapNode from "../objects/mapNode.js";
+import mapCursor from "../objects/mapCursor.js";
 export class japanLevelSelector extends Phaser.Scene{
     
 
@@ -10,6 +11,7 @@ export class japanLevelSelector extends Phaser.Scene{
     create(){
        //Creamos el fondo
         this.Background = this.add.image(0,0,'levelSelectorBG').setScale(1.2,1.2);
+       
         //Creamos los nodos sin conectar
         this.store1 = new mapNode(this,0,0,'alleyIco','testSong',null,null,null).setOrigin(0,0);
         this.level1A = new mapNode(this,400,100,'67elevenIco','CreditsScene',null,null,null,null).setOrigin(0,0).setScale(0.4);
@@ -26,7 +28,10 @@ export class japanLevelSelector extends Phaser.Scene{
         this.level1B.nodeRight = this.level1A;
         //asignamos el nodo inicial
         this.level1A.selected = true;
-
+        this.selectedNode = this.level1A;
+         //Creamos el iconito del jugador;
+        this.cursor = new mapCursor(this,0,0,'playerSkin',this.level1A).setOrigin(0,0);
+        this.cameras.main.startFollow(this.cursor);
     }
 
     update(time,deltaTime)
