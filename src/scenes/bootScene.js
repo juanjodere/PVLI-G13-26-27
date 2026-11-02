@@ -34,7 +34,7 @@ export class bootScene extends Phaser.Scene {
             frameWidth:100,
             frameHeight:180,
             
-            endFrame:4
+            endFrame:19
         });
        
         //TODO REVISAR COMO FUNCIONA
