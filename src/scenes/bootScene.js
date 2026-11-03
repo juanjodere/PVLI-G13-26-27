@@ -19,7 +19,7 @@ export class bootScene extends Phaser.Scene {
         this.load.image('arrow', 'assets/ObjectAssets/arrow.png');
         //Iconos LevelSelector
         this.load.image('trainStationIco', 'assets/worldMapBuildings/trainStation_MapIcon.png');
-        this.load.image('shibuyaCrossIco', 'assets/worldMapBuildigs/shibuyaCrossroad_MapIcon.png');
+        this.load.image('shibuyaCrossIco', 'assets/worldMapBuildings/shibuyaCrossroad_MapIcon.png');
         this.load.image('alleyIco', 'assets/worldMapBuildings/alley_MapIcon.png');
         this.load.image('donQuijoteIco', 'assets/worldMapBuildings/donQuijoteStore_MapIcon.png');
         this.load.image('67elevenIco', 'assets/worldMapBuildings/67Eleven_MapIcon.png');
