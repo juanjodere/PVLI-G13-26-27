@@ -1,41 +1,63 @@
 import mapNode from "../objects/mapNode.js";
 import mapCursor from "../objects/mapCursor.js";
-export class japanLevelSelector extends Phaser.Scene{
-    
+export class japanLevelSelector extends Phaser.Scene {
 
-    constructor()
-    {
-        super({key:'japanLevelSelector'})
+
+    constructor() {
+        super({ key: 'japanLevelSelector' })
     }
-    
-    create(){
-       //Creamos el fondo
-        this.Background = this.add.image(0,0,'levelSelectorBG').setScale(1.2,1.2);
-       
+
+    create() {
+        //Creamos el fondo
+        this.Background = this.add.image(0, 0, 'levelSelectorBG').setOrigin(0, 0);
+
         //Creamos los nodos sin conectar
-        this.store1 = new mapNode(this,0,0,'alleyIco','testSong',null,null,null).setOrigin(0,0);
-        this.level1A = new mapNode(this,400,100,'67elevenIco','CreditsScene',null,null,null,null).setOrigin(0,0).setScale(0.4);
-        this.level1B = new mapNode(this,200,300,'arcadeIco','MainGameScene',null,null,null,null).setOrigin(0,0);
-
+        this.alley = new mapNode(this, 734, 544, 'alleyIco', 'testSong').setOrigin(0.5, 0.5);
+        this.donQuijote = new mapNode(this, 400, 67, 'donQuijoteIco', 'CreditsScene').setOrigin(0.5, 0.5);
+        this.trainStation = new mapNode(this, 925, 434, 'trainStationIco', 'MainGameScene').setOrigin(0.5, 0.5);
+        this.shibuyaCrossing = new mapNode(this, 777, 200, 'shibuyaCrossIco', 'MainGameScene').setOrigin(0.5, 0.5);
+        this.arcade = new mapNode(this, 345, 245, 'arcadeIco', 'MainGameScene').setOrigin(0.5, 0.5);
+        this.sixSevenStore = new mapNode(this, 365, 475, '67elevenIco', 'MainGameScene').setOrigin(0.5, 0.5);
         //Conectamos los nodos
-        this.store1.nodeDown = this.level1B;
-        this.store1.nodeRight = this.level1A;
-
-        this.level1A.nodeLeft = this.level1B;
-        this.level1A.nodeUp = this.store1;
-
-        this.level1B.nodeUp = this.store1;
-        this.level1B.nodeRight = this.level1A;
-        //asignamos el nodo inicial
-        this.level1A.selected = true;
-        this.selectedNode = this.level1A;
-         //Creamos el iconito del jugador;
-        this.cursor = new mapCursor(this,0,0,'playerSkin',this.level1A).setOrigin(0,0);
+        //DonQuijote
+        this.donQuijote.nodeRight = this.shibuyaCrossing;
+        this.donQuijote.nodeLeft = this.arcade;
+        this.donQuijote.nodeDown = this.arcade;
+        //CruzeShibuya
+        this.shibuyaCrossing.nodeDown = this.trainStation;
+         this.shibuyaCrossing.nodeRight = this.trainStation;
+         this.shibuyaCrossing.nodeUp = this.donQuijote;
+         this.shibuyaCrossing.nodeLeft = this.donQuijote;
+        //Estación trenes
+        this.trainStation.nodeLeft = this.alley;
+        this.trainStation.nodeDown = this.alley;
+        this.trainStation.nodeRight = this.shibuyaCrossing;
+        this.trainStation.nodeUp = this.shibuyaCrossing;
+        //Callejón
+        this.alley.nodeLeft = this.sixSevenStore;
+        this.alley.nodeUp = this.trainStation;
+        this.alley.nodeRight = this.trainStation;
+        //Tienda SixSeven
+        this.sixSevenStore.nodeUp = this.arcade;
+        this.sixSevenStore.nodeDown = this.alley;
+        this.sixSevenStore.nodeRight = this.alley;
+        this.sixSevenStore.nodeLeft = this.arcade;
+        //Arcade
+        this.arcade.nodeRight = this.donQuijote;
+        this.arcade.nodeUp = this.donQuijote;
+        this.arcade.nodeDown = this.sixSevenStore;
+        this.nodeLeft = this.sixSevenStore;
+     
+        //asignamos la variable de nodo sele
+        this.selectedNode = this.donQuijote;
+        //Creamos el iconito del jugador;
+        this.cursor = new mapCursor(this, this.selectedNode.x, this.selectedNode.y, 'playerSkin').setOrigin(0.5, 0.5).setScale(0.3, 0.3);
         this.cameras.main.startFollow(this.cursor);
+        this.cameras.main.setBounds(0, 0, 1358, 802);
+        //this.Background.setScale(2,2);
     }
 
-    update(time,deltaTime)
-    {
-       
+    update(time, deltaTime) {
+
     }
 };

@@ -9,7 +9,7 @@ export default class mapNode extends Phaser.GameObjects.Sprite
 
         
 
-        this.selected =false;
+        this.selected = false;
 
         this.nodeUp = _nodeUp;
         this.nodeDown = _nodeDown;
@@ -29,6 +29,14 @@ export default class mapNode extends Phaser.GameObjects.Sprite
     //Métodos de la clase mapNode;
     move(){
         
+        if (this.scene.selectedNode == this)
+        {
+            this.selected = true;
+        }
+        else
+        {
+            this.selected = false;
+        }
         //TODO CONTROLAR LA VELOCIDAD DE PULSACION
         if(this.selected)
         {
