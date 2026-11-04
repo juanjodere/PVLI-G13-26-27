@@ -28,7 +28,7 @@
 
 
 
-#### **ÍNDICE**[
+#### **ÍNDICE**
 
 
 
@@ -422,6 +422,24 @@ Tendrá opciones para modificar el volumen del juego, y otras cuestiones de como
 
 
 
+
+#### **UI**
+
+
+
+(imagen)
+
+
+
+(imagen)
+
+
+
+**---------------------------------------------------------------------------**
+
+
+
+
 #### **CÓMO SE GANA Y CÓMO SE PIERDE**
 
 
@@ -440,21 +458,6 @@ No hay manera de perder el juego en su totalidad, pues siempre se puede volver a
 
 **---------------------------------------------------------------------------**
 
-
-
-#### **UI**
-
-
-
-(imagen)
-
-
-
-(imagen)
-
-
-
-**---------------------------------------------------------------------------**
 
 
 
