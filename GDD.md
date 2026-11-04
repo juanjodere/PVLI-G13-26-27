@@ -60,7 +60,7 @@ El bucle principal del juego consiste en
 
 
 
-!\[Bucle de juego](images\_src/gdd/bucle-de-juego.png)
+!\[Bucle de juego](/images\_src/gdd/bucle-de-juego.png)
 
 
 
