@@ -28,7 +28,7 @@
 
 
 
-##### **DESCRIPCIÓN**
+#### **DESCRIPCIÓN**
 
 
 
@@ -36,7 +36,7 @@ Las características tomadas en consideración para crear este juego son las sig
 
 
 
-###### **Público objetivo**
+##### **Público objetivo**
 
 
 
@@ -44,7 +44,7 @@ El público objetivo del juego es un público jovén de entre los 14 y los 20 a�
 
 
 
-###### **Tiempo de juego**
+##### **Tiempo de juego**
 
 
 
@@ -52,11 +52,15 @@ Entre 25 o 35 minutos, en función de la habilidad del jugador y cuantas batalla
 
 
 
-###### **Bucle de juego**
+##### **Bucle de juego**
 
 
 
 El bucle principal del juego consiste en
+
+
+
+!\[Bucle de juego](images\_src/gdd/bucle-de-juego.png)
 
 
 
