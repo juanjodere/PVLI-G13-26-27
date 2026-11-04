@@ -27,7 +27,10 @@ export class bootScene extends Phaser.Scene {
         //MainMapBackground
         this.load.image('levelSelectorBG','./assets/ScenesBackgrounds/JapanLevelSelector/japanLevelSelectorMap.png')
         //levelBackgrounds
-
+        // TODO
+        // Credits images
+        this.load.image('Credits','assets/CreditsSceneAssets/Credits.png');
+        this.load.image('BackButton','assets/MainMenuSceneAssets/BackButton.jpg');
         //Carga de los spritesheets de los profesores y sus skins, se cargan con un nombre (nombre+skin)
         //Test
         this.load.spritesheet('defaultDefault','assets/ObjectAssets/player/testPlayer.png', {
