@@ -28,11 +28,25 @@
 
 
 
-#### **ÍNDICE**
+#### **ÍNDICE**[
 
 
 
-**a**
+* [Descripción](#descripción)
+* [Espacio de juego](#espacio-de-juego)
+* [Selección de personajes](#selección-de-personajes)
+* [Aura](#aura)
+* [Batallas](#batallas)
+* [Objetos](#objetos)
+* [Misiones secundarias](#misiones-secundarias)
+* [Tiendas](#tiendas)
+* [Menús](#menús)
+* [UI](#ui)
+* [Cómo se gana y cómo se pierde](#cómo-se-gana-y-cómo-se-pierde)
+* [Experiencia de juego](#experiencia-de-juego)
+* [Formas de jugar](#formas-de-jugar)
+* [Estética](#estética)
+* [Referencias](#referencias)
 
 
 
