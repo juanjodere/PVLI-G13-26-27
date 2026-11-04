@@ -7,9 +7,6 @@ export class testSong extends Phaser.Scene {
         super({ key: 'testSong' });
     }
 
-    preload() {
-
-    }
     create() {
         //Botón para salir del nivel PROVISIONAL
         const StartButton = this.add.image(0, 0, 'startButton').setInteractive().setOrigin(0, 0);
@@ -26,9 +23,6 @@ export class testSong extends Phaser.Scene {
 
         var array = ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r']
         this._danceManager = new danceManager(this, { judgeLineSprite: 'playerSkin', x: 200, y: 200, judgeLineSize: 99, movesArray: array, music: null, arrowSpawnerX: 500, arrowSpawnerY: 200 });
-
-    }
-    update(time, delta) {
 
     }
 }
