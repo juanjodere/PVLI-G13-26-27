@@ -3,7 +3,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     //TODAS LAS COSAS ESTETICAS SE MANEJARAN EN OTROS OBJETOS; AQUI TENEMOS LA MUSICA EL SPRITE DE LA LINEA DE JUEZ (DONDE COLISIONAN LAS FLECHAS)
     //EL CONTROL DEL SPAWN DE FLECHAS Y EL MANEJO DEL INPUT PARA REVISAR LAS FLECHAS
 
-    constructor(scene, {judgeLineSprite, x, y, judgeLineSize, movesArray, music, aura}) {
+    constructor(scene, {judgeLineSprite, x, y, judgeLineSize, movesArray, music, aura, health}) {
         //CREAMOS EL SPRITE
         super(scene, x, y, judgeLineSprite)
         this.scene = scene;
@@ -13,7 +13,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.music = music;
         this.points = 0;
         this.combo = 0;
-        this.topHealth = 10; // Vida del jugador
+        this.topHealth = health; // Vida del jugador
         this.health = this.topHealth;
         this.auraToGive = aura;
         //SongController
@@ -124,10 +124,11 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
             this.health += --this.combo;
             if (this.health <= 0){
                 this.health = 0;
+                this.updateBar(this.health);
                 this.onLosing();
             }
 
-            this.updateBar();
+            this.updateBar(this.health);
         };
 
         this.hasSongEnded(hitObject);
@@ -136,19 +137,21 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
 
     onHit(hitObject){
         hitObject.x = 9999;
-        this.points += ++this.combo; // Puntos que da cada acierto = la racha de aciertos que se lleve. 
+
+        
+        if (this.combo <= 0) this.combo = 1; // Resetea el combo.
         if (this.health < this.topHealth) {
             this.health += this.combo;
             if (this.health > this.topHealth) this.health = this.topHealth;
 
-            this.updateBar();
+            this.updateBar(this.health);
         };
 
         this.hasSongEnded(hitObject);
     }
 
-    updateBar(){
-
+    updateBar(newHealth){
+        this.scene.changeLifeBar(newHealth);
     }
 
     onLosing(){
