@@ -1,5 +1,8 @@
 export default class arrow extends Phaser.Physics.Arcade.Sprite
 {
+
+    isLast = false;
+
     constructor(scene,x,y,speed,type,state,dirX,dirY)
     {
         if(dirX ==  0 && dirY == 0)
@@ -63,12 +66,21 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
 
     }
 
+    get isLast(){
+        return this.isLast;
+    }
+
+    set isLast(b){
+        if (typeof b === "boolean") isLast = b;
+    }
+
     move(time,deltaTime)
     {
         //TODO BORRAR FLECHA AL SALIR DE LA PANTALLA
         this.x += this.dirX*this.speed*deltaTime;
         this.y += this.dirY**this.speed*deltaTime;
     }
+
     preUpdate(time,deltaTime)
     {
         this.move(time,deltaTime);

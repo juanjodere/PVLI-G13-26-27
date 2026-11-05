@@ -22,7 +22,7 @@ export class testSong extends Phaser.Scene {
         this.player = new player(this, 300, 300, { name: 'default', skin: 'Default' });
 
         var array = ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r']
-        this._danceManager = new danceManager(this, { judgeLineSprite: 'playerSkin', x: 200, y: 200, judgeLineSize: 99, movesArray: array, music: null, arrowSpawnerX: 500, arrowSpawnerY: 200 });
+        this._danceManager = new danceManager(this, { judgeLineSprite: 'playerSkin', x: 200, y: 200, judgeLineSize: 99, movesArray: array, music: null, aura: 25 });
 
     }
 }

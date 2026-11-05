@@ -3,7 +3,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     //TODAS LAS COSAS ESTETICAS SE MANEJARAN EN OTROS OBJETOS; AQUI TENEMOS LA MUSICA EL SPRITE DE LA LINEA DE JUEZ (DONDE COLISIONAN LAS FLECHAS)
     //EL CONTROL DEL SPAWN DE FLECHAS Y EL MANEJO DEL INPUT PARA REVISAR LAS FLECHAS
 
-    constructor(scene, {judgeLineSprite, x, y, judgeLineSize, movesArray, music, arrowSpawnerX, arrowSpawnerY}) {
+    constructor(scene, {judgeLineSprite, x, y, judgeLineSize, movesArray, music, aura}) {
         //CREAMOS EL SPRITE
         super(scene, x, y, judgeLineSprite)
         this.scene = scene;
@@ -15,12 +15,14 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.combo = 0;
         this.topHealth = 10; // Vida del jugador
         this.health = this.topHealth;
+        this.auraToGive = aura;
         //SongController
         this.songIndex = 0;
         this.timer = 0;
+        this.betweenArrowTime = 1500;
 
-        this.arrowSpawnerX = arrowSpawnerX;
-        this.arrowSpawnerY = arrowSpawnerY;
+        this.arrowSpawnerX = 500;
+        this.arrowSpawnerY = 200;
 
         //GRUPO DE FISICAS arrow PARA TENER LAS FLECHAS GUARDADAS Y PROCESARLAS.
         this.arrowGroup = scene.physics.add.group({
@@ -54,7 +56,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.add.collider(this, _arrow);
         //AÑADIMOS LA FLECHA AL GRUPO ARROWS.
         this.arrowGroup.add(_arrow)
-
+        if (this.songIndex >= this.arrayLenght - 1) _arrow.isLast = true;
     }
 
     CreateCollisionDetector() {
@@ -128,6 +130,8 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
             this.updateBar();
         };
 
+        this.hasSongEnded(hitObject);
+
     }
 
     onHit(hitObject){
@@ -139,6 +143,8 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
 
             this.updateBar();
         };
+
+        this.hasSongEnded(hitObject);
     }
 
     updateBar(){
@@ -149,15 +155,22 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.scene.scene.start('japanLevelSelector')
     }
 
+    hasSongEnded(hitObject){
+
+        if (hitObject.isLast == true){
+            // Sumar dinero.
+            // Sumar auraToGive a globalAura.
+            this.scene.scene.start('japanLevelSelector')
+        }
+    }
+
     readArray(time, deltaTime) {
         //TODO ADD OUTSIDE SPAWN TIME OR SET IT CONSTANT (1000 ms)
         this.timer += deltaTime;
 
         // EL ARRAYLENGHT -1 ES PORQUE EL SONG INDEX SE SUMA DENTRO  DEL IF Y ENTONCES LEERIA LA SIGUIENTE A < DANDO UN SOLO ERROR
-        if (this.timer > 1500 && this.songIndex < this.arrayLenght - 1) {
+        if (this.timer > this.betweenArrowTime && this.songIndex < this.arrayLenght) {
             this.timer = 0;
-
-            this.songIndex++;
 
             switch (this.moves[this.songIndex]) {
                 case 'u':
@@ -193,6 +206,8 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
                     console.log("Incorrect movement at " + this.songIndex);
                     break;
             }
+
+            this.songIndex++;
 
         }
 
