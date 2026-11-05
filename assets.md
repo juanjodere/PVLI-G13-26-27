@@ -109,6 +109,15 @@ hasta terminar de diseñar los personajes finales.
 Lo hemos diseñado nosotros, damos licencia libre para su uso.
 
 
+**Créditos**
+
+> (Credits.png)
+
+Asset que consiste en un texto con nuestros nombres.
+La hemos elegido para mostrar los créditos del juego.
+
+Lo hemos diseñado nosotros, damos licencia libre para su uso.
+
 
 **Batallas de Aura**
 
@@ -119,5 +128,96 @@ La hemos elegido para mostrar el input que debe presionar el jugador durante las
 
 Lo hemos diseñado nosotros, damos licencia libre para su uso.
 
+**ScenesBackgrounds**
 
 
+> (mainMenuBackground.png)
+
+Foto satelital de Japón, con una avioneta dirigiendose al país.
+La hemos elegido porque pone en situación el contexto del juego, como un viaje a Japón.
+
+Hemos cogido dos imagenes y las hemos editado para juntarlas.
+Hemos cogido la imagen subida por GrandEscogriffe, CC BY-SA 4.0, via Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:Japan_location_map-topographic.png
+Hemos cogido la imagen subida por Linda Thomas, CC0, via Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:Beechcraft_Sierra_2n.jpg
+
+
+> (arcadeInside.png)
+
+Foto de una sala de máquinas recreativas por dentro.
+La hemos elegido para representar uno de los fondos de la sala recreativa.
+
+Hemos cogido la imagen subida por Arcade Perfect, CC BY 2.0, via Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:Retrovolt_Arcade_2017_-_Arcade_and_Pinball_Machines.jpg
+
+
+> (arcadeMenu.png)
+
+Foto de una sala de máquinas recreativas por dentro.
+La hemos elegido para representar uno de los fondos de la sala recreativa.
+
+Hemos cogido la imagen subida por Funspotarcade, CC BY-SA 4.0, via Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:American_Classic_Arcade_Museum_Interior.jpg
+
+
+> (arcadeInside.png)
+
+Foto de una sala de máquinas recreativas por dentro.
+La hemos elegido para representar uno de los fondos de la sala recreativa.
+
+Hemos cogido la imagen subida por Arcade Perfect, CC BY 2.0, via Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:Retrovolt_Arcade_2017_-_Arcade_and_Pinball_Machines.jpg
+
+
+> (sevenElevenInside.png)
+
+Foto de un SevenEleven por dentro, a falta de editar para disimular a la gente y cambiar el logo.
+La hemos elegido para representar uno de los fondos del SevenSixSeven.
+
+Hemos cogido la imagen subida por Heidi Meudt, CC BY 4.0, via Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:7-Eleven_inside_MRT_station_Taoyuan_May_2026.jpg
+
+
+> (sevenElevenMenu.png)
+
+Foto de un SevenEleven por dentro, a falta de editar para disimular a la gente y cambiar el logo.
+La hemos elegido para representar uno de los fondos del SevenSixSeven.
+
+Hemos cogido la imagen subida por 221.20, Public domain, via Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:7-11_Narita_airport_terminal2.JPG
+
+
+> (shibuyaCrossingMenu.png)
+
+Foto de los alrededores del cruce de Shibuya.
+La hemos elegido para representar uno de los fondos del cruce de Shibuya.
+
+Hemos cogido la imagen subida por Kakidai, CC BY-SA 4.0, via Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:2024_Shibuya_Crossing.jpg
+
+
+> (shibuyaCrossingInside.png)
+
+Foto del cruce de Shibuya con gente de fondo.
+La hemos elegido para representar uno de los fondos del cruce de Shibuya.
+
+Hemos cogido la imagen subida por Dick Thomas Johnson, CC BY 2.0, via Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:Shibuya_Crossing_(53083164242).jpg
+
+
+> (shibuyaCrossingInside.png)
+
+Foto del cruce de Shibuya con gente de fondo.
+La hemos elegido para representar uno de los fondos del cruce de Shibuya.
+
+Hemos cogido la imagen subida por Dick Thomas Johnson, CC BY 2.0, via Wikimedia Commons.
+https://commons.wikimedia.org/wiki/File:Shibuya_Crossing_(53083164242).jpg
+
+
+> (japanLevelSelectorMap.png)
+
+Foto placeholder de un mapa de la zona alrededor de Shibuya, aún sin estilizar.
+La hemos elegido para representar el fondo del selector de niveles.
+
+Hemos cogido una captura de pantalla de Google Maps de la zona, Cuyos derechos pertenecen a Google, quien no ha dado los derechos de uso comercial.
