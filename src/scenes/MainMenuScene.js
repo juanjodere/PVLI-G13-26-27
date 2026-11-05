@@ -21,9 +21,12 @@ export class MainMenuScene extends Phaser.Scene
        CreditsButton.on('pointerout',()=>{CreditsButton.setScale(1)});
        //Manejo del botón de start
      
-       StartButton.on('pointerdown',()=>{this.scene.start('japanLevelSelector')})
+      StartButton.on('pointerdown',() => {
+         this.scene.start('japanLevelSelector', {character: null, skin: null, levelsCompleted: null, inventory: null,
+            locationNode: null, globalAura: 0})
+      })
       StartButton.on('pointerover',()=>{StartButton.setScale(1.1)});
-       StartButton.on('pointerout',()=>{StartButton.setScale(1)});
+      StartButton.on('pointerout',()=>{StartButton.setScale(1)});
     }
     update()
     {

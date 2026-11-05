@@ -1,21 +1,22 @@
 import arrow from "./arrow.js";
+
 export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     //TODAS LAS COSAS ESTETICAS SE MANEJARAN EN OTROS OBJETOS; AQUI TENEMOS LA MUSICA EL SPRITE DE LA LINEA DE JUEZ (DONDE COLISIONAN LAS FLECHAS)
     //EL CONTROL DEL SPAWN DE FLECHAS Y EL MANEJO DEL INPUT PARA REVISAR LAS FLECHAS
 
-    constructor(scene, {judgeLineSprite, x, y, judgeLineSize, movesArray, music, aura, health}) {
+    constructor(scene, data) {
         //CREAMOS EL SPRITE
-        super(scene, x, y, judgeLineSprite)
+        super(scene, data.x, data.y, data.judgeLineSprite)
         this.scene = scene;
         //Variables de la partida
-        this.moves = movesArray;
-        this.arrayLenght = movesArray.length;
-        this.music = music;
+        this.moves = data.movesArray;
+        this.arrayLenght = this.moves.length;
+        this.music = data.music;
         this.points = 0;
         this.combo = 0;
-        this.topHealth = health; // Vida del jugador
+        this.topHealth = data.health; // Vida del jugador
         this.health = this.topHealth;
-        this.auraToGive = aura;
+        this.auraToGive = data.aura;
         //SongController
         this.songIndex = 0;
         this.timer = 0;
@@ -44,18 +45,23 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.body.allowGravity = false;
 
         //Ponemos el tamaño del collider, no nos importa la altura
-        this.body.setSize(judgeLineSize, judgeLineSize);
+        this.body.setSize(data.judgeLineSize, data.judgeLineSize);
         this.body.showBody = true;
 
         this.CreateCollisionDetector();
     }
 
-    spawnArrow(time, deltaTime, arrowType, greenState) {
+    spawnArrow(arrowType, isGreen) {
+
         //TODO ADD OUTSIDE ARROW SPEED AND OUTSIDE AROW DIR
-        let _arrow = new arrow(this.scene, this.arrowSpawnerX, this.arrowSpawnerY, 0.1, arrowType, greenState, -1, 0);
+
+        let _arrow = new arrow(this.scene, {x: this.arrowSpawnerX, y: this.arrowSpawnerY, speed: 0.1, type: arrowType,
+            state: isGreen, dirX: -1, dirY: 0});
         this.scene.physics.add.collider(this, _arrow);
+
         //AÑADIMOS LA FLECHA AL GRUPO ARROWS.
         this.arrowGroup.add(_arrow)
+
         if (this.songIndex >= this.arrayLenght - 1) _arrow.isLast = true;
     }
 
@@ -155,7 +161,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     }
 
     onLosing(){
-        this.scene.scene.start('japanLevelSelector')
+        this.askChangeScene()
     }
 
     hasSongEnded(hitObject){
@@ -163,7 +169,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         if (hitObject.isLast == true){
             // Sumar dinero.
             // Sumar auraToGive a globalAura.
-            this.scene.scene.start('japanLevelSelector')
+            this.askChangeScene();
         }
     }
 
@@ -177,29 +183,29 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
 
             switch (this.moves[this.songIndex]) {
                 case 'u':
-                    this.spawnArrow(time, deltaTime, 'u', false);
+                    this.spawnArrow('u', false);
                     break;
                 case 'd':
-                    this.spawnArrow(time, deltaTime, 'd', false);
+                    this.spawnArrow('d', false);
                     break;
                 case 'l':
-                    this.spawnArrow(time, deltaTime, 'l', false);
+                    this.spawnArrow('l', false);
                     break;
                 case 'r':
-                    this.spawnArrow(time, deltaTime, 'r', false);
+                    this.spawnArrow('r', false);
                     break;
                 /////GREEN ARROWS
                 case 'u.':
-                    this.spawnArrow(time, deltaTime, 'u', true);
+                    this.spawnArrow('u', true);
                     break;
                 case 'd.':
-                    this.spawnArrow(time, deltaTime, 'd', true);
+                    this.spawnArrow('d', true);
                     break;
                 case 'l.':
-                    this.spawnArrow(time, deltaTime, 'l', true);
+                    this.spawnArrow('l', true);
                     break;
                 case 'r.':
-                    this.spawnArrow(time, deltaTime, 'r', true);
+                    this.spawnArrow('r', true);
                     //Delay
                     break;
                 case '':
@@ -219,5 +225,9 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     preUpdate(time, deltaTime) {
         super.preUpdate(time, deltaTime);
         this.readArray(time, deltaTime);
+    }
+
+    askChangeScene(){
+        this.scene.changeScene();
     }
 }

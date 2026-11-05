@@ -3,51 +3,57 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
 
     isLast = false;
 
-    constructor(scene,x,y,speed,type,state,dirX,dirY)
+    constructor(scene, data)
     {
-        if(dirX ==  0 && dirY == 0)
+
+        if(data.dirX ==  0 && data.dirY == 0)
         {
             console.log("STATIC ARROW");
         }
-        super(scene,x,y,'arrow');
+        super(scene, data.x, data.y, 'arrow');
         this.setScale(0.1);
 
-        this.speed = speed;
-        this.arrowState = state;
-        this.arrowType = type;
-        this.dirX = dirX;
-        this.dirY = dirY;
+        this.speed = data.speed;
+        this.arrowState = data.state;
+        this.arrowType = data.type;
+        this.dirX = data.dirX;
+        this.dirY = data.dirY;
         
-        //Fisica, la añadimos aqui para ajustar el tamaño de lcolliderr segun la dir
-          scene.physics.add.existing(this);
+        //Fisica, la añadimos aqui para ajustar el tamaño del collider según la dir
+        scene.physics.add.existing(this);
 
-          //Ajustamos el tamaño del collider y la direccion de la flecha
-    switch(this.arrowType)
-    {   
-    
-    case 'd':
-        this.angle = 180;
-        this.body.setSize(1000,1500);
+        //Ajustamos el tamaño del collider y la direccion de la flecha
+        switch(this.arrowType)
+        {   
         
-    break;
-    case 'l':
-        this.angle = -90;
-        this.body.setSize(1500,100);
-    break;
-    case 'r':
-         this.angle = 90;
-         this.body.setSize(1500,100);
-    break;
-    case 'u':
-        this.angle = 0;
-        this.body.setSize(1000,1500);
-    break;
-    default:
-    console.log("INCORRECT ARROWTYPE");
-    break;
-    
-    }
-    //SI la felcha tiene "estado" (es verde) se colorea verde
+        case 'd':
+            this.angle = 180;
+            this.body.setSize(1000,1500);
+
+        break;
+
+        case 'l':
+            this.angle = -90;
+            this.body.setSize(1500,100);
+        break;
+
+        case 'r':
+             this.angle = 90;
+             this.body.setSize(1500,100);
+        break;
+
+        case 'u':
+            this.angle = 0;
+            this.body.setSize(1000,1500);
+        break;
+
+        default:
+        console.log("INCORRECT ARROWTYPE");
+        break;
+        
+        }
+
+        //SI la flecha tiene "estado" (es verde) se colorea verde
         if(this.arrowState)
         {
             this.setTint(0x008000);

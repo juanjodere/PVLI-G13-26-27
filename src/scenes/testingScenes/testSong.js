@@ -7,6 +7,26 @@ export class testSong extends Phaser.Scene {
         super({ key: 'testSong' });
     }
 
+    
+    init(data)
+    {
+        // Estas variables se usarán en esta escena
+        this.professor = data.character;
+        this.skin = data.skin;
+        this.song = data.song;
+        this.background = data.background;
+        this.array = data.movesArray;
+        this.sendAura = !data.thisLevelCompleted;
+        this.auraToGive = data.givenAura;
+        this.inventory = data.inventory;
+        this.locationNode = data.locationNode;
+        this.globalAura = data.globalAura;
+
+        // Estas variables están para pasarlas a otras escenas.
+        this.levelsCompleted = data.levelsCompleted;
+    }
+
+
     create() {
 
         this.lifeBarLeftCornerX = 675;
@@ -18,13 +38,7 @@ export class testSong extends Phaser.Scene {
         this.lifeBarOffset = 10;
 
         this.health = 10;
-
-        //Botón para salir del nivel PROVISIONAL
-        const StartButton = this.add.image(0, 0, 'startButton').setInteractive().setOrigin(0, 0);
-        StartButton.on('pointerdown', () => { this.scene.start('japanLevelSelector') })
-        StartButton.on('pointerover', () => { StartButton.setScale(1.1) });
-        StartButton.on('pointerout', () => { StartButton.setScale(1) });
-
+        
         // Creamos la barra de vida
         this.progressBar = this.add.graphics();
         const progressBox = this.add.graphics();
@@ -33,16 +47,20 @@ export class testSong extends Phaser.Scene {
 
         this.progressBar.clear();
         this.progressBar.fillStyle(0xffffff, 1);
-        this.progressBar.fillRect(this.lifeBarLeftCornerX + this.lifeBarOffset, this.lifeBarLeftCornerY + this.lifeBarOffset, this.lifeBarWidth - 2*this.lifeBarOffset, this.lifeBarHeight - 2*this.lifeBarOffset);
+        this.progressBar.fillRect(this.lifeBarLeftCornerX + this.lifeBarOffset, this.lifeBarLeftCornerY + this.lifeBarOffset,
+            this.lifeBarWidth - 2*this.lifeBarOffset, this.lifeBarHeight - 2*this.lifeBarOffset);
         
 
-        //CReamos al Jugador
+        // Creamos al Jugador
         this.player = new player(this, 300, 300, { name: 'default', skin: 'Default' });
+        
+        this._danceManager = new danceManager(this, { judgeLineSprite: 'playerSkin', x: 200, y: 200, judgeLineSize: 99,
+            movesArray: this.array, music: this.song, aura: this.auraToGive, health: this.health });
+        
 
-        var array = ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r']
-        this._danceManager = new danceManager(this, { judgeLineSprite: 'playerSkin', x: 200, y: 200, judgeLineSize: 99, movesArray: array, music: null, aura: 25, health: this.health });
-
+        //this.array = ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r']
     }
+
 
     changeLifeBar(newLife){
 
@@ -55,5 +73,12 @@ export class testSong extends Phaser.Scene {
         this.progressBar.clear();
         this.progressBar.fillStyle(0xffffff, 1);
         this.progressBar.fillRect(this.lifeBarLeftCornerX + this.lifeBarOffset, updatedYCorner, this.lifeBarWidth - 2*this.lifeBarOffset, updatedHeight)
+    }
+
+
+    changeScene(){
+        
+        this.scene.start('japanLevelSelector', {character: this.character, skin: this.skin, levelsCompleted: this.levelsCompleted,
+            inventory: this.inventory, locationNode: this.locationNode, globalAura: this.globalAura})
     }
 }
