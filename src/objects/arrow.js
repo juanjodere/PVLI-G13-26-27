@@ -56,11 +56,11 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
         //SI la flecha tiene "estado" (es verde) se colorea verde
         if(this.arrowState)
         {
-            this.setTint(0x008000);
+            this.setTint(0xe8bbff);
         }
         else
         {
-            this.setTint(0x0000ff);
+            this.setTint(0xffd398);
         }
         
         
