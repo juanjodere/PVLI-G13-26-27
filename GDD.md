@@ -120,7 +120,8 @@ El mapa es un espacio en el que el jugador controla el cursor de su ratón. El j
 
 
 
-(imagen)
+<img width="477" height="366" alt="espacio-de-juego" src="https://github.com/user-attachments/assets/4bc9c004-f3c5-4b7c-a944-a34984e22b2e" />
+
 
 
 
@@ -140,10 +141,12 @@ En estas zonas el jugador tendrá la opción de interactuar con NPCs o iniciar u
 
 
 
-(imagen)
+<img width="462" height="317" alt="zonas-de-batallas-1" src="https://github.com/user-attachments/assets/909c10b1-54e6-463c-8085-8fdfd79285b9" />
 
-(imagen)
 
+<img width="450" height="310" alt="zonas-de-batallas-2" src="https://github.com/user-attachments/assets/35801531-61e4-4b0d-aa3f-6a42ce811832" />
+
+|
 
 
 **Localizaciones:**
@@ -162,7 +165,8 @@ En estas zonas el jugador tendrá la opción de interactuar con NPCs o iniciar u
 
 
 
-(imagen)
+<img width="632" height="232" alt="batallas" src="https://github.com/user-attachments/assets/decb9c50-eb95-47d6-bfb7-4c0904456b82" />
+
 
 
 
@@ -186,11 +190,12 @@ Al inicio de la partida el jugador podrá escoger como qué profesor jugar, esta
 
 
 
-(imagen)
+<img width="300" height="300" alt="personajes" src="https://github.com/user-attachments/assets/ff963900-f327-45de-aae5-e9151d98d6e8" />
 
 
 
 ##### **Personajes Jugables**
+
 
 
 
@@ -254,21 +259,16 @@ En las batallas existen 2 parámetros:
 
 
 
-\- **AURA**: vida del jugador durante la batalla. Empieza llena del todo y se 
-
-vacía con cada error, pero se puede rellenar al hacer movimientos
-
-correctos. Si el aura llega a 0, la batalla acabará automáticamente con una derrota.
+\- **AURA**: vida del jugador durante la batalla. Empieza llena del todo y se  vacía con cada error, pero se puede rellenar al hacer movimientos correctos. Si el aura llega a 0, la batalla acabará automáticamente con una derrota.
 
 
 
-\- **PUNTOS DE FARMEO**: puntuación acumulada por el jugador durante la
-
-batalla. Empieza a 0 y aumenta con cada movimiento correcto. Varios movimientos correctos seguidos generan un combo que hace de multiplicador para los puntos que se consiguen. Tanto este multiplicador como los puntos se mostrarán en la pantalla.
+\- **PUNTOS DE FARMEO**: puntuación acumulada por el jugador durante la batalla. Empieza a 0 y aumenta con cada movimiento correcto. Varios movimientos correctos seguidos generan un combo que hace de multiplicador para los puntos que se consiguen. Tanto este multiplicador como los puntos se mostrarán en la pantalla.
 
 
 
-(imagen)
+<img width="608" height="365" alt="batallas-ui" src="https://github.com/user-attachments/assets/282f1bb1-e5b4-4002-bc03-b2044d3af924" />
+
 
 
 
@@ -368,7 +368,8 @@ Dentro del mundo podremos encontrar tiendas, en estas tiendas podremos adquirir:
 
 
 
-(imagen)
+<img width="540" height="315" alt="tienda" src="https://github.com/user-attachments/assets/0e3b3681-635a-4632-8808-ed1ae9e9a699" />
+
 
 
 
@@ -400,7 +401,8 @@ Tendrá el título del juego, un botón que lleve a los créditos, y un botón p
 
 
 
-(imagen)
+<img width="492" height="273" alt="menu-1" src="https://github.com/user-attachments/assets/f7724859-2be4-4035-b40d-d4a4fa238f75" />
+
 
 
 
@@ -412,9 +414,11 @@ Tendrá opciones para modificar el volumen del juego, y otras cuestiones de como
 
 
 
-(imagen)
+<img width="492" height="268" alt="menu-2" src="https://github.com/user-attachments/assets/f15d8709-bfc1-40a1-ae0f-8178cb2d6c82" />
 
-(imagen)
+
+<img width="350" height="270" alt="menu-3" src="https://github.com/user-attachments/assets/8e79458b-682e-47a4-9631-ccba077af8ad" />
+
 
 
 
@@ -427,11 +431,12 @@ Tendrá opciones para modificar el volumen del juego, y otras cuestiones de como
 
 
 
-(imagen)
+<img width="1000" height="500" alt="ui-1" src="https://github.com/user-attachments/assets/415fe403-75c2-4d71-9bc9-e8ef5676bd23" />
 
 
 
-(imagen)
+
+<img width="1000" height="600" alt="ui-2" src="https://github.com/user-attachments/assets/ba13ae40-bf74-497e-8244-950462bb34a5" />
 
 
 
