@@ -28,7 +28,12 @@ Nuestro proyecto, エフデイstyle, consiste en un juego de ritmo con varios ni
 
 #### **Capturas del juego**
 
-> tbd
+<img width="600" height="450" alt="title-screen" src="https://github.com/user-attachments/assets/fad24b7c-8bf1-4680-8409-b4dba0895240" />
+<img width="600" height="450" alt="map" src="https://github.com/user-attachments/assets/36345f6f-ead5-4eed-983d-600c8c26c6e2" />
+<img width="600" height="450" alt="level" src="https://github.com/user-attachments/assets/d8080f67-78e8-47a3-952d-9561303d522f" />
+
+
+
 
 <br>
 
