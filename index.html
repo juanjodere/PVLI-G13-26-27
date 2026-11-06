@@ -5,7 +5,7 @@
   <title>エフデイstyle</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="estilo.css"> <!-- Esto cargaria un archivo de estilo, pero no es necesario en Fiddle porque lo hace automáticamente -->
-  <script src="script.js"></script> <!--Aquí podriamos cargar los scripts, también se puede en el <body>, y pasa lo mismo que con el css de antes, en verdad aquí no estamos cargando nada-->
+  <script src="script.js" defer></script> <!--Aquí podriamos cargar los scripts, también se puede en el <body>, y pasa lo mismo que con el css de antes, en verdad aquí no estamos cargando nada-->
   <link rel="icon" type="image/png" href="images_src/smiley-spin.gif">
 </head>
 
@@ -19,6 +19,15 @@
     </div>
     <img src="images_src/stars-divider.gif" alt="div" class="deco">
   </div>
+  
+  <audio id="background-music" autoplay loop muted>
+    <source src="images_src/bg-music.mp3" type="audio/mpeg">
+    Tu navegador no soporta la reproducción de audio
+  </audio>
+
+  <button id="toggle-music">
+    <img id="music-icon" src="images_src/sound_off.png" alt="sound">
+  </button>
 
   <div class="main-page">
     <div class="side"></div>
