@@ -73,7 +73,8 @@ export class japanLevelSelector extends Phaser.Scene {
         this.selectedNode = this.donQuijote;
 
         //Creamos el iconito del jugador;
-        this.cursor = new mapCursor(this, this.selectedNode.x, this.selectedNode.y, 'playerSkin').setOrigin(0.5, 0.5).setScale(0.3, 0.3);
+        //TODO CAMBIAR PARA QUE SE AJSUTE SEGÚN SKIN ELEGIDA
+        this.cursor = new mapCursor(this, this.selectedNode.x, this.selectedNode.y,'IsmaelDefaultIcon').setOrigin(0.5, 0.5).setScale(0.2, 0.2);
         this.cameras.main.startFollow(this.cursor);
         this.cameras.main.setBounds(0, 0, 1358, 802);
 

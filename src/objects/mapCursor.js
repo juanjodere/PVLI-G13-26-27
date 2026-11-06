@@ -4,7 +4,7 @@ export default class mapCursor extends Phaser.GameObjects.Sprite{
     {
         super(scene,x,y,Sprite,0);
         
-        this.speed = 1;
+        this.speed = 5;
         this.Node = scene.selectedNode;
 
 
@@ -13,19 +13,19 @@ export default class mapCursor extends Phaser.GameObjects.Sprite{
     move(targetX,targetY,deltaTime){ 
 
         if(this.x > targetX + 3){
-             this.x -= this.speed*deltaTime;
+             this.x -= this.speed*(deltaTime/10);
         }
         else if(this.x < targetX - 3)
         {
-            this.x += this.speed*deltaTime;
+            this.x += this.speed*(deltaTime/10);
         }
 
         if(this.y > targetY + 3){
-             this.y -= this.speed*deltaTime;
+             this.y -= this.speed*(deltaTime/10);
         }
         else if(this.y < targetY - 3)
         {
-            this.y += this.speed*deltaTime;
+            this.y += this.speed*(deltaTime/10);
         }
 
     }
