@@ -14,10 +14,11 @@ export class testSong extends Phaser.Scene {
         this.professor = data.character;
         this.skin = data.skin;
         this.song = data.song;
-        this.background = data.background;
+        this.battleBackground = data.battleBackground;
+        this.locationBackground = data.locationBackground;
         this.array = data.movesArray;
         this.sendAura = !data.thisLevelCompleted;
-        this.auraToGive = data.givenAura;
+        this.auraToGive = data.auraToGive;
         this.inventory = data.inventory;
         this.locationNode = data.locationNode;
         this.globalAura = data.globalAura;
@@ -76,9 +77,12 @@ export class testSong extends Phaser.Scene {
     }
 
 
-    changeScene(){
+    backToLocation(){
         
-        this.scene.start('japanLevelSelector', {character: this.character, skin: this.skin, levelsCompleted: this.levelsCompleted,
-            inventory: this.inventory, locationNode: this.locationNode, globalAura: this.globalAura})
+        this.scene.start('locationScene', {character: this.professor, skin: this.skin, levelsCompleted: this.levelsCompleted,
+            background: this.locationBackground, inventory: this.inventory, locationNode: this.locationNode, 
+            globalAura: this.globalAura
+        });
+
     }
 }
