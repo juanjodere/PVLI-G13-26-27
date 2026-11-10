@@ -27,7 +27,8 @@ export class bootScene extends Phaser.Scene {
         //MainMapBackground
         this.load.image('levelSelectorBG','./assets/ScenesBackgrounds/JapanLevelSelector/japanLevelSelectorMap.png')
         //levelBackgrounds
-        // TODO
+        this.load.image('locationArcade', './assets/ScenesBackgrounds/Arcade/arcadeMenu')
+        this.load.image('battleArcade', './assets/ScenesBackgrounds/Arcade/arcadeInside')
         // Credits images
         this.load.image('Credits','assets/CreditsSceneAssets/Credits.png');
         this.load.image('BackButton','assets/MainMenuSceneAssets/BackButton.jpg');
