@@ -2,7 +2,7 @@
 //dos nodos no necesitan estar conectados entre si 
 export default class mapNode extends Phaser.GameObjects.Sprite
 {
-    constructor(scene, x, y, sprite, _nodeUp = null, _nodeDown = null, _nodeLeft = null, _nodeRight = null)
+    constructor(scene, x, y, sprite, name, background, _nodeUp = null, _nodeDown = null, _nodeLeft = null, _nodeRight = null)
     {
         super(scene, x, y, sprite, 0);
 
@@ -17,6 +17,10 @@ export default class mapNode extends Phaser.GameObjects.Sprite
         
         this.cursors = scene.input.keyboard.createCursorKeys();
         this.enterKey = scene.input.keyboard.addKey('ENTER') ;
+
+        // Datos que pasar a la siguiente escena.
+        this.nodeName = name;
+        this.background = background;
 
         //LO AÑADIMOS A LA ESCENA Y ADEMAS AL SYSTEMA DE UPDATE MUY IMPORTANTE
         scene.add.existing(this);
@@ -105,6 +109,6 @@ export default class mapNode extends Phaser.GameObjects.Sprite
 
 
     askChangeScene(){
-        this.scene.enterLevel(null, null, ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r'], 0, " ");
+        this.scene.enterLevel(this.background, this.nodeName);
     }
 }
