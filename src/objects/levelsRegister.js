@@ -1,3 +1,34 @@
+export default class locationsRegister{
+
+    constructor(){
+        this.locationsArray = []; // Es un array de localizaciones, de las cuales las distinguiremos entre ellas accediendo
+                                  // al nombre de cada una
+    }
+
+    addLocation(name, levels = []){ // Añade una nueva localización, que por defecto no tiene niveles.
+        this.locationsArray.push( new location(name, levels));
+    }
+
+    insertLevelOnLocation(locName, state = false){ // Añade un nivel a una localización del array.
+        let loc = this.locationsArray.find((elem) => elem == locName);
+        if (loc != null) loc.insertLevel(state);
+    }
+
+    completeLevelOnLocation(locName, index){ // Marca un nivel ya existente de una localización ya existente como terminado.
+        let loc = this.locationsArray.find((elem) => elem == locName);
+        if (loc != null) loc.completeLevel(index);
+    }
+
+    uncompleteLevelOnLocation(locName, index){ // Marca un nivel ya existente de una localización ya existente como no terminado.
+        let loc = this.locationsArray.find((elem) => elem == locName);
+        if (loc != null) loc.uncompleteLevel(index);
+    }
+
+    returnIfLevelCompletedOnLocation(locName, index){ // Accede al estado de un nivel de una lozalización dada.
+        let loc = this.locationsArray.find((elem) => elem == locName);
+        if (loc != null) loc.returnIfLevelCompleted(index);
+    }
+}
 
 class location{
 
@@ -20,37 +51,5 @@ class location{
 
     returnIfLevelCompleted(index){ // Accede al estado de un nivel.
         if ( index < this.levelsArray.length() ) return this.levelsArray(index);
-    }
-}
-
-export default class locationsRegister{
-
-    constructor(){
-        this.locationsArray = []; // Es un array de localizaciones, de las cuales las distinguiremos entre ellas accediendo
-                                  // al nombre de cada una
-    }
-
-    addLocation(name, levels = []){ // Añade una nueva localización, que por defecto no tiene niveles.
-        this.locationsArray.push(location(name, levels));
-    }
-
-    insertLevelOnLocation(locName, state = false){ // Añade un nivel a una localización del array.
-        let loc = this.locationsArray.find(locName);
-        if (loc != null) loc.insertLevel(state);
-    }
-
-    completeLevelOnLocation(locName, index){ // Marca un nivel ya existente de una localización ya existente como terminado.
-        let loc = this.locationsArray.find(locName);
-        if (loc != null) loc.completeLevel(index);
-    }
-
-    uncompleteLevelOnLocation(locName, index){ // Marca un nivel ya existente de una localización ya existente como no terminado.
-        let loc = this.locationsArray.find(locName);
-        if (loc != null) loc.uncompleteLevel(index);
-    }
-
-    returnIfLevelCompletedOnLocation(locName, index){ // Accede al estado de un nivel de una lozalización dada.
-        let loc = this.locationsArray.find(locName);
-        if (loc != null) loc.returnIfLevelCompleted(index);
     }
 }

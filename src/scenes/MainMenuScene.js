@@ -1,4 +1,4 @@
-import locationsRegister from "../../objects/levelsRegister.js";
+import locationsRegister from "../objects/levelsRegister.js";
 
 export class MainMenuScene extends Phaser.Scene
 {
@@ -35,15 +35,15 @@ export class MainMenuScene extends Phaser.Scene
 
          // Añadimos los niveles a cada una.
          // Arcade. Dos niveles.
-         lvls.insertLevelOnlocation('Arcade');
-         lvls.insertLevelOnlocation('Arcade');
+         lvls.insertLevelOnLocation('Arcade');
+         lvls.insertLevelOnLocation('Arcade');
          // Crossing. Un nivel.
-         lvls.insertLevelOnlocation('Crossing');
+         lvls.insertLevelOnLocation('Crossing');
          // Allay. Un nivel.
-         lvls.insertLevelOnlocation('Allay');
+         lvls.insertLevelOnLocation('Allay');
          // SevenSixSeven. Un nivel.
-         lvls.insertLevelOnlocation('SevenSixSeven');
-         lvls.insertLevelOnlocation('SevenSixSeven');
+         lvls.insertLevelOnLocation('SevenSixSeven');
+         lvls.insertLevelOnLocation('SevenSixSeven');
 
          this.scene.start('japanLevelSelector', {character: null, skin: null, levelsCompleted: lvls, inventory: null,
             locationNode: null, globalAura: 0})

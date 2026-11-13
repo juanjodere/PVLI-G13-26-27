@@ -1,6 +1,6 @@
 // Clase creada por Juan José de Reyna Godoy.
 
-import locationsRegister from "../../objects/levelsRegister.js";
+import locationsRegister from "../objects/levelsRegister.js";
 
 export class locationScene extends Phaser.Scene{
 
