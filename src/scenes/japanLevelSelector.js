@@ -1,5 +1,7 @@
 import mapNode from "../objects/mapNode.js";
 import mapCursor from "../objects/mapCursor.js";
+import locationsRegister from "../../objects/levelsRegister.js";
+
 export class japanLevelSelector extends Phaser.Scene {
 
 

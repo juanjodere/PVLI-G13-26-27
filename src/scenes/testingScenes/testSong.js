@@ -1,5 +1,6 @@
 import danceManager from "../../objects/danceManager.js";
 import player from "../../objects/player.js";
+import locationsRegister from "../../objects/levelsRegister.js";
 
 export class testSong extends Phaser.Scene {
 

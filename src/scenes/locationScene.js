@@ -1,5 +1,7 @@
 // Clase creada por Juan José de Reyna Godoy.
 
+import locationsRegister from "../../objects/levelsRegister.js";
+
 export class locationScene extends Phaser.Scene{
 
     constructor(){
@@ -18,6 +20,9 @@ export class locationScene extends Phaser.Scene{
 
         // Definir el aura que da 
         if(this.locationNode == 'arcade') this.auraToGive = auraArcade;
+        else if(this.locationNode == 'crossing') this.auraToGive = auraCrossing;
+        else if(this.locationNode == 'alley') this.auraToGive = auraAlley;
+        else if(this.locationNode == 'seven_six_seven') this.auraToGive = auraShop;
     }
 
     create(){
