@@ -228,6 +228,6 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     }
 
     askChangeScene(){
-        this.scene.changeScene();
+        this.scene.backToLocation();
     }
 }
