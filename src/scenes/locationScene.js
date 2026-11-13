@@ -1,10 +1,6 @@
 // Clase creada por Juan José de Reyna Godoy.
 
-const auraArcade = 10;
-
-const auraCrossing = 10;
-
-export class locationScene extends Phaser.scene{
+export class locationScene extends Phaser.Scene{
 
     constructor(){
         super({ key: 'locationScene' });
@@ -25,9 +21,21 @@ export class locationScene extends Phaser.scene{
     }
 
     create(){
+        
+        this.Background = this.add.image(0, 0, this.locationBackground).setOrigin(0, 0);
 
         
+       const BackButton = this.add.image(0,0,'BackButton').setOrigin(0,0).setInteractive();
 
+       BackButton.on('pointerdown',()=>{this.backToMap()});
+       BackButton.on('pointerover',()=>{BackButton.setScale(1.1)});
+       BackButton.on('pointerout',()=>{BackButton.setScale(1)});
+
+       const NextButton = this.add.image(500 ,0,'BackButton').setOrigin(0,0).setInteractive();
+
+       NextButton.on('pointerdown',()=>{this.goToLevel(null, 'battleBackgrArcade', ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r'], false)});
+       NextButton.on('pointerover',()=>{BackButton.setScale(1.1)});
+       NextButton.on('pointerout',()=>{BackButton.setScale(1)});
     }
 
     goToLevel(audio, nextBackground, moves, isCompleted){
@@ -44,3 +52,9 @@ export class locationScene extends Phaser.scene{
         });
     }
 }
+
+
+const auraArcade = 10;
+const auraShop = 10;
+const auraCrossing = 10;
+const auraAlley = 10;
