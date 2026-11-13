@@ -17,7 +17,7 @@ export class testSong extends Phaser.Scene {
         this.battleBackground = data.battleBackground;
         this.locationBackground = data.locationBackground;
         this.array = data.movesArray;
-        this.sendAura = !data.thisLevelCompleted;
+        this.lvlNumber = data.lvlNumber;
         this.auraToGive = data.auraToGive;
         this.inventory = data.inventory;
         this.locationNode = data.locationNode;
@@ -29,6 +29,8 @@ export class testSong extends Phaser.Scene {
 
 
     create() {
+        
+        this.Background = this.add.image(0, 0, this.battleBackground).setOrigin(0, 0);
 
         this.lifeBarLeftCornerX = 675;
         this.lifeBarInitialLeftCornerY = 25;
