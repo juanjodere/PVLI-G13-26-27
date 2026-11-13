@@ -28,9 +28,9 @@ export class japanLevelSelector extends Phaser.Scene {
         this.alley = new mapNode(this, 734, 544, 'alleyIco', "alley", null).setOrigin(0.5, 0.5);
         this.donQuijote = new mapNode(this, 400, 67, 'donQuijoteIco', "don_quijote", null).setOrigin(0.5, 0.5);
         this.trainStation = new mapNode(this, 925, 434, 'trainStationIco', "train_station", null).setOrigin(0.5, 0.5);
-        this.shibuyaCrossing = new mapNode(this, 777, 200, 'shibuyaCrossIco', "crossing", null).setOrigin(0.5, 0.5);
+        this.shibuyaCrossing = new mapNode(this, 777, 200, 'shibuyaCrossIco', "crossing", 'locationBackgrCrossing').setOrigin(0.5, 0.5);
         this.arcade = new mapNode(this, 345, 245, 'arcadeIco', "arcade", 'locationBackgrArcade').setOrigin(0.5, 0.5);
-        this.sixSevenStore = new mapNode(this, 365, 475, '67elevenIco', "seven_six_seven", null).setOrigin(0.5, 0.5);
+        this.sixSevenStore = new mapNode(this, 365, 475, '67elevenIco', "seven_six_seven", 'locationBackgrSixSeven').setOrigin(0.5, 0.5);
 
         // Asignamos la variable del nodo seleccionado en función de 
         if(this.initialNode == "don_quijote") this.selectedNode = this.donQuijote;
