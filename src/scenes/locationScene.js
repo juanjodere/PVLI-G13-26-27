@@ -52,7 +52,8 @@ export class locationScene extends Phaser.Scene{
     }
 
     backToMap(){
-        this.scene.start('japanLevelSelector', {character: this.professor, skin: this.skin, inventory: this.inventory, 
+        this.scene.stop();
+        this.scene.wake('japanLevelSelector', {character: this.professor, skin: this.skin, inventory: this.inventory, 
             globalAura: this.globalAura, locationNode: this.locationNode, levelsCompleted: this.levelsCompleted
         });
     }

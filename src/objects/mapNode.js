@@ -18,9 +18,7 @@ export default class mapNode extends Phaser.GameObjects.Sprite
         this.cursors = scene.input.keyboard.createCursorKeys();
         this.enterKey = scene.input.keyboard.addKey('ENTER') ;
 
-        // Datos que pasar a la siguiente escena.
-        this.nodeName = name;
-        this.background = background;
+        // Datos que pasar a la siguiente escena
 
         //LO AÑADIMOS A LA ESCENA Y ADEMAS AL SYSTEMA DE UPDATE MUY IMPORTANTE
         scene.add.existing(this);

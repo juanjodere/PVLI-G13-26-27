@@ -45,7 +45,7 @@ export class MainMenuScene extends Phaser.Scene
          lvls.insertLevelOnLocation('SevenSixSeven');
          lvls.insertLevelOnLocation('SevenSixSeven');
 
-         this.scene.start('japanLevelSelector', {character: null, skin: null, levelsCompleted: lvls, inventory: null,
+         this.scene.start('charSelScene', {character: null, skin: null, levelsCompleted: lvls, inventory: null,
             locationNode: null, globalAura: 0})
       })
       StartButton.on('pointerover',()=>{StartButton.setScale(1.1)});

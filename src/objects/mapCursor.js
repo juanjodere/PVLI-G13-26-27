@@ -7,7 +7,6 @@ export default class mapCursor extends Phaser.GameObjects.Sprite{
         this.speed = 5;
         this.Node = scene.selectedNode;
 
-
         scene.add.existing(this);
     }
     move(targetX,targetY,deltaTime){ 
