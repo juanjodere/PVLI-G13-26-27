@@ -36,11 +36,17 @@ export class locationScene extends Phaser.Scene{
        BackButton.on('pointerover',()=>{BackButton.setScale(1.1)});
        BackButton.on('pointerout',()=>{BackButton.setScale(1)});
 
+       const TextButton = this.add.image(200,200,'BackButton').setOrigin(0,0).setInteractive();
+
+       TextButton.on('pointerdown',()=>{this.loadTextScene()});
+       TextButton.on('pointerover',()=>{TextButton.setScale(1.1)});
+       TextButton.on('pointerout',()=>{TextButton.setScale(1)});
+
        const NextButton = this.add.image(500 ,0,'BackButton').setOrigin(0,0).setInteractive();
 
        NextButton.on('pointerdown',()=>{this.goToLevel(null, 'battleBackgrArcade', ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r'], false)});
-       NextButton.on('pointerover',()=>{BackButton.setScale(1.1)});
-       NextButton.on('pointerout',()=>{BackButton.setScale(1)});
+       NextButton.on('pointerover',()=>{NextButton.setScale(1.1)});
+       NextButton.on('pointerout',()=>{NextButton.setScale(1)});
     }
 
     goToLevel(audio, nextBackground, moves, isCompleted){
@@ -56,6 +62,10 @@ export class locationScene extends Phaser.Scene{
         this.scene.wake('japanLevelSelector', {character: this.professor, skin: this.skin, inventory: this.inventory, 
             globalAura: this.globalAura, locationNode: this.locationNode, levelsCompleted: this.levelsCompleted
         });
+    }
+
+    loadTextScene(){
+        this.scene.start('dialogScene',{character:this.professor,skin:this.skin,inventory:this.inventory,globalAura:this.globalAura,initialNode:this.initialNode,text:"",background:this.locationBackground});
     }
 }
 

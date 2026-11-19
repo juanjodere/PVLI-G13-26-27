@@ -18,7 +18,7 @@ export class dialogScene extends Phaser.Scene {
         //Manejamos el texto a leer y el sprite del enemigo (WIP)
         this.text = data.text;
         this.enemySprite;
-        this.backGround = data.backGround;
+        this.background = data.background;
 
         // Estas se necesitan solo para pasar esta información a otra escena.
         this.levelsCompleted = data.levelsCompleted;
@@ -26,8 +26,10 @@ export class dialogScene extends Phaser.Scene {
 
     create()
     {
-        this.SceneBackGround = this.add.image(0, 0, this.backGround).setOrigin(0, 0);
-        this.dialogManager = new dialogManager(0,0,"",["Hola","Soy una prueba","Murcia es muy bonito joder"])
+        this.SceneBackGround = this.add.image(0, 0, this.background).setOrigin(0, 0);
+
+        this.dialogManager = new dialogManager(this,300,300,"",["Hola","Soy una prueba","Murcia es muy bonito joder"])
+       
     }
 
 }
