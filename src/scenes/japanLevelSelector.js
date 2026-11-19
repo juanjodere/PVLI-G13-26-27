@@ -24,6 +24,19 @@ export class japanLevelSelector extends Phaser.Scene {
 
     create() {
         // Creamos el fondo
+        //Hacemmos un evento en on wake ( ya que vamso a dormir la escena) que haga lo mismo que el init
+        this.events.on('wake',(sys,data)=>{
+            
+        // Estas variables se usarán en esta escena
+        this.professor = data.character;
+        this.skin = data.skin;
+        this.inventory = data.inventory;
+        this.globalAura = data.globalAura;
+        this.initialNode = data.locationNode;
+
+        // Estas se necesitan solo para pasar esta información a otra escena.
+        this.levelsCompleted = data.levelsCompleted;
+        })
         this.Background = this.add.image(0, 0, 'levelSelectorBG').setOrigin(0, 0);
 
         // Creamos los nodos sin conectar
