@@ -2,12 +2,12 @@
 //dos nodos no necesitan estar conectados entre si 
 export default class mapNode extends Phaser.GameObjects.Sprite
 {
-    constructor(scene, x, y, sprite, _nodeUp = null, _nodeDown = null, _nodeLeft = null, _nodeRight = null)
+    constructor(scene, x, y, sprite, behavior, _nodeUp = null, _nodeDown = null, _nodeLeft = null, _nodeRight = null)
     {
         super(scene, x, y, sprite, 0);
 
         this.selected = false;
-
+        this.behavior = behavior;
         this.nodeUp = _nodeUp;
         this.nodeDown = _nodeDown;
         this.nodeLeft = _nodeLeft;
@@ -77,7 +77,13 @@ export default class mapNode extends Phaser.GameObjects.Sprite
     {
         //TODO FIX LOADING SCENE IN OBEJCTS
         if (this.enterKey.isDown && this.selected){ 
-            this.askChangeScene();
+            
+             //Comprobamos que es valida this.behavior
+            if(this.behavior)
+            {
+                //Ejecutamos behavior ( una función que le hemos pasado como parámetro)
+            this.behavior();
+            }
         }
     }
 
@@ -104,7 +110,7 @@ export default class mapNode extends Phaser.GameObjects.Sprite
     }
 
 
-    askChangeScene(){
-        this.scene.enterLevel(null, null, ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r'], 0, " ");
-    }
+   // askChangeScene(){
+    //    this.scene.enterLevel(null, null, ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r'], 0, " ");
+   // }
 }

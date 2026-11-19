@@ -74,7 +74,7 @@ export class japanLevelSelector extends Phaser.Scene {
 
         //Creamos el iconito del jugador;
         //TODO CAMBIAR PARA QUE SE AJSUTE SEGÚN SKIN ELEGIDA
-        this.cursor = new mapCursor(this, this.selectedNode.x, this.selectedNode.y,'IsmaelDefaultIcon').setOrigin(0.5, 0.5).setScale(0.2, 0.2);
+        this.cursor = new mapCursor(this, this.selectedNode.x, this.selectedNode.y,this.professor+this.skin+"Icon").setOrigin(0.5, 0.5).setScale(0.2, 0.2);
         this.cameras.main.startFollow(this.cursor);
         this.cameras.main.setBounds(0, 0, 1358, 802);
 
