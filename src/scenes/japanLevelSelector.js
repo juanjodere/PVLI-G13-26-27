@@ -1,5 +1,7 @@
 import mapNode from "../objects/mapNode.js";
 import mapCursor from "../objects/mapCursor.js";
+import locationsRegister from "../objects/levelsRegister.js";
+
 export class japanLevelSelector extends Phaser.Scene {
 
 
@@ -21,18 +23,26 @@ export class japanLevelSelector extends Phaser.Scene {
     }
 
     create() {
-        //Creamos el fondo
+        // Creamos el fondo
         this.Background = this.add.image(0, 0, 'levelSelectorBG').setOrigin(0, 0);
 
-        //Creamos los nodos sin conectar
-        this.alley = new mapNode(this, 734, 544, 'alleyIco').setOrigin(0.5, 0.5);
-        this.donQuijote = new mapNode(this, 400, 67, 'donQuijoteIco').setOrigin(0.5, 0.5);
-        this.trainStation = new mapNode(this, 925, 434, 'trainStationIco').setOrigin(0.5, 0.5);
-        this.shibuyaCrossing = new mapNode(this, 777, 200, 'shibuyaCrossIco').setOrigin(0.5, 0.5);
-        this.arcade = new mapNode(this, 345, 245, 'arcadeIco').setOrigin(0.5, 0.5);
-        this.sixSevenStore = new mapNode(this, 365, 475, '67elevenIco').setOrigin(0.5, 0.5);
+        // Creamos los nodos sin conectar
+        this.alley = new mapNode(this, 734, 544, 'alleyIco', "alley", null).setOrigin(0.5, 0.5);
+        this.donQuijote = new mapNode(this, 400, 67, 'donQuijoteIco', "don_quijote", null).setOrigin(0.5, 0.5);
+        this.trainStation = new mapNode(this, 925, 434, 'trainStationIco', "train_station", null).setOrigin(0.5, 0.5);
+        this.shibuyaCrossing = new mapNode(this, 777, 200, 'shibuyaCrossIco', "crossing", 'locationBackgrCrossing').setOrigin(0.5, 0.5);
+        this.arcade = new mapNode(this, 345, 245, 'arcadeIco', "arcade", 'locationBackgrArcade').setOrigin(0.5, 0.5);
+        this.sixSevenStore = new mapNode(this, 365, 475, '67elevenIco', "seven_six_seven", 'locationBackgrSixSeven').setOrigin(0.5, 0.5);
 
-
+        // Asignamos la variable del nodo seleccionado en función de 
+        if(this.initialNode == "don_quijote") this.selectedNode = this.donQuijote;
+        else if(this.initialNode == "alley") this.selectedNode = this.alley;
+        else if(this.initialNode == "train_station") this.selectedNode = this.trainStation;
+        else if (this.initialNode == "crossing") this.selectedNode = this.shibuyaCrossing;
+        else if(this.initialNode == "arcade") this.selectedNode = this.arcade;
+        else if (this.initialNode == "seven_six_seven") this.selectedNode = this.sixSevenStore;
+        else this.selectedNode = this.donQuijote;
+        
         //Conectamos los nodos
 
         //DonQuijote
@@ -68,9 +78,6 @@ export class japanLevelSelector extends Phaser.Scene {
         this.arcade.nodeUp = this.donQuijote;
         this.arcade.nodeDown = this.sixSevenStore;
         this.nodeLeft = this.sixSevenStore;
-     
-        //asignamos la variable de nodo sele
-        this.selectedNode = this.donQuijote;
 
         //Creamos el iconito del jugador;
         //TODO CAMBIAR PARA QUE SE AJSUTE SEGÚN SKIN ELEGIDA
@@ -81,13 +88,8 @@ export class japanLevelSelector extends Phaser.Scene {
         //this.Background.setScale(2,2);
     }
 
-    update(time, deltaTime) {
-
-    }
-
-    enterLevel(audio, image, moves, auraToGive, nodeName){
-        this.scene.start('testSong', {character: this.character, skin: this.skin, song: audio, background: image,
-            movesArray: moves, levelsCompleted: this.levelsCompleted, thisLevelCompleted: false, givenAura: auraToGive, 
-            inventory: this.inventory, locationNode: nodeName, globalAura: this.globalAura})
+    enterLevel(image, nodeName){
+        this.scene.start('locationScene', {character: this.character, skin: this.skin, background: image,
+            levelsCompleted: this.levelsCompleted, inventory: this.inventory, locationNode: nodeName, globalAura: this.globalAura})
     }
 };

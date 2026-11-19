@@ -1,3 +1,5 @@
+import locationsRegister from "../objects/levelsRegister.js";
+
 export class MainMenuScene extends Phaser.Scene
 {
  constructor()
@@ -22,7 +24,28 @@ export class MainMenuScene extends Phaser.Scene
        //Manejo del botón de start
      
       StartButton.on('pointerdown',() => {
-         this.scene.start('charSelScene', {character: null, skin: null, levelsCompleted: null, inventory: null,
+
+         let lvls = new locationsRegister();
+
+         // Añadimos las localizaciones.
+         lvls.addLocation('Arcade');
+         lvls.addLocation('Crossing');
+         lvls.addLocation('Allay');
+         lvls.addLocation('SevenSixSeven');
+
+         // Añadimos los niveles a cada una.
+         // Arcade. Dos niveles.
+         lvls.insertLevelOnLocation('Arcade');
+         lvls.insertLevelOnLocation('Arcade');
+         // Crossing. Un nivel.
+         lvls.insertLevelOnLocation('Crossing');
+         // Allay. Un nivel.
+         lvls.insertLevelOnLocation('Allay');
+         // SevenSixSeven. Un nivel.
+         lvls.insertLevelOnLocation('SevenSixSeven');
+         lvls.insertLevelOnLocation('SevenSixSeven');
+
+         this.scene.start('japanLevelSelector', {character: null, skin: null, levelsCompleted: lvls, inventory: null,
             locationNode: null, globalAura: 0})
       })
       StartButton.on('pointerover',()=>{StartButton.setScale(1.1)});

@@ -27,7 +27,12 @@ export class bootScene extends Phaser.Scene {
         //MainMapBackground
         this.load.image('levelSelectorBG','./assets/ScenesBackgrounds/JapanLevelSelector/japanLevelSelectorMap.png')
         //levelBackgrounds
-        // TODO
+        this.load.image('battleBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenInside.JPG')
+        this.load.image('locationBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenMenu.jpg')
+        this.load.image('battleBackgrArcade', './assets/ScenesBackgrounds/Arcade/arcadeInside.jpg')
+        this.load.image('locationBackgrArcade', './assets/ScenesBackgrounds/Arcade/arcadeMenu.jpg')
+        this.load.image('battleBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingInside.png')
+        this.load.image('locationBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingMenu.jpg')
         // Credits images
         this.load.image('Credits','assets/CreditsSceneAssets/Credits.png');
         this.load.image('BackButton','assets/MainMenuSceneAssets/BackButton.jpg');
