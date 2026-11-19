@@ -28,8 +28,13 @@ export class dialogScene extends Phaser.Scene {
     {
         this.SceneBackGround = this.add.image(0, 0, this.background).setOrigin(0, 0);
 
-        this.dialogManager = new dialogManager(this,300,300,"",["Hola","Soy una prueba","Murcia es muy bonito joder"])
+        this.dialogManager = new dialogManager(this,300,300,"",["Hola","Soy una prueba","Murcia es muy bonito joder"],()=>{this.backToLocationScene();})
        
     }
 
+     backToLocationScene(){
+        this.scene.start('locationScene', {character: this.professor, skin: this.skin, inventory: this.inventory, 
+            globalAura: this.globalAura, locationNode: this.locationNode, levelsCompleted: this.levelsCompleted
+        });
+    }
 }

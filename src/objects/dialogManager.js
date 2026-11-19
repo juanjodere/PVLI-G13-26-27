@@ -1,5 +1,5 @@
 export default class dialogManager extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, dialogBox, text) {
+    constructor(scene, x, y, dialogBox, text,endBehaviour) {
         super(scene, x, y, dialogBox);
 
         this.index = 0;
@@ -8,6 +8,7 @@ export default class dialogManager extends Phaser.GameObjects.Sprite {
         this.writeDelay = 60;
         this.timer = 0;
 
+        this.endBehaviour = endBehaviour;
         this.textArray = text;
         this.maxIndex = text.length; //RECUERDA ESCRIBIR LENGTH BIEN HKASLKFHAÑSFHIOEHG
         this.text = scene.add.text(x, y, text[this.index]).setOrigin(0.5);
@@ -30,7 +31,7 @@ export default class dialogManager extends Phaser.GameObjects.Sprite {
                 this.internalIndex = 0;
             }
             else {
-
+                this.endBehaviour();
             }
 
         }
