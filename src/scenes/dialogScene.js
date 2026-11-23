@@ -1,3 +1,4 @@
+import { dialogs } from "../Data/Dialogs.js";
 import dialogManager from "../objects/dialogManager.js";
 
 export class dialogScene extends Phaser.Scene {
@@ -28,12 +29,13 @@ export class dialogScene extends Phaser.Scene {
     {
         this.SceneBackGround = this.add.image(0, 0, this.background).setOrigin(0, 0);
 
-        this.dialogManager = new dialogManager(this,300,300,"",["Hola","Soy una prueba","Murcia es muy bonito joder"],()=>{this.backToLocationScene();})
+        this.dialogManager = new dialogManager(this,400,400,'textBox',"shibuyaDial01");
        
     }
 
-     backToLocationScene(){
-        this.scene.start('locationScene', {character: this.professor, skin: this.skin, inventory: this.inventory, 
+     backToLocationScene() {
+        this.scene.start('locationScene', {
+            character: this.professor, skin: this.skin, inventory: this.inventory,
             globalAura: this.globalAura, locationNode: this.locationNode, levelsCompleted: this.levelsCompleted
         });
     }

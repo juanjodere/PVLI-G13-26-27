@@ -1,3 +1,4 @@
+
 export class bootScene extends Phaser.Scene {
 
     constructor() {
@@ -36,6 +37,8 @@ export class bootScene extends Phaser.Scene {
         // Credits images
         this.load.image('Credits','assets/CreditsSceneAssets/Credits.png');
         this.load.image('BackButton','assets/MainMenuSceneAssets/BackButton.jpg');
+        //Imagenes para dialogos
+        this.load.image('textBox', 'assets/ObjectAssets/textBox.png');
         //Cargamos los iconos del mapa de los profesores.
         this.load.image('IsmaelDefaultIcon','assets/ObjectAssets/player/isma-default-icon.png')
         //Carga de los spritesheets de los profesores y sus skins, se cargan con un nombre (nombre+skin)
