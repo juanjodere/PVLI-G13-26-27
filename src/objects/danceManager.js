@@ -1,23 +1,27 @@
 import arrow from "./arrow.js";
+import { levels } from "../Data/data.js";
 
 export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     //TODAS LAS COSAS ESTETICAS SE MANEJARAN EN OTROS OBJETOS; AQUI TENEMOS LA MUSICA EL SPRITE DE LA LINEA DE JUEZ (DONDE COLISIONAN LAS FLECHAS)
     //EL CONTROL DEL SPAWN DE FLECHAS Y EL MANEJO DEL INPUT PARA REVISAR LAS FLECHAS
 
-    constructor(scene, data) {
+    constructor(scene, data,isCompleted) {
         //CREAMOS EL SPRITE
-        super(scene, data.x, data.y, data.judgeLineSprite)
+        let auxLevel = levels[data];
+        super(scene, auxLevel.x, auxLevel.y, auxLevel.judgeLineSprite)
+        this.level = auxLevel;
         this.scene = scene;
         //Variables de la partida
-        this.moves = data.movesArray;
+        this.moves = this.level.movesArray;
         this.arrayLenght = this.moves.length;
-        this.music = data.music;
+        this.music = this.level.music;
         this.points = 0;
         this.combo = 0;
-        this.topHealth = data.health; // Vida del jugador
+        this.topHealth = this.level.health; // Vida del jugador
         this.health = this.topHealth;
-        this.auraToGive = data.aura;
+        this.auraToGive = this.level.aura;
         //SongController
+        this.levelIsCompleted = isCompleted;
         this.songIndex = 0;
         this.timer = 0;
         this.betweenArrowTime = 1500;
@@ -36,7 +40,8 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.AKey = scene.input.keyboard.addKey('A');
         this.SKey = scene.input.keyboard.addKey('S');
         this.DKey = scene.input.keyboard.addKey('D');
-        this.switchKey = scene.input.keyboard.addKey('SPACE');
+        this.greenKey = scene.input.keyboard.addKey('J');
+        this.blueKey = scene.input.keyboard.addKey('K');
 
         scene.add.existing(this);
         scene.sys.updateList.add(this);
@@ -50,7 +55,6 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
 
         this.CreateCollisionDetector();
     }
-
     spawnArrow(arrowType, isGreen) {
 
         //TODO ADD OUTSIDE ARROW SPEED AND OUTSIDE AROW DIR
@@ -64,18 +68,16 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
 
         if (this.songIndex >= this.arrayLenght - 1) _arrow.isLast = true;
     }
-
     CreateCollisionDetector() {
         this.scene.physics.add.overlap(this, this.arrowGroup, (me, hitObject) => {
             this.InputProcessing(hitObject);
         })
     }
-
     InputProcessing(hitObject) {
         
         if (this.SKey.isDown || this.AKey.isDown || this.DKey.isDown || this.WKey.isDown){ // Si se ha presionado alguna tecla.
             
-            if((hitObject.arrowState && this.switchKey.isDown) || (!hitObject.arrowState && this.switchKey.isUp)){ // Si el tipo de flecha es correcto.
+            if((hitObject.arrowState && this.greenKey.isDown && this.blueKey.isUp ) || (!hitObject.arrowState && this.blueKey.isDown && this.greenKey.isUp )){ // Si el tipo de flecha es correcto.
 
                 switch (hitObject.arrowType) { // Empieza a leer los tipos de flecha.
                     case 'd':
@@ -120,7 +122,6 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
             
         }
     }
-
     onMistake(hitObject){
         
         hitObject.x = 9999;
@@ -140,7 +141,6 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.hasSongEnded(hitObject);
 
     }
-
     onHit(hitObject){
         hitObject.x = 9999;
 
@@ -155,24 +155,29 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
 
         this.hasSongEnded(hitObject);
     }
-
     updateBar(newHealth){
         this.scene.changeLifeBar(newHealth);
     }
-
     onLosing(){
         this.askChangeScene()
     }
-
     hasSongEnded(hitObject){
-
+//TODO ARREGLAR CMO TE OLVIDES LA ULTIMA CAGASTE
         if (hitObject.isLast == true){
             // Sumar dinero.
-            // Sumar auraToGive a globalAura.
+           
+            if(!this.isCompleted)
+            {
+                
+                console.log(this.scene.globalAura);
+                this.scene.globalAura += this.auraToGive;
+                //TODO COMPLETAR NIVEL REVISAR LEVERREGISTER
+                this.scene.levelsCompleted.completeLevelOnLocation(this.level.levelZone,this.level.levelNumber)
+                console.log(this.scene.globalAura);
+            }
             this.askChangeScene();
         }
     }
-
     readArray(time, deltaTime) {
         //TODO ADD OUTSIDE SPAWN TIME OR SET IT CONSTANT (1000 ms)
         this.timer += deltaTime;
@@ -221,12 +226,10 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         }
 
     }
-
     preUpdate(time, deltaTime) {
         super.preUpdate(time, deltaTime);
         this.readArray(time, deltaTime);
     }
-
     askChangeScene(){
         this.scene.backToLocation();
     }

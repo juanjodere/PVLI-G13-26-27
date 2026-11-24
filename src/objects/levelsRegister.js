@@ -1,3 +1,4 @@
+import { misionCondition } from "../Data/data.js";
 export default class locationsRegister{
 
     constructor(){
@@ -27,6 +28,29 @@ export default class locationsRegister{
     returnIfLevelCompletedOnLocation(locName, index){ // Accede al estado de un nivel de una lozalización dada.
         let loc = this.locationsArray.find((elem) => elem == locName);
         if (loc != null) loc.returnIfLevelCompleted(index);
+    }
+
+    checkMisionCondition(mision)
+    {
+        let this_mision = misionCondition[mision];
+        if(mision == null){console.warn("Mision no encontrada: "+ mision);}
+        let valid = true;
+        let i = 0;
+        let j = 0;
+        while(i<this_mision.LocationsToCheck.length && valid)
+        {
+            j = 0;
+            while(j<this_mision.LocationLevel[i].length && valid)
+            {
+                valid = this.returnIfLevelCompletedOnLocation(this_mision.LocationsToCheck[i],j) == this_mision.LocationLevel[i][j];
+                j++;
+            }
+            i++;
+        }
+        console.log(valid);
+        return valid;
+
+
     }
 }
 

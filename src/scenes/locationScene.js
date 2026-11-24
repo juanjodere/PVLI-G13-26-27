@@ -1,71 +1,94 @@
 // Clase creada por Juan José de Reyna Godoy.
 
+import { levels } from "../Data/data.js";
 import locationsRegister from "../objects/levelsRegister.js";
 
-export class locationScene extends Phaser.Scene{
+export class locationScene extends Phaser.Scene {
 
-    constructor(){
+    constructor() {
         super({ key: 'locationScene' });
     }
 
-    init(data){
+    init(data) {
         // Estas variables se usarán en esta escena
         this.professor = data.character;
         this.skin = data.skin;
         this.levelsCompleted = data.levelsCompleted;
-        this.locationBackground = data.background;
+        console.log(this.levelsCompleted);
         this.inventory = data.inventory;
         this.locationNode = data.locationNode;
         this.globalAura = data.globalAura;
 
-        // Definir el aura que da 
-        if(this.locationNode == 'arcade') this.auraToGive = auraArcade;
-        else if(this.locationNode == 'crossing') this.auraToGive = auraCrossing;
-        else if(this.locationNode == 'alley') this.auraToGive = auraAlley;
-        else if(this.locationNode == 'seven_six_seven') this.auraToGive = auraShop;
+        this.locationBackground = data.background;
+        this.startingDialog = data.startingDialog;
+        this.level = data.level;
+
+
+        // // Definir el aura que da 
+        // if(this.locationNode == 'arcade') this.auraToGive = auraArcade;
+        // else if(this.locationNode == 'crossing') this.auraToGive = auraCrossing;
+        // else if(this.locationNode == 'alley') this.auraToGive = auraAlley;
+        // else if(this.locationNode == 'seven_six_seven') this.auraToGive = auraShop;
     }
 
-    create(){
-        
+    create() {
+
         this.Background = this.add.image(0, 0, this.locationBackground).setOrigin(0, 0);
 
-        
-       const BackButton = this.add.image(0,0,'BackButton').setOrigin(0,0).setInteractive();
 
-       BackButton.on('pointerdown',()=>{this.backToMap()});
-       BackButton.on('pointerover',()=>{BackButton.setScale(1.1)});
-       BackButton.on('pointerout',()=>{BackButton.setScale(1)});
+        const BackButton = this.add.image(0, 0, 'BackButton').setOrigin(0, 0).setInteractive();
 
-       const TextButton = this.add.image(200,200,'BackButton').setOrigin(0,0).setInteractive();
+        BackButton.on('pointerdown', () => { this.backToMap() });
+        BackButton.on('pointerover', () => { BackButton.setScale(1.1) });
+        BackButton.on('pointerout', () => { BackButton.setScale(1) });
 
-       TextButton.on('pointerdown',()=>{this.loadTextScene()});
-       TextButton.on('pointerover',()=>{TextButton.setScale(1.1)});
-       TextButton.on('pointerout',()=>{TextButton.setScale(1)});
+        const TextButton = this.add.image(200, 200, 'BackButton').setOrigin(0, 0).setInteractive();
 
-       const NextButton = this.add.image(500 ,0,'BackButton').setOrigin(0,0).setInteractive();
+        TextButton.on('pointerdown', () => { this.loadTextScene() });
+        TextButton.on('pointerover', () => { TextButton.setScale(1.1) });
+        TextButton.on('pointerout', () => { TextButton.setScale(1) });
 
-       NextButton.on('pointerdown',()=>{this.goToLevel(null, 'battleBackgrArcade', ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r'], false)});
-       NextButton.on('pointerover',()=>{NextButton.setScale(1.1)});
-       NextButton.on('pointerout',()=>{NextButton.setScale(1)});
+        const NextButton = this.add.image(500, 0, 'BackButton').setOrigin(0, 0).setInteractive();
+
+        NextButton.on('pointerdown', () => { this.goToLevel() });
+        NextButton.on('pointerover', () => { NextButton.setScale(1.1) });
+        NextButton.on('pointerout', () => { NextButton.setScale(1) });
     }
 
-    goToLevel(audio, nextBackground, moves, isCompleted){
-        this.scene.start('testSong', {character: this.professor, skin: this.skin, song: audio, battleBackground: nextBackground, 
-            locationBackground: this.locationBackground, movesArray: moves, thisLevelCompleted: isCompleted,
-            auraToGive: this.auraToGive, inventory: this.inventory, locationNode: this.locationNode, globalAura: this.globalAura,
+    goToLevel() {
+        this.scene.start('testSong', {
+            character: this.professor, skin: this.skin,
+            locationBackground: this.locationBackground,
+            inventory: this.inventory, locationNode: this.locationNode, globalAura: this.globalAura,
+            levelsCompleted: this.levelsCompleted,
+            level: this.level,startingDialog:this.startingDialog
+        });
+    }
+
+    backToMap() {
+        this.scene.stop();
+        this.scene.wake('japanLevelSelector', {
+            character: this.professor,
+            skin: this.skin,
+            inventory: this.inventory,
+            globalAura: this.globalAura,
+            locationNode: this.locationNode,
             levelsCompleted: this.levelsCompleted
         });
     }
 
-    backToMap(){
-        this.scene.stop();
-        this.scene.wake('japanLevelSelector', {character: this.professor, skin: this.skin, inventory: this.inventory, 
-            globalAura: this.globalAura, locationNode: this.locationNode, levelsCompleted: this.levelsCompleted
+    loadTextScene() {
+        this.scene.start('dialogScene', {
+            levelsCompleted: this.levelsCompleted,
+            character: this.professor,
+            skin: this.skin,
+            inventory: this.inventory,
+            globalAura: this.globalAura,
+            initialNode: this.initialNode, text: "",
+            background: this.locationBackground,
+            startingDialog: this.startingDialog,
+            level: this.level
         });
-    }
-
-    loadTextScene(){
-        this.scene.start('dialogScene',{character:this.professor,skin:this.skin,inventory:this.inventory,globalAura:this.globalAura,initialNode:this.initialNode,text:"",background:this.locationBackground});
     }
 }
 

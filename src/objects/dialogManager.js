@@ -1,4 +1,4 @@
-import { dialogs } from "../Data/Dialogs.js";
+import { dialogs } from "../Data/data.js";
 
 export default class dialogManager extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, dialogBox, dialogNode) {
@@ -24,7 +24,7 @@ export default class dialogManager extends Phaser.GameObjects.Sprite {
                 height:200
               }
         }).setOrigin(0.5);
-        this.setDepth(-10);
+        this.setDepth(-1);
         //Controles
         this.enter = scene.input.keyboard.addKey('ENTER');
         this.cursors = scene.input.keyboard.createCursorKeys();

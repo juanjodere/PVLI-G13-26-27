@@ -1,11 +1,11 @@
 export const dialogs = {
 
     //Dialogos shibuya
-       shibuyaDial02: {
+    shibuyaDial02: {
         choice: false,
         currentOption: false,
         name: "Shibuyense",
-        text: ["soy de murcia jajaja", "pero no lo se bien", "ayuda"],
+        text: ["soy de albacete jajaja", "pero no lo se bien,Albacete es bonito, si o si", "ayuda"],
         nextNode: "shibuyaDial03",
         action: () => { }
     },
@@ -19,7 +19,7 @@ export const dialogs = {
         action: () => { }
     },
 
- 
+
     shibuyaDial03: {
         choice: true,
         currentOption: false,
@@ -51,3 +51,32 @@ export const dialogs = {
 //        nextNode01: dialog,
 //         action: ()=>{function}
 //    }
+
+export const misionCondition = {
+    misionTest: {
+        //Nombre de las localizaciones que revisar para ver si se cumplen los niveles
+        LocationsToCheck: ['Arcade', 'Crossing', 'Allay', 'SevenSixSeven'],
+        //Niveles de las localizaciones y el valor que deben tener
+        LocationLevel: [[false, false], [false], [false], [false, false]]
+
+    }
+}
+
+export const levels = {
+    shibuya01: {
+        levelZone:'Crossing',
+        levelNumber:0,
+        judgeLineSprite: 'playerSkin',
+        x: 200, y: 200,
+        judgeLineSize: 99,
+
+        movesArray: ['u.', 'u.', ], 
+        music: "",
+        aura: 10,
+        health: 50,
+        background:'battleBackgrArcade'
+    }
+
+
+
+}

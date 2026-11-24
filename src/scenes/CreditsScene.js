@@ -4,11 +4,6 @@ export class CreditsScene extends Phaser.Scene
  {
     super({key:"CreditsScene"})
  }
-
-  preload()
-  {
-    
-  }
   create()
   {
         this.add.image(400,300,'Credits');
@@ -17,9 +12,5 @@ export class CreditsScene extends Phaser.Scene
        BackButton.on('pointerdown',()=>{this.scene.start('MainMenuScene')});
        BackButton.on('pointerover',()=>{BackButton.setScale(1.1)});
        BackButton.on('pointerout',()=>{BackButton.setScale(1)});
-  }
-  update()
-  {
-
   }
 }

@@ -1,6 +1,7 @@
 import danceManager from "../../objects/danceManager.js";
 import player from "../../objects/player.js";
 import locationsRegister from "../../objects/levelsRegister.js";
+import { levels } from "../../Data/data.js";
 
 export class testSong extends Phaser.Scene {
 
@@ -8,30 +9,31 @@ export class testSong extends Phaser.Scene {
         super({ key: 'testSong' });
     }
 
-    
-    init(data)
-    {
+
+    init(data) {
         // Estas variables se usarán en esta escena
         this.professor = data.character;
         this.skin = data.skin;
-        this.song = data.song;
-        this.battleBackground = data.battleBackground;
+        // this.song = data.song;
+        // this.battleBackground = data.battleBackground;
         this.locationBackground = data.locationBackground;
-        this.array = data.movesArray;
-        this.lvlNumber = data.lvlNumber;
-        this.auraToGive = data.auraToGive;
+        //this.array = data.movesArray;
+        // this.lvlNumber = data.lvlNumber;
+        // this.auraToGive = data.auraToGive;
         this.inventory = data.inventory;
         this.locationNode = data.locationNode;
         this.globalAura = data.globalAura;
 
         // Estas variables están para pasarlas a otras escenas.
         this.levelsCompleted = data.levelsCompleted;
+        this.level = data.level;
+        this.startingDialog = data.startingDialog;
     }
 
 
     create() {
-        
-        this.Background = this.add.image(0, 0, this.battleBackground).setOrigin(0, 0);
+
+        this.Background = this.add.image(0, 0,).setOrigin(0, 0);
 
         this.lifeBarLeftCornerX = 675;
         this.lifeBarInitialLeftCornerY = 25;
@@ -42,7 +44,7 @@ export class testSong extends Phaser.Scene {
         this.lifeBarOffset = 10;
 
         this.health = 10;
-        
+
         // Creamos la barra de vida
         this.progressBar = this.add.graphics();
         const progressBox = this.add.graphics();
@@ -52,39 +54,43 @@ export class testSong extends Phaser.Scene {
         this.progressBar.clear();
         this.progressBar.fillStyle(0xffffff, 1);
         this.progressBar.fillRect(this.lifeBarLeftCornerX + this.lifeBarOffset, this.lifeBarLeftCornerY + this.lifeBarOffset,
-            this.lifeBarWidth - 2*this.lifeBarOffset, this.lifeBarHeight - 2*this.lifeBarOffset);
-        
+            this.lifeBarWidth - 2 * this.lifeBarOffset, this.lifeBarHeight - 2 * this.lifeBarOffset);
+
 
         // Creamos al Jugador
-        this.player = new player(this, 300, 300, { name: 'default', skin: 'Default' });
-        
-        this._danceManager = new danceManager(this, { judgeLineSprite: 'playerSkin', x: 200, y: 200, judgeLineSize: 99,
-            movesArray: this.array, music: this.song, aura: this.auraToGive, health: this.health });
-        
+        this.player = new player(this, 300, 300, {name:'default', skin:'Default' });
+        let levelData = levels[this.level];
+        console.log(this.level);
+        let completed = this.levelsCompleted.returnIfLevelCompletedOnLocation(levelData.levelZone, levelData.levelNumber);
+        this._danceManager = new danceManager(this, this.level, completed)
+
 
         //this.array = ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r']
     }
 
 
-    changeLifeBar(newLife){
+    changeLifeBar(newLife) {
 
-        let oneLifePortion = (this.lifeBarHeight - 2*this.lifeBarOffset) / this.health;
+        let oneLifePortion = (this.lifeBarHeight - 2 * this.lifeBarOffset) / this.health;
 
         let updatedHeight = (oneLifePortion * newLife)
 
-        let updatedYCorner = this.lifeBarLeftCornerY + this.lifeBarOffset + ( (this.lifeBarHeight - 2*this.lifeBarOffset) - updatedHeight);
+        let updatedYCorner = this.lifeBarLeftCornerY + this.lifeBarOffset + ((this.lifeBarHeight - 2 * this.lifeBarOffset) - updatedHeight);
 
         this.progressBar.clear();
         this.progressBar.fillStyle(0xffffff, 1);
-        this.progressBar.fillRect(this.lifeBarLeftCornerX + this.lifeBarOffset, updatedYCorner, this.lifeBarWidth - 2*this.lifeBarOffset, updatedHeight)
+        this.progressBar.fillRect(this.lifeBarLeftCornerX + this.lifeBarOffset, updatedYCorner, this.lifeBarWidth - 2 * this.lifeBarOffset, updatedHeight)
     }
 
 
-    backToLocation(){
-        
-        this.scene.start('locationScene', {character: this.professor, skin: this.skin, levelsCompleted: this.levelsCompleted,
-            background: this.locationBackground, inventory: this.inventory, locationNode: this.locationNode, 
-            globalAura: this.globalAura
+    backToLocation() {
+
+        this.scene.start('locationScene', {
+            character: this.professor, skin: this.skin, levelsCompleted: this.levelsCompleted,
+            background: this.locationBackground, inventory: this.inventory, locationNode: this.locationNode,
+            globalAura: this.globalAura,
+            level:this.level,
+           startingDialog: this.startingDialog
         });
 
     }

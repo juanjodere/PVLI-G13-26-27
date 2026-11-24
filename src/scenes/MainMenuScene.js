@@ -1,5 +1,6 @@
 import locationsRegister from "../objects/levelsRegister.js";
 
+
 export class MainMenuScene extends Phaser.Scene
 {
  constructor()
@@ -25,7 +26,7 @@ export class MainMenuScene extends Phaser.Scene
      
       StartButton.on('pointerdown',() => {
 
-         let lvls = new locationsRegister();
+         const lvls = new locationsRegister();
 
          // Añadimos las localizaciones.
          lvls.addLocation('Arcade');
@@ -35,7 +36,7 @@ export class MainMenuScene extends Phaser.Scene
 
          // Añadimos los niveles a cada una.
          // Arcade. Dos niveles.
-         lvls.insertLevelOnLocation('Arcade');
+        lvls.insertLevelOnLocation('Arcade');
          lvls.insertLevelOnLocation('Arcade');
          // Crossing. Un nivel.
          lvls.insertLevelOnLocation('Crossing');
