@@ -28,23 +28,11 @@ export class MainMenuScene extends Phaser.Scene
 
          const lvls = new locationsRegister();
 
-         // Añadimos las localizaciones.
+         // Añadimos las localizaciones con sus niveles.
          lvls.addLocation('Arcade',[false,false]);
          lvls.addLocation('Crossing',[false]);
          lvls.addLocation('Allay',[false]);
          lvls.addLocation('SevenSixSeven',[false,false]);
-
-         // Añadimos los niveles a cada una.
-         // Arcade. Dos niveles.
-        lvls.insertLevelOnLocation('Arcade',false);
-         lvls.insertLevelOnLocation('Arcade',false);
-         // Crossing. Un nivel.
-         lvls.insertLevelOnLocation('Crossing',false);
-         // Allay. Un nivel.
-         lvls.insertLevelOnLocation('Allay',false);
-         // SevenSixSeven. Un nivel.
-         lvls.insertLevelOnLocation('SevenSixSeven',false);
-         lvls.insertLevelOnLocation('SevenSixSeven',false);
 
          this.scene.start('charSelScene', {character: null, skin: null, levelsCompleted: lvls, inventory: null,
             locationNode: null, globalAura: 0})
