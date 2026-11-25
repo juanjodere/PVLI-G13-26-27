@@ -29,10 +29,10 @@ export class MainMenuScene extends Phaser.Scene
          const lvls = new locationsRegister();
 
          // Añadimos las localizaciones.
-         lvls.addLocation('Arcade');
-         lvls.addLocation('Crossing');
-         lvls.addLocation('Allay');
-         lvls.addLocation('SevenSixSeven');
+         lvls.addLocation('Arcade',[false,false]);
+         lvls.addLocation('Crossing',[false]);
+         lvls.addLocation('Allay',[false]);
+         lvls.addLocation('SevenSixSeven',[false,false]);
 
          // Añadimos los niveles a cada una.
          // Arcade. Dos niveles.

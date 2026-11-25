@@ -11,22 +11,24 @@ export default class locationsRegister{
     }
 
     insertLevelOnLocation(locName, state = false){ // Añade un nivel a una localización del array.
-        let loc = this.locationsArray.find((elem) => elem == locName);
+        let loc = this.locationsArray.find((elem) => elem.name == locName);
         if (loc != null) loc.insertLevel(state);
     }
 
     completeLevelOnLocation(locName, index){ // Marca un nivel ya existente de una localización ya existente como terminado.
-        let loc = this.locationsArray.find((elem) => elem == locName);
-        if (loc != null) loc.completeLevel(index);
+        let isTheWanted = (elem) => (elem.name == locName);
+        console.log(elem.name);
+        let loc = this.locationsArray.findIndex(isTheWanted);
+        if (loc != -1) this.locationsArray[loc].completeLevel(index);
     }
 
     uncompleteLevelOnLocation(locName, index){ // Marca un nivel ya existente de una localización ya existente como no terminado.
-        let loc = this.locationsArray.find((elem) => elem == locName);
+        let loc = this.locationsArray.find((elem) => elem.name == locName);
         if (loc != null) loc.uncompleteLevel(index);
     }
 
     returnIfLevelCompletedOnLocation(locName, index){ // Accede al estado de un nivel de una lozalización dada.
-        let loc = this.locationsArray.find((elem) => elem == locName);
+        let loc = this.locationsArray.find((elem) => elem.name == locName);
         if (loc != null) loc.returnIfLevelCompleted(index);
     }
 
