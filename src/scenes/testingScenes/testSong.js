@@ -14,12 +14,7 @@ export class testSong extends Phaser.Scene {
         // Estas variables se usarán en esta escena
         this.professor = data.character;
         this.skin = data.skin;
-        // this.song = data.song;
-        // this.battleBackground = data.battleBackground;
         this.locationBackground = data.locationBackground;
-        //this.array = data.movesArray;
-        // this.lvlNumber = data.lvlNumber;
-        // this.auraToGive = data.auraToGive;
         this.inventory = data.inventory;
         this.locationNode = data.locationNode;
         this.globalAura = data.globalAura;
@@ -43,7 +38,7 @@ export class testSong extends Phaser.Scene {
         this.lifeBarHeight = this.lifeBarInitialHeight;
         this.lifeBarOffset = 10;
 
-        this.health = 10;
+    
 
         // Creamos la barra de vida
         this.progressBar = this.add.graphics();
@@ -60,12 +55,11 @@ export class testSong extends Phaser.Scene {
         // Creamos al Jugador
         this.player = new player(this, 300, 300, {name:'default', skin:'Default' });
         let levelData = levels[this.level];
-        console.log(this.level);
+        //Leemos la salud del archivo (Para la barra)
+        this.health = levelData.health;
         let completed = this.levelsCompleted.returnIfLevelCompletedOnLocation(levelData.levelZone, levelData.levelNumber);
-        this._danceManager = new danceManager(this, this.level, completed)
-
-
-        //this.array = ['u.', '', '', 'd.', 'l.', '', 'r.', 'u', '', 'd', 'l', '', 'r']
+        //Pasamos level (el nombre del nivel no el objeto como tal) para luego buscarlo dentro del dance manager
+        this.danceManager = new danceManager(this,this.level, completed)
     }
 
 

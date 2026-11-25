@@ -42,6 +42,7 @@ export default class locationsRegister{
             j = 0;
             while(j<this_mision.LocationLevel[i].length && valid)
             {
+
                 valid = this.returnIfLevelCompletedOnLocation(this_mision.LocationsToCheck[i],j) == this_mision.LocationLevel[i][j];
                 j++;
             }

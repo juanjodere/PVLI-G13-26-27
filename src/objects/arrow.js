@@ -3,14 +3,56 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
 
     isLast = false;
 
-    constructor(scene, data)
+    constructor(scene)
     {
+        
+       
+        super(scene, 999, 999, 'arrow');
 
-        if(data.dirX ==  0 && data.dirY == 0)
+        this.danceManager = scene.danceManager;
+       
+        
+        
+        //Fisica, la añadimos aqui para ajustar el tamaño del collider según la dir
+        scene.physics.add.existing(this);
+
+        
+        
+        //DEBUG
+         this.body.showBody = true;
+        //añadri a la escena
+        scene.add.existing(this);
+        scene.sys.updateList.add(this);
+
+    }
+
+   
+
+    move(time,deltaTime)
+    {
+        //TODO BORRAR FLECHA AL SALIR DE LA PANTALLA
+        this.x += this.dirX*this.speed*deltaTime;
+        this.y += this.dirY*this.speed*deltaTime;
+        //Si nos salimso del mapa hemos fallado
+        if(this.x < -50)
+        {
+            this.danceManager.onMistake(this);
+        }
+    }
+
+    preUpdate(time,deltaTime)
+    {
+        this.move(time,deltaTime);
+    }
+
+    setArrow(data)
+    {
+        this.x = data.x;
+        this.y = data.y;
+          if(data.dirX ==  0 && data.dirY == 0)
         {
             console.log("STATIC ARROW");
         }
-        super(scene, data.x, data.y, 'arrow');
         this.setScale(0.1);
 
         this.speed = data.speed;
@@ -18,10 +60,8 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
         this.arrowType = data.type;
         this.dirX = data.dirX;
         this.dirY = data.dirY;
-        
-        //Fisica, la añadimos aqui para ajustar el tamaño del collider según la dir
-        scene.physics.add.existing(this);
 
+        
         //Ajustamos el tamaño del collider y la direccion de la flecha
         switch(this.arrowType)
         {   
@@ -53,42 +93,16 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
         
         }
 
-        //SI la flecha tiene "estado" (es verde) se colorea verde
+        
         if(this.arrowState)
         {
+            //Lavanda (K)
             this.setTint(0xe8bbff);
         }
         else
         {
+            //Amarillo(J)
             this.setTint(0xffd398);
         }
-        
-        
-        //DEBUG
-         this.body.showBody = true;
-        //añadri a la escena
-        scene.add.existing(this);
-        scene.sys.updateList.add(this);
-
-    }
-
-    get isLast(){
-        return this.isLast;
-    }
-
-    set isLast(b){
-        if (typeof b === "boolean") isLast = b;
-    }
-
-    move(time,deltaTime)
-    {
-        //TODO BORRAR FLECHA AL SALIR DE LA PANTALLA
-        this.x += this.dirX*this.speed*deltaTime;
-        this.y += this.dirY**this.speed*deltaTime;
-    }
-
-    preUpdate(time,deltaTime)
-    {
-        this.move(time,deltaTime);
     }
 }

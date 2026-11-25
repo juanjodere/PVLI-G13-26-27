@@ -4,18 +4,10 @@ export class MainGameScene extends Phaser.Scene
     {
         super({key:"MainGameScene"});
     }
-    preload()
-    {
-        
-    }
     create()
     {
-
-   
         //Las flechas para los controles
-        
         this.cursors = this.input.keyboard.createCursorKeys();
-
         this.runKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT)
         //el jugador
        this.player = {

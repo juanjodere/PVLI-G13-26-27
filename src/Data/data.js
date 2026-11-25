@@ -68,12 +68,12 @@ export const levels = {
         levelNumber:0,
         judgeLineSprite: 'playerSkin',
         x: 200, y: 200,
-        judgeLineSize: 99,
+        judgeLineSize: 30,
 
-        movesArray: ['u.', 'u.', ], 
+        movesArray: ['u','','d.','','','d.','','',''], 
         music: "",
         aura: 10,
-        health: 50,
+        health: 10,
         background:'battleBackgrArcade'
     }
 
