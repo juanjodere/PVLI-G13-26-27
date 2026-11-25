@@ -66,14 +66,14 @@ class location{
     }
 
     completeLevel(index){ // Marca un nivel ya existente como terminado.
-        if ( index < this.levelsArray.length() ) this.levelsArray(index) = true;
+        if ( index < this.levelsArray.length ) this.levelsArray[index] = true;
     }
 
     uncompleteLevel(index){ // Marca un nivel ya existente como no terminado.
-        if ( index < this.levelsArray.length() ) this.levelsArray(index) = false;
+        if ( index < this.levelsArray.length ) this.levelsArray[index] = false;
     }
 
     returnIfLevelCompleted(index){ // Accede al estado de un nivel.
-        if ( index < this.levelsArray.length() ) return this.levelsArray(index);
+        if ( index < this.levelsArray.length ) return this.levelsArray[index];
     }
 }
