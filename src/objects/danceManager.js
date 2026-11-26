@@ -71,6 +71,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         //AÑADIMOS LA FLECHA AL GRUPO ARROWS.
         let _arrow = this.arrowGroup.get();
         if (_arrow) {
+            _arrow.danceManager = this;
             _arrow.setActive(true);
             _arrow.setVisible(true);
             _arrow.setArrow({

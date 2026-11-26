@@ -53,7 +53,8 @@ export class testSong extends Phaser.Scene {
 
 
         // Creamos al Jugador
-        this.player = new player(this, 300, 300, {name:'default', skin:'Default' });
+        this.player = new player(this, 400, 400, {name:'Isma', skin:'Default' });
+        this.player.setScale(0.4);
         let levelData = levels[this.level];
         //Leemos la salud del archivo (Para la barra)
         this.health = levelData.health;

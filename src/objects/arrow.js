@@ -9,7 +9,7 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
        
         super(scene, 999, 999, 'arrow');
 
-        this.danceManager = scene.danceManager;
+        //this.danceManager = scene.danceManager;
        
         
         
