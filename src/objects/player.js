@@ -26,7 +26,7 @@ export default class player extends Phaser.GameObjects.Sprite{
         // se cambia el sprite
         this.setTexture(textureName);
         // se prepara el temporizador
-        this.resetTimer = this.scene.time.delayedCall(150, ()=>{
+        this.resetTimer = this.scene.time.delayedCall(600, ()=>{
             this.setTexture(this.baseName + 'Idle');
         })
     }

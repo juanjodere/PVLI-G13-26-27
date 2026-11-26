@@ -15,6 +15,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.moves = this.level.movesArray;
         this.arrayLenght = this.moves.length;
         this.music = this.level.music;
+        this.player = scene.player;
         this.points = 0;
         this.combo = 0;
         this.topHealth = this.level.health; // Vida del jugador
@@ -101,33 +102,49 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
                         case 'd':
 
                             if (this.SKey.isDown) {
-                                this.onHit(hitObject)
+                                this.onHit(hitObject);
+                                this.poseChangeReq('SK', true);
                             }
-                            else this.onMistake(hitObject);
+                            else{
+                                this.onMistake(hitObject);
+                                this.poseChangeReq('SK', false);
+                            }
 
                             break;
                         case 'l':
 
                             if (this.AKey.isDown) {
-                                this.onHit(hitObject)
+                                this.onHit(hitObject);
+                                this.poseChangeReq('AK', true);
                             }
-                            else this.onMistake(hitObject);
+                            else{
+                                this.onMistake(hitObject);
+                                this.poseChangeReq('AK', false);
+                            }
 
                             break;
                         case 'r':
 
                             if (this.DKey.isDown) {
-                                this.onHit(hitObject)
+                                this.onHit(hitObject);
+                                this.poseChangeReq('DK', true);
                             }
-                            else this.onMistake(hitObject);
+                            else{
+                                this.onMistake(hitObject);
+                                this.poseChangeReq('DK', false);
+                            }
 
                             break;
                         case 'u':
 
                             if (this.WKey.isDown) {
-                                this.onHit(hitObject)
+                                this.onHit(hitObject);
+                                this.poseChangeReq('WK', true);
                             }
-                            else this.onMistake(hitObject);
+                            else{
+                                this.onMistake(hitObject);
+                                this.poseChangeReq('WK', false);
+                            }
                             break;
                     }
                 }
@@ -144,33 +161,49 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
                     case 'd':
 
                         if (this.SKey.isDown) {
-                            this.onHit(hitObject)
+                            this.onHit(hitObject);
+                            this.poseChangeReq('SJ', true);
                         }
-                        else this.onMistake(hitObject);
+                        else{
+                            this.onMistake(hitObject);
+                            this.poseChangeReq('SJ', false);
+                        }
 
                         break;
                     case 'l':
 
                         if (this.AKey.isDown) {
-                            this.onHit(hitObject)
+                            this.onHit(hitObject);
+                            this.poseChangeReq('AJ', true);
                         }
-                        else this.onMistake(hitObject);
+                        else{
+                            this.onMistake(hitObject);
+                            this.poseChangeReq('AJ', false);
+                        }
 
                         break;
                     case 'r':
 
                         if (this.DKey.isDown) {
-                            this.onHit(hitObject)
+                            this.onHit(hitObject);
+                            this.poseChangeReq('DJ', true);
                         }
-                        else this.onMistake(hitObject);
+                        else{
+                            this.onMistake(hitObject);
+                            this.poseChangeReq('DJ', false);
+                        }
 
                         break;
                     case 'u':
 
                         if (this.WKey.isDown) {
-                            this.onHit(hitObject)
+                            this.onHit(hitObject);
+                            this.poseChangeReq('WJ', true);
                         }
-                        else this.onMistake(hitObject);
+                        else{
+                            this.onMistake(hitObject);
+                            this.poseChangeReq('WJ', false);
+                        }
                         break;
                     }
                 }
@@ -187,6 +220,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         hitObject.setActive(false);
         hitObject.setVisible(false);
         hitObject.y = 999;
+
         if (this.combo > 0) this.combo = 0; // Resetea el combo.
 
         if (this.health > 0) {
@@ -210,9 +244,9 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         hitObject.y = 999;
 
 
-        if (this.combo <= 0) this.combo = 1; // Resetea el combo.
+        this.combo ++; // el combo aumenta hasta que se falle
         if (this.health < this.topHealth) {
-            this.health += this.combo;
+            this.health ++;
             if (this.health >= this.topHealth){ this.health = this.topHealth};
             console.log(this.health);
             this.updateBar(this.health);
@@ -221,6 +255,11 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.hasSongEnded(hitObject);
     }
 
+    poseChangeReq(pose, isSuccess){
+        if(this.player){
+            this.player.changePose(pose, isSuccess);
+        }
+    }
     updateBar(newHealth) {
         this.scene.changeLifeBar(newHealth);
     }
