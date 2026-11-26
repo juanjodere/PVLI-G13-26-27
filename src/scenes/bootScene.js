@@ -36,6 +36,13 @@ export class bootScene extends Phaser.Scene {
         this.load.image('locationBackgrArcade', './assets/ScenesBackgrounds/Arcade/arcadeMenu.jpg');
         this.load.image('battleBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingInside.png');
         this.load.image('locationBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingMenu.jpg');
+        // canciones
+        this.load.audio('arcade1Song', './assets/LevelSongs/arcade-1.mp3');
+        this.load.audio('arcade2Song', './assets/LevelSongs/arcade-2.mp3');
+        this.load.audio('crossingSong', './assets/LevelSongs/crossing.mp3');
+        this.load.audio('alleySong', './assets/LevelSongs/alley.mp3');
+        this.load.audio('sevensixseven1Song', './assets/LevelSongs/7sixseven-1.mp3');
+        this.load.audio('sevensixseven2Song', './assets/LevelSongs/7sixseven-2.mp3');
         // Credits images
         this.load.image('Credits','assets/CreditsSceneAssets/Credits.png');
         // otros bottones

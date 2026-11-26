@@ -53,7 +53,7 @@ export class testSong extends Phaser.Scene {
 
 
         // Creamos al Jugador
-        this.player = new player(this, 400, 400, {name:'Isma', skin:'Default' });
+        this.player = new player(this, 400, 400, {name: this.professor, skin:this.skin });
         this.player.setScale(0.4);
         let levelData = levels[this.level];
         //Leemos la salud del archivo (Para la barra)
@@ -61,6 +61,13 @@ export class testSong extends Phaser.Scene {
         let completed = this.levelsCompleted.returnIfLevelCompletedOnLocation(levelData.levelZone, levelData.levelNumber);
         //Pasamos level (el nombre del nivel no el objeto como tal) para luego buscarlo dentro del dance manager
         this.danceManager = new danceManager(this,this.level, completed)
+
+        // ponemos la música
+        this.song = this.sound.add(levelData.music, {
+            loop: false,
+            volume: 0.8
+        })
+        this.song.play();
     }
 
 
@@ -79,6 +86,11 @@ export class testSong extends Phaser.Scene {
 
 
     backToLocation() {
+
+        //se para la música
+        if(this.song){
+            this.song.stop();
+        }
 
         this.scene.start('locationScene', {
             character: this.professor, skin: this.skin, levelsCompleted: this.levelsCompleted,

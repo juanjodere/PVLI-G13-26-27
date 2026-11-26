@@ -9,6 +9,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         //CREAMOS EL SPRITE
         let auxLevel = levels[data];
         super(scene, auxLevel.x, auxLevel.y, auxLevel.judgeLineSprite)
+        this.setScale(0.6);
         this.level = auxLevel;
         this.scene = scene;
         //Variables de la partida
@@ -25,10 +26,10 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.levelIsCompleted = isCompleted;
         this.songIndex = 0;
         this.timer = 0;
-        this.betweenArrowTime = 1500;
+        this.betweenArrowTime = 500;
 
-        this.arrowSpawnerX = 500;
-        this.arrowSpawnerY = 200;
+        this.arrowSpawnerX = 700;
+        this.arrowSpawnerY = 130;
 
         //GRUPO DE FISICAS arrow PARA TENER LAS FLECHAS GUARDADAS Y PROCESARLAS.
         this.arrowGroup = scene.physics.add.group({
@@ -76,7 +77,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
             _arrow.setActive(true);
             _arrow.setVisible(true);
             _arrow.setArrow({
-                x: this.arrowSpawnerX, y: this.arrowSpawnerY, speed: 0.1, type: arrowType,
+                x: this.arrowSpawnerX, y: this.arrowSpawnerY, speed: 0.4, type: arrowType,
                 state: YellowOrPurple, dirX: -1, dirY: 0
             })
         }
@@ -148,8 +149,9 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
                             break;
                     }
                 }
-                else
-                {this.onMistake(hitObject);}
+                else{
+                    this.onMistake(hitObject);
+                }
             }
             //Si son Amarillas primero comprobamos que estemos presionano SOLO la tecla "Amarilla"
             else 
@@ -207,8 +209,9 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
                         break;
                     }
                 }
-                else
-                {this.onMistake(hitObject);}
+                else{
+                    this.onMistake(hitObject);
+                }
             }
         }
        

@@ -8,15 +8,10 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
         
        
         super(scene, 999, 999, 'arrow');
-
         //this.danceManager = scene.danceManager;
-       
-        
         
         //Fisica, la añadimos aqui para ajustar el tamaño del collider según la dir
         scene.physics.add.existing(this);
-
-        
         
         //DEBUG
          this.body.showBody = true;
