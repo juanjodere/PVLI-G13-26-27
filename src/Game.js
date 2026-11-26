@@ -8,6 +8,7 @@ import { testSong } from "./scenes/testingScenes/testSong.js";
 import { CharacterSelectorScene } from "./scenes/CharacterSelectorScene.js";
 import { locationScene } from "./scenes/locationScene.js";
 import { dialogScene } from "./scenes/dialogScene.js"
+import { shopScene } from "./scenes/shopScene.js";
 /**
  * Inicio del juego en Phaser. Creamos el archivo de configuración del juego y creamos
  * la clase Game de Phaser, encargada de crear e iniciar el juego.
@@ -21,7 +22,7 @@ let config = {
 	scale: {
 		autoCenter: Phaser.Scale.CENTER_BOTH
 	},
-	scene: [bootScene,MainMenuScene,CharacterSelectorScene,MainGameScene,CreditsScene,japanLevelSelector,testSong,locationScene,dialogScene],	// Decimos a Phaser cual es nuestra escena, en este caso la escena es un 
+	scene: [bootScene,MainMenuScene,CharacterSelectorScene,MainGameScene,CreditsScene,japanLevelSelector,testSong,locationScene,dialogScene,shopScene],	// Decimos a Phaser cual es nuestra escena, en este caso la escena es un 
 												//objeto formado por el método preload y create definidos más abajo en 
 												//este mismo archivo
 	physics: { 
