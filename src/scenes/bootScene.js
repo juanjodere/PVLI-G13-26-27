@@ -16,8 +16,10 @@ export class bootScene extends Phaser.Scene {
         this.load.image('startButton', 'assets/MainMenuSceneAssets/StartButton.jpg');
         this.load.image('creditsButton', 'assets/MainMenuSceneAssets/CreditsButton.jpg');
         }
-        //Arrow
+        //elementos de los niveles
         this.load.image('arrow', 'assets/ObjectAssets/arrow.png');
+        this.load.image('line', 'assets/ObjectAssets/white-line.png');
+        this.load.image('judgementLine', 'assets/ObjectAssets/judgement-line.png');
         //Iconos LevelSelector
         this.load.image('trainStationIco', 'assets/worldMapBuildings/trainStation_MapIcon.png');
         this.load.image('shibuyaCrossIco', 'assets/worldMapBuildings/shibuyaCrossroad_MapIcon.png');
@@ -36,7 +38,9 @@ export class bootScene extends Phaser.Scene {
         this.load.image('locationBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingMenu.jpg');
         // Credits images
         this.load.image('Credits','assets/CreditsSceneAssets/Credits.png');
+        // otros bottones
         this.load.image('BackButton','assets/MainMenuSceneAssets/BackButton.jpg');
+        this.load.image('exitButton','assets/MainMenuSceneAssets/exitButton.png');
         //Imagenes para dialogos
         this.load.image('textBox', 'assets/ObjectAssets/textBox.png');
         //Cargamos los iconos del mapa de los profesores.
