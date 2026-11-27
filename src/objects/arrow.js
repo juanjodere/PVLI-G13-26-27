@@ -38,6 +38,13 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
     preUpdate(time,deltaTime)
     {
         this.move(time,deltaTime);
+
+        // si la flecha se sale de pantalla, para
+        if (this.x < -50) {
+        this.setActive(false);
+        this.setVisible(false);
+        this.body.stop();
+    }
     }
 
     setArrow(data)

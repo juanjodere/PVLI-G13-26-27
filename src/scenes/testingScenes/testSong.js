@@ -39,7 +39,7 @@ export class testSong extends Phaser.Scene {
         this.trackBar = this.add.rectangle(400, 130, 800, 67, 0xAAAAAA, 0.67).setDepth(0); 
 
         this.lifeBarLeftCornerX = 675;
-        this.lifeBarInitialLeftCornerY = 25;
+        this.lifeBarInitialLeftCornerY = 50;
         this.lifeBarLeftCornerY = this.lifeBarInitialLeftCornerY;
         this.lifeBarWidth = 75;
         this.lifeBarInitialHeight = 500;
@@ -82,12 +82,14 @@ export class testSong extends Phaser.Scene {
             loop: false,
             volume: 0.8
         })
-        this.song.play();
+        if(this.song){ // evitar que dé error si no hay canción
+            this.song.play();
         
-        // listener para que se complete el nivel cuando la canción termine
-        this.song.once('complete', () => {
+            // listener para que se complete el nivel cuando la canción termine
+            this.song.once('complete', () => {
             this.onSongFinished();
-        });
+            });
+        }
     }
 
 
@@ -128,7 +130,7 @@ export class testSong extends Phaser.Scene {
     onSongFinished() {
         if (!this.danceManager.levelIsCompleted) {
             this.globalAura += this.danceManager.auraToGive;
-            this.levelsCompleted.completeLevelOnLocation(levelData.levelZone, levelData.levelNumber);
+            this.levelsCompleted.completeLevelOnLocation(this.danceManager.level.levelZone, this.danceManager.level.levelNumber);
         }
         this.backToLocation();
     }

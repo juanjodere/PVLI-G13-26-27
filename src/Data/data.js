@@ -71,8 +71,8 @@ export const levels = {
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['u','','d.','','','d.','','','',''], 
-        music: "arcadeSong",
+        movesArray: ['','u','','d.','','','d.','','','',''], 
+        music: "arcade1Song",
         aura: 10,
         health: 10,
         background:'battleBackgrArcade',
@@ -86,12 +86,12 @@ export const levels = {
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['u','','d.','','','d.','','','',''], 
-        music: "arcadeSong",
+        movesArray: ['','u','','d.','','','d.','','','',''], 
+        music: "arcade2Song",
         aura: 10,
         health: 10,
         background:'battleBackgrArcade',
-        bgScale: 1
+        bgScale: 0.2
     },
     
     crossing01: {
@@ -101,12 +101,12 @@ export const levels = {
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['u','','d.','','','d.','','','',''], 
+        movesArray: ['','u','','d.','','','d.','','','',''], 
         music: "crossingSong",
         aura: 10,
         health: 10,
         background:'battleBackgrCrossing',
-        bgScale: 1
+        bgScale: 0.95
     },
     
     alley01: {
@@ -116,7 +116,7 @@ export const levels = {
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['u','','d.','','','d.','','','',''], 
+        movesArray: ['','u','','d.','','','d.','','','',''], 
         music: "alleySong",
         aura: 10,
         health: 10,
@@ -131,7 +131,7 @@ export const levels = {
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['u','','d.','','','d.','','','',''], 
+        movesArray: ['','u','','d.','','','d.','','','',''], 
         music: "sevensixseven1Song",
         aura: 10,
         health: 10,
@@ -146,7 +146,7 @@ export const levels = {
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['u','','d.','','','d.','','','',''], 
+        movesArray: ['','u','','d.','','','d.','','','',''], 
         music: "sevensixseven2Song",
         aura: 10,
         health: 10,

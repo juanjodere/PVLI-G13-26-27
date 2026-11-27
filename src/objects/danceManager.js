@@ -26,9 +26,9 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.levelIsCompleted = isCompleted;
         this.songIndex = 0;
         this.timer = 0;
-        this.betweenArrowTime = 500;
+        this.betweenArrowTime = 300;
 
-        this.arrowSpawnerX = 700;
+        this.arrowSpawnerX = 800;
         this.arrowSpawnerY = 130;
 
         //GRUPO DE FISICAS arrow PARA TENER LAS FLECHAS GUARDADAS Y PROCESARLAS.
