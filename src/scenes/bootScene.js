@@ -13,8 +13,8 @@ export class bootScene extends Phaser.Scene {
         //MainMenuBackground
         this.load.image('menuBG', 'assets/MainMenuSceneAssets/mainMenuBackground.png')
         //ButtonAssets
-        this.load.image('startButton', 'assets/MainMenuSceneAssets/StartButton.jpg');
-        this.load.image('creditsButton', 'assets/MainMenuSceneAssets/CreditsButton.jpg');
+        this.load.image('startButton', 'assets/MainMenuSceneAssets/playButton.png');
+        this.load.image('creditsButton', 'assets/MainMenuSceneAssets/CreditsButton.png');
         }
         //elementos de los niveles
         this.load.image('arrow', 'assets/ObjectAssets/arrow.png');
@@ -49,6 +49,8 @@ export class bootScene extends Phaser.Scene {
         // otros bottones
         this.load.image('BackButton','assets/MainMenuSceneAssets/BackButton.jpg');
         this.load.image('exitButton','assets/MainMenuSceneAssets/exitButton.png');
+        this.load.image('lvl1Button','assets/MainMenuSceneAssets/lvl1Button.png');
+        this.load.image('lvl2Button','assets/MainMenuSceneAssets/lvl2Button.png');
         this.load.image('Abutton','assets/ObjectAssets/Abutton.png')
         this.load.image('Bbutton','assets/ObjectAssets/Bbutton.png')
         //Imagenes para dialogos

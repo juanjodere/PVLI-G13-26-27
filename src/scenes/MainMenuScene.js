@@ -17,13 +17,15 @@ export class MainMenuScene extends Phaser.Scene
     {
       //Añadimos la imagen del fondo
       this.add.image(500,350,'menuBG')
-     const StartButton = this.add.image(400,150,'startButton').setInteractive();
-     const CreditsButton = this.add.image(400,350,'creditsButton').setInteractive();
+     const StartButton = this.add.image(400,400,'startButton').setInteractive();
+     StartButton.setScale(1.5);
+     const CreditsButton = this.add.image(400,500,'creditsButton').setInteractive();
+     CreditsButton.setScale(1.5);
 
      //Manejo del botón de los creditos
       CreditsButton.on('pointerdown',()=>{this.scene.start('CreditsScene')})
-      CreditsButton.on('pointerover',()=>{CreditsButton.setScale(1.1)});
-      CreditsButton.on('pointerout',()=>{CreditsButton.setScale(1)});
+      CreditsButton.on('pointerover',()=>{CreditsButton.setScale(1.7)});
+      CreditsButton.on('pointerout',()=>{CreditsButton.setScale(1.5)});
        //Manejo del botón de start
      
       StartButton.on('pointerdown',() => {
@@ -39,8 +41,8 @@ export class MainMenuScene extends Phaser.Scene
          this.scene.start('charSelScene', {character: null, skin: null, levelsCompleted: lvls, inventory: new Inventory(),
             locationNode: null, globalAura: 0})
       })
-      StartButton.on('pointerover',()=>{StartButton.setScale(1.1)});
-      StartButton.on('pointerout',()=>{StartButton.setScale(1)});
+      StartButton.on('pointerover',()=>{StartButton.setScale(1.7)});
+      StartButton.on('pointerout',()=>{StartButton.setScale(1.5)});
     }
     update()
     {

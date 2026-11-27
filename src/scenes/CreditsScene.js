@@ -7,10 +7,10 @@ export class CreditsScene extends Phaser.Scene
   create()
   {
         this.add.image(400,300,'Credits');
-       const BackButton = this.add.image(0,0,'BackButton').setOrigin(0,0).setInteractive();
+       const exitButton = this.add.image(20,50,'exitButton').setOrigin(0,0).setInteractive();
 
-       BackButton.on('pointerdown',()=>{this.scene.start('MainMenuScene')});
-       BackButton.on('pointerover',()=>{BackButton.setScale(1.1)});
-       BackButton.on('pointerout',()=>{BackButton.setScale(1)});
+       exitButton.on('pointerdown',()=>{this.scene.start('MainMenuScene')});
+       exitButton.on('pointerover',()=>{exitButton.setScale(1.1)});
+       exitButton.on('pointerout',()=>{exitButton.setScale(1)});
   }
 }
