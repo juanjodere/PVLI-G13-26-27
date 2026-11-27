@@ -174,7 +174,7 @@ export const levels = {
 
         movesArray: ['', 'u', '', 'd.', '', '', 'd.', '', '', '', ''],
          //TODO CAMBIAR CANCION
-        music: "TestSong",
+        music: "sevensixseven2Song",
         aura: 10,
         health: 10,
         background: 'battleBackgrSixSeven',
