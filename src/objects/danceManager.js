@@ -91,131 +91,47 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     }
     InputProcessing(hitObject) {
         //Comprobamos que se haya presionado alguna tecla de las de movimiento para evitar psoibles errores
-        if (this.WKey.isDown || this.AKey.isDown || this.SKey.isDown || this.DKey.isDown) 
-        {
-            //Si son lilas primero comprobamos que estemos presionano SOLO la tecla "Lila"
-            if (hitObject.arrowState) 
-            {
-                if (this.YellowKey.isUp && this.PurpleKey.isDown) 
-                {
-                    switch (hitObject.arrowType) 
-                    { // Empieza a leer los tipos de flecha.
-                        case 'd':
-
-                            if (this.SKey.isDown) {
-                                this.onHit(hitObject);
-                                this.poseChangeReq('SK', true);
-                            }
-                            else{
-                                this.onMistake(hitObject);
-                                this.poseChangeReq('SK', false);
-                            }
-
-                            break;
-                        case 'l':
-
-                            if (this.AKey.isDown) {
-                                this.onHit(hitObject);
-                                this.poseChangeReq('AK', true);
-                            }
-                            else{
-                                this.onMistake(hitObject);
-                                this.poseChangeReq('AK', false);
-                            }
-
-                            break;
-                        case 'r':
-
-                            if (this.DKey.isDown) {
-                                this.onHit(hitObject);
-                                this.poseChangeReq('DK', true);
-                            }
-                            else{
-                                this.onMistake(hitObject);
-                                this.poseChangeReq('DK', false);
-                            }
-
-                            break;
-                        case 'u':
-
-                            if (this.WKey.isDown) {
-                                this.onHit(hitObject);
-                                this.poseChangeReq('WK', true);
-                            }
-                            else{
-                                this.onMistake(hitObject);
-                                this.poseChangeReq('WK', false);
-                            }
-                            break;
-                    }
-                }
-                else{
-                    this.onMistake(hitObject);
-                }
-            }
-            //Si son Amarillas primero comprobamos que estemos presionano SOLO la tecla "Amarilla"
-            else 
-            {
-                if (this.YellowKey.isDown && this.PurpleKey.isUp) 
-                {
-                    switch (hitObject.arrowType) 
-                    { // Empieza a leer los tipos de flecha.
-                    case 'd':
-
-                        if (this.SKey.isDown) {
-                            this.onHit(hitObject);
-                            this.poseChangeReq('SJ', true);
-                        }
-                        else{
-                            this.onMistake(hitObject);
-                            this.poseChangeReq('SJ', false);
-                        }
-
-                        break;
-                    case 'l':
-
-                        if (this.AKey.isDown) {
-                            this.onHit(hitObject);
-                            this.poseChangeReq('AJ', true);
-                        }
-                        else{
-                            this.onMistake(hitObject);
-                            this.poseChangeReq('AJ', false);
-                        }
-
-                        break;
-                    case 'r':
-
-                        if (this.DKey.isDown) {
-                            this.onHit(hitObject);
-                            this.poseChangeReq('DJ', true);
-                        }
-                        else{
-                            this.onMistake(hitObject);
-                            this.poseChangeReq('DJ', false);
-                        }
-
-                        break;
-                    case 'u':
-
-                        if (this.WKey.isDown) {
-                            this.onHit(hitObject);
-                            this.poseChangeReq('WJ', true);
-                        }
-                        else{
-                            this.onMistake(hitObject);
-                            this.poseChangeReq('WJ', false);
-                        }
-                        break;
-                    }
-                }
-                else{
-                    this.onMistake(hitObject);
-                }
-            }
+        if (!this.WKey.isDown && !this.AKey.isDown && !this.SKey.isDown && !this.DKey.isDown) {
+            return;
         }
-       
+        // mapeo de las flechas a las teclas (WASD)
+        const arrowDirMap = { 'u': 'W', 'l': 'A', 'd': 'S', 'r': 'D' };
+        let dirLetter = arrowDirMap[hitObject.arrowType];
+        // mapeo por color
+        const arrowColMap = {true: 'K', false: 'J'};
+        let colLetter = arrowColMap[hitObject.arrowState];
+        // sacamos la pose que debería salir
+        let poseName = dirLetter + colLetter;
 
+        // se comprueba lo que se está pulsando ahora
+        //color
+        let correctColor;
+        if (hitObject.arrowState) {
+            // si es morado
+            correctColor = (this.YellowKey.isUp && this.PurpleKey.isDown); 
+        } 
+        else {
+            // si es amarillo (que te pillo jeje)
+            correctColor = (this.YellowKey.isDown && this.PurpleKey.isUp); 
+        }
+        // dirección
+        let correctDir = false;
+        switch (hitObject.arrowType) {
+            case 'u': correctDir = this.WKey.isDown; break;
+            case 'l': correctDir = this.AKey.isDown; break;
+            case 'd': correctDir = this.SKey.isDown; break;
+            case 'r': correctDir = this.DKey.isDown; break;
+        }
+
+        // ambos tienen que ser correctos (true)
+        if (correctColor && correctDir) {
+            this.onHit(hitObject);
+            this.poseChangeReq(poseName, true);
+        }
+        else{
+            this.onMistake(hitObject);
+            this.poseChangeReq(poseName, false);
+        }
     }
 
     onMistake(hitObject) {

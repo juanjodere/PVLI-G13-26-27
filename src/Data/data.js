@@ -75,7 +75,8 @@ export const levels = {
         music: "arcadeSong",
         aura: 10,
         health: 10,
-        background:'battleBackgrArcade'
+        background:'battleBackgrArcade',
+        bgScale: 1
     },
 
     arcade02: {
@@ -89,7 +90,8 @@ export const levels = {
         music: "arcadeSong",
         aura: 10,
         health: 10,
-        background:'battleBackgrArcade'
+        background:'battleBackgrArcade',
+        bgScale: 1
     },
     
     crossing01: {
@@ -103,7 +105,8 @@ export const levels = {
         music: "crossingSong",
         aura: 10,
         health: 10,
-        background:'battleBackgrCrossing'
+        background:'battleBackgrCrossing',
+        bgScale: 1
     },
     
     alley01: {
@@ -117,7 +120,8 @@ export const levels = {
         music: "alleySong",
         aura: 10,
         health: 10,
-        background:'battleBackgrAlley'
+        background:'battleBackgrAlley',
+        bgScale: 1
     },
     
     sixseven01: {
@@ -131,7 +135,8 @@ export const levels = {
         music: "sevensixseven1Song",
         aura: 10,
         health: 10,
-        background:'battleBackgrSixSeven'
+        background:'battleBackgrSixSeven',
+        bgScale: 0.2
     },
     
     sixseven02: {
@@ -145,7 +150,8 @@ export const levels = {
         music: "sevensixseven2Song",
         aura: 10,
         health: 10,
-        background:'battleBackgrSixSeven'
+        background:'battleBackgrSixSeven',
+        bgScale: 0.2
     }
 
 }

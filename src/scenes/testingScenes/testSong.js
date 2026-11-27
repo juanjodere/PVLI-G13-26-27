@@ -28,7 +28,12 @@ export class testSong extends Phaser.Scene {
 
     create() {
 
-        this.Background = this.add.image(0, 0,).setOrigin(0, 0);
+        let levelData = levels[this.level];
+
+        // se pinta el fondo
+        if(levelData && levelData.background){
+            this.add.image(0, 0, levelData.background).setOrigin(0, 0).setScale(levelData.bgScale);
+        }
 
         this.lifeBarLeftCornerX = 675;
         this.lifeBarInitialLeftCornerY = 25;
@@ -55,7 +60,7 @@ export class testSong extends Phaser.Scene {
         // Creamos al Jugador
         this.player = new player(this, 400, 400, {name: this.professor, skin:this.skin });
         this.player.setScale(0.4);
-        let levelData = levels[this.level];
+        
         //Leemos la salud del archivo (Para la barra)
         this.health = levelData.health;
         let completed = this.levelsCompleted.returnIfLevelCompletedOnLocation(levelData.levelZone, levelData.levelNumber);
