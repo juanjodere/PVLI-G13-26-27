@@ -101,7 +101,7 @@ export const levels = {
         aura: 10,
         health: 10,
         background: 'battleBackgrArcade',
-        bgScale: 1
+        bgScale: 0.2
     },
 
     arcade02: {

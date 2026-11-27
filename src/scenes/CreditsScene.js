@@ -9,7 +9,7 @@ export class CreditsScene extends Phaser.Scene
       const creditsBg = this.add.image(400,450,'creditsBG')
       creditsBg.setScale(0.3);
       //this.add.image(400,300,'Credits');
-      const exitButton = this.add.image(20,45,'exitButton').setOrigin(0,0).setInteractive();
+      const exitButton = this.add.image(20,25,'exitButton').setOrigin(0,0).setInteractive();
       // pintado de los nombres
       this.name1 = this.add.text(92, 167, 'Juan José de Reyna Godoy', {
          fontFamily: 'Comic Sans MS',

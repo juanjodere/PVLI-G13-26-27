@@ -4,25 +4,23 @@ import locationsRegister from "../objects/levelsRegister.js";
 
 export class MainMenuScene extends Phaser.Scene
 {
- constructor()
- {
-    super({key:"MainMenuScene"});
- }
-    preload()
-    {
-      
-    }
+   constructor()
+   {
+      super({key:"MainMenuScene"});
+   }
+   preload(){
+   }
 
-    create()
-    {
+   create(){
       //Añadimos la imagen del fondo
-      this.add.image(500,350,'menuBG')
-     const StartButton = this.add.image(400,400,'startButton').setInteractive();
-     StartButton.setScale(1.5);
-     const CreditsButton = this.add.image(400,500,'creditsButton').setInteractive();
-     CreditsButton.setScale(1.5);
+      const mainMenuBg = this.add.image(400,300,'menuBG');
+      mainMenuBg.setScale(0.4);
+      const StartButton = this.add.image(400,400,'startButton').setInteractive();
+      StartButton.setScale(1.5);
+      const CreditsButton = this.add.image(400,500,'creditsButton').setInteractive();
+      CreditsButton.setScale(1.5);
 
-     //Manejo del botón de los creditos
+      //Manejo del botón de los creditos
       CreditsButton.on('pointerdown',()=>{this.scene.start('CreditsScene')})
       CreditsButton.on('pointerover',()=>{CreditsButton.setScale(1.7)});
       CreditsButton.on('pointerout',()=>{CreditsButton.setScale(1.5)});
