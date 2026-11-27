@@ -17,7 +17,9 @@ export class dialogScene extends Phaser.Scene {
         this.initialNode = data.locationNode;
 
         this.startingDialog = data.startingDialog;
+        this.condition = data.condition;
         this.level = data.level
+        
 
         //Manejamos el texto a leer y el sprite del enemigo (WIP)
         this.text = data.text;
@@ -26,7 +28,8 @@ export class dialogScene extends Phaser.Scene {
 
         // Estas se necesitan solo para pasar esta información a otra escena.
         this.levelsCompleted = data.levelsCompleted;
-        console.log(this.levelsCompleted);
+        this.mision = data.mision;
+        
     }
 
     create()
@@ -34,7 +37,7 @@ export class dialogScene extends Phaser.Scene {
         this.SceneBackGround = this.add.image(0, 0, this.background).setOrigin(0, 0);
         this.SceneBackGround.setDepth(-10);
 
-        this.dialogManager = new dialogManager(this,400,400,'textBox',this.startingDialog);
+        this.dialogManager = new dialogManager(this,400,400,'textBox',this.startingDialog+this.condition);
        
     }
 
@@ -46,7 +49,8 @@ export class dialogScene extends Phaser.Scene {
             levelsCompleted:this.levelsCompleted
             ,background:this.background,
             level:this.level,
-            startingDialog:this.startingDialog
+            startingDialog:this.startingDialog,
+            mision:this.mision,
         });
     }
 }

@@ -16,7 +16,7 @@ export default class locationsRegister{
     }
 
     completeLevelOnLocation(locName, index){ // Marca un nivel ya existente de una localización ya existente como terminado.
-        let isTheWanted = (elem) => (console.log(elem.name), elem.name == locName);
+        let isTheWanted = (elem) => (elem.name == locName);
         let loc = this.locationsArray.findIndex(isTheWanted);
         if (loc != -1) this.locationsArray[loc].completeLevel(index);
     }
@@ -28,16 +28,17 @@ export default class locationsRegister{
     }
 
     returnIfLevelCompletedOnLocation(locName, index){ // Accede al estado de un nivel de una lozalización dada.
-        let isTheWanted = (elem) => (console.log(elem.name), elem.name == locName);
+        let isTheWanted = (elem) => (elem.name == locName);
         let loc = this.locationsArray.findIndex(isTheWanted);
-        if (loc != -1) this.locationsArray[loc].returnIfLevelCompleted(index);
+        if (loc != -1){  return this.locationsArray[loc].returnIfLevelCompleted(index);}
     }
 
     checkMisionCondition(mision)
     {
         let this_mision = misionCondition[mision];
-        if(mision == null){console.warn("Mision no encontrada: "+ mision);}
         let valid = true;
+        if(this_mision == null){console.warn("Mision no encontrada: "+ mision);valid = false; return valid}
+        
         let i = 0;
         let j = 0;
         while(i<this_mision.LocationsToCheck.length && valid)
@@ -55,6 +56,16 @@ export default class locationsRegister{
         return valid;
 
 
+    }
+
+    returnNumberOfLevels(locName){ // Accede al estado de un nivel de una lozalización dada.
+        let isTheWanted = (elem) => (elem.name == locName);
+        let loc = this.locationsArray.findIndex(isTheWanted);
+        if(loc != -1)
+        {
+            console.log(this.locationsArray[loc].levelsArray.length);
+            return this.locationsArray[loc].levelsArray.length;
+        }
     }
 }
 

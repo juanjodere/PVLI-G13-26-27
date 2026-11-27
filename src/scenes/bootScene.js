@@ -43,13 +43,18 @@ export class bootScene extends Phaser.Scene {
         this.load.audio('alleySong', './assets/LevelSongs/alley.mp3');
         this.load.audio('sevensixseven1Song', './assets/LevelSongs/7sixseven-1.mp3');
         this.load.audio('sevensixseven2Song', './assets/LevelSongs/7sixseven-2.mp3');
+        this.load.audio('TestSong','./assets/LevelSongs/TestSong.mp3');
         // Credits images
         this.load.image('Credits','assets/CreditsSceneAssets/Credits.png');
         // otros bottones
         this.load.image('BackButton','assets/MainMenuSceneAssets/BackButton.jpg');
         this.load.image('exitButton','assets/MainMenuSceneAssets/exitButton.png');
+        this.load.image('Abutton','assets/ObjectAssets/Abutton.png')
+        this.load.image('Bbutton','assets/ObjectAssets/Bbutton.png')
         //Imagenes para dialogos
         this.load.image('textBox', 'assets/ObjectAssets/textBox.png');
+        //Indicadores de mision,nivel completado etc
+        this.load.image('alert','assets/ObjectAssets/indicators/alert.png')
         //Cargamos los iconos del mapa de los profesores.
         this.load.image('IsmaDefaultIcon','assets/ObjectAssets/player/isma-default-icon.png');
         // se cargan las idles de los profes (nombre+skin) // de momento es un sprite, si da tiempo se hace spritesheet para animarlo

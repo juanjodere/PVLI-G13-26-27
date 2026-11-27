@@ -8,8 +8,8 @@ export default class dialogManager extends Phaser.GameObjects.Sprite {
         this.index = 0;
         this.internalIndex = 0;
 
-        this.optionA = scene.add.sprite(x+200,y-50,'startButton').setOrigin(0.5);
-        this.optionB = scene.add.sprite(x+200,y+50,'creditsButton').setOrigin(0.5);
+        this.optionA = scene.add.sprite(x+200,y-50,'Abutton').setOrigin(0.5);
+        this.optionB = scene.add.sprite(x+200,y+50,'Bbutton').setOrigin(0.5);
 
         //Constantes para frenar el texto
         this.writeDelay = 60;

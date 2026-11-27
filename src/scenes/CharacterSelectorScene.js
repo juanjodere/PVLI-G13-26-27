@@ -15,7 +15,7 @@ export class CharacterSelectorScene extends Phaser.Scene {
 
         // Estas se necesitan solo para pasar esta información a otra escena.
         this.levelsCompleted = data.levelsCompleted;
-        console.log(this.levelsCompleted);
+     
         
     }
 

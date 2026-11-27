@@ -23,6 +23,7 @@ export class testSong extends Phaser.Scene {
         this.levelsCompleted = data.levelsCompleted;
         this.level = data.level;
         this.startingDialog = data.startingDialog;
+        this.mision = data.mision;
     }
 
 
@@ -73,7 +74,7 @@ export class testSong extends Phaser.Scene {
         this.health = levelData.health;
 
 
-        let completed = this.levelsCompleted.returnIfLevelCompletedOnLocation(levelData.levelZone, levelData.levelNumber);
+        let completed = this.levelsCompleted.returnIfLevelCompletedOnLocation(levelData.levelZone,levelData.levelNumber);
         //Pasamos level (el nombre del nivel no el objeto como tal) para luego buscarlo dentro del dance manager
         this.danceManager = new danceManager(this,this.level, completed)
 
@@ -133,10 +134,12 @@ export class testSong extends Phaser.Scene {
 
     // cuando termina la canción
     onSongFinished() {
+        
         if (!this.danceManager.levelIsCompleted) {
             this.globalAura += this.danceManager.auraToGive;
             this.levelsCompleted.completeLevelOnLocation(this.danceManager.level.levelZone, this.danceManager.level.levelNumber);
         }
+        console.log(this.globalAura);
         this.backToLocation();
     }
 
@@ -151,7 +154,8 @@ export class testSong extends Phaser.Scene {
             background: this.locationBackground, inventory: this.inventory, locationNode: this.locationNode,
             globalAura: this.globalAura,
             level:this.level,
-           startingDialog: this.startingDialog
+           startingDialog: this.startingDialog,
+           mision:this.mision
         });
 
     }

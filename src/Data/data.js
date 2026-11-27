@@ -19,7 +19,6 @@ export const dialogs = {
         action: () => { }
     },
 
-
     shibuyaDial03: {
         choice: true,
         currentOption: false,
@@ -34,126 +33,151 @@ export const dialogs = {
             else {
                 dialogs.shibuyaDial03.nextNode = "shibuyaDial01";
             }
+        }
+
+        },
+
+        //Dialogo misiones shibuya
+
+        shibuyaDial02mision: {
+            choice: false,
+            currentOption: false,
+            name: "Shibuyense",
+            text: ["Joputa"],
+            nextNode: null,
+            action: () => { }
+        },
+        shibuyaDial03mision: {
+            choice: false,
+            currentOption: false,
+            name: "Shibuyense",
+            text: ["Gracias"],
+            nextNode: null,
+            action: () => { }
+        },
+        shibuyaDial01mision: {
+            choice: true,
+            currentOption: false,
+            name: "Shibuyense",
+            text: ["Hola", "A que me das una manzana", "SI(a) o No(b)"],
+            nextNode: "shibuyaDial02mision",
+            action: () => {
+
+                if (dialogs.shibuyaDial01mision.currentOption) {
+                    dialogs.shibuyaDial01mision.nextNode = "shibuyaDial03mision";
+                }
+                else {
+                    dialogs.shibuyaDial03.nextNode = "shibuyaDial02mision";
+                }
+            }
 
         }
-    },
 
 
 
+    
 }
-
-//PLANTILLAS DE DIALOGO
-// name:{
-//        choice: bool,
-//         currentOption:bool,
-//        name: "String",
-//        text: [string array],
-//        nextNode01: dialog,
-//         action: ()=>{function}
-//    }
-
 export const misionCondition = {
 
     misionTest: {
         //Nombre de las localizaciones que revisar para ver si se cumplen los niveles
         LocationsToCheck: ['Arcade', 'Crossing', 'Allay', 'SevenSixSeven'],
         //Niveles de las localizaciones y el valor que deben tener
-        LocationLevel: [[false, false], [false], [false], [false, false]]
+        LocationLevel: [[false, false], [false], [false], [false, true]]
 
     }
 }
-
-
-
 export const levels = {
-    
+
     arcade01: {
-        levelZone:'Arcade',
-        levelNumber:0,
+        levelZone: 'Arcade',
+        levelNumber: 0,
         judgeLineSprite: 'judgementLine',
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['','u','','d.','','','d.','','','',''], 
+        movesArray: ['', 'u', '', 'd.', '', '', 'd.', '', '', '', ''],
         music: "arcade1Song",
         aura: 10,
         health: 10,
-        background:'battleBackgrArcade',
+        background: 'battleBackgrArcade',
         bgScale: 1
     },
 
     arcade02: {
-        levelZone:'Arcade',
-        levelNumber:1,
+        levelZone: 'Arcade',
+        levelNumber: 1,
         judgeLineSprite: 'judgementLine',
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['','u','','d.','','','d.','','','',''], 
+        movesArray: ['', 'u', '', 'd.', '', '', 'd.', '', '', '', ''],
         music: "arcade2Song",
         aura: 10,
         health: 10,
-        background:'battleBackgrArcade',
+        background: 'battleBackgrArcade',
         bgScale: 0.2
     },
-    
+
     crossing01: {
-        levelZone:'Crossing',
-        levelNumber:0,
+        levelZone: 'Crossing',
+        levelNumber: 0,
         judgeLineSprite: 'judgementLine',
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['','u','','d.','','','d.','','','',''], 
+        movesArray: ['', 'u', '', 'd.', '', '', 'd.', '', '', '', ''],
         music: "crossingSong",
         aura: 10,
         health: 10,
-        background:'battleBackgrCrossing',
+        background: 'battleBackgrCrossing',
         bgScale: 0.95
     },
-    
+
     alley01: {
-        levelZone:'Alley',
-        levelNumber:0,
+        levelZone: 'Alley',
+        levelNumber: 0,
         judgeLineSprite: 'judgementLine',
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['','u','','d.','','','d.','','','',''], 
+        movesArray: ['', 'u', '', 'd.', '', '', 'd.', '', '', '', ''],
         music: "alleySong",
         aura: 10,
         health: 10,
-        background:'battleBackgrAlley',
+        background: 'battleBackgrAlley',
         bgScale: 1
     },
-    
+
     sixseven01: {
-        levelZone:'SevenSixSeven',
-        levelNumber:0,
+        levelZone: 'SevenSixSeven',
+        levelNumber: 0,
         judgeLineSprite: 'judgementLine',
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['','u','','d.','','','d.','','','',''], 
+        movesArray: ['', 'u', 'u', 'd.', '', '', 'd.', '', '', '', ''],
+       
         music: "sevensixseven1Song",
         aura: 10,
         health: 10,
-        background:'battleBackgrSixSeven',
+        background: 'battleBackgrSixSeven',
         bgScale: 0.2
     },
-    
+
     sixseven02: {
-        levelZone:'SevenSixseven',
-        levelNumber:1,
+        levelZone: 'SevenSixSeven',
+        levelNumber: 1,
         judgeLineSprite: 'judgementLine',
         x: 100, y: 130,
         judgeLineSize: 67,
 
-        movesArray: ['','u','','d.','','','d.','','','',''], 
-        music: "sevensixseven2Song",
+        movesArray: ['', 'u', '', 'd.', '', '', 'd.', '', '', '', ''],
+         //TODO CAMBIAR CANCION
+        music: "TestSong",
         aura: 10,
         health: 10,
-        background:'battleBackgrSixSeven',
+        background: 'battleBackgrSixSeven',
         bgScale: 0.2
     }
 
