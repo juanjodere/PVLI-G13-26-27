@@ -53,6 +53,7 @@ export const dialogs = {
 //    }
 
 export const misionCondition = {
+
     misionTest: {
         //Nombre de las localizaciones que revisar para ver si se cumplen los niveles
         LocationsToCheck: ['Arcade', 'Crossing', 'Allay', 'SevenSixSeven'],
@@ -61,6 +62,8 @@ export const misionCondition = {
 
     }
 }
+
+
 
 export const levels = {
     shibuya01: {
