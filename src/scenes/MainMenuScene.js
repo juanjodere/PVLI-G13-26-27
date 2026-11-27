@@ -1,3 +1,4 @@
+import Inventory from "../objects/inventory.js";
 import locationsRegister from "../objects/levelsRegister.js";
 
 
@@ -11,6 +12,7 @@ export class MainMenuScene extends Phaser.Scene
     {
       
     }
+
     create()
     {
       //Añadimos la imagen del fondo
@@ -19,9 +21,9 @@ export class MainMenuScene extends Phaser.Scene
      const CreditsButton = this.add.image(400,350,'creditsButton').setInteractive();
 
      //Manejo del botón de los creditos
-     CreditsButton.on('pointerdown',()=>{this.scene.start('CreditsScene')})
+      CreditsButton.on('pointerdown',()=>{this.scene.start('CreditsScene')})
       CreditsButton.on('pointerover',()=>{CreditsButton.setScale(1.1)});
-       CreditsButton.on('pointerout',()=>{CreditsButton.setScale(1)});
+      CreditsButton.on('pointerout',()=>{CreditsButton.setScale(1)});
        //Manejo del botón de start
      
       StartButton.on('pointerdown',() => {
@@ -31,10 +33,10 @@ export class MainMenuScene extends Phaser.Scene
          // Añadimos las localizaciones con sus niveles.
          lvls.addLocation('Arcade',[false,false]);
          lvls.addLocation('Crossing',[false]);
-         lvls.addLocation('Allay',[false]);
+         lvls.addLocation('Alley',[false]);
          lvls.addLocation('SevenSixSeven',[false,false]);
 
-         this.scene.start('charSelScene', {character: null, skin: null, levelsCompleted: lvls, inventory: null,
+         this.scene.start('charSelScene', {character: null, skin: null, levelsCompleted: lvls, inventory: new Inventory(),
             locationNode: null, globalAura: 0})
       })
       StartButton.on('pointerover',()=>{StartButton.setScale(1.1)});
