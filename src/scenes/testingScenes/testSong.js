@@ -90,6 +90,11 @@ export class testSong extends Phaser.Scene {
             this.onSongFinished();
             });
         }
+
+        // al darle a escape puedes salir del nivel
+        this.input.keyboard.on('keydown-ESC', () => {
+            this.backToLocation();
+        });
     }
 
 
