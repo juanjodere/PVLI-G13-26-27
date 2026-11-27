@@ -43,19 +43,24 @@ export class testSong extends Phaser.Scene {
         this.lifeBarHeight = this.lifeBarInitialHeight;
         this.lifeBarOffset = 10;
 
-    
-
         // Creamos la barra de vida
         this.progressBar = this.add.graphics();
         const progressBox = this.add.graphics();
         progressBox.fillStyle(0x222222, 0.8);
         progressBox.fillRect(this.lifeBarLeftCornerX, this.lifeBarLeftCornerY, this.lifeBarWidth, this.lifeBarHeight);
-
         this.progressBar.clear();
         this.progressBar.fillStyle(0xffffff, 1);
         this.progressBar.fillRect(this.lifeBarLeftCornerX + this.lifeBarOffset, this.lifeBarLeftCornerY + this.lifeBarOffset,
-            this.lifeBarWidth - 2 * this.lifeBarOffset, this.lifeBarHeight - 2 * this.lifeBarOffset);
+        this.lifeBarWidth - 2 * this.lifeBarOffset, this.lifeBarHeight - 2 * this.lifeBarOffset);
 
+        // pintado del combo
+        this.comboText = this.add.text(50, 510, 'Combo x0', {
+        fontFamily: 'Comic Sans MS',
+        fontSize: '35px',
+        fill: '#ffffff',
+        stroke: '#000000',
+        strokeThickness: 4
+        });
 
         // Creamos al Jugador
         this.player = new player(this, 400, 400, {name: this.professor, skin:this.skin });
@@ -87,6 +92,26 @@ export class testSong extends Phaser.Scene {
         this.progressBar.clear();
         this.progressBar.fillStyle(0xffffff, 1);
         this.progressBar.fillRect(this.lifeBarLeftCornerX + this.lifeBarOffset, updatedYCorner, this.lifeBarWidth - 2 * this.lifeBarOffset, updatedHeight)
+    }
+
+    // para actualizar el pintado del combo
+    updateCombo(newCombo){
+        if(this.comboText){
+            if(newCombo > 0){
+                // se actualiza el texto
+                this.comboText.setText('Combo x' + newCombo);
+                this.comboText.setVisible(true);
+                // efecto visual mwehehe
+                this.tweens.add({
+                    targets: this.comboText,
+                    scale: { from: 1.3, to: 1 },
+                    duration: 100
+                });
+            }
+            else{ // si el combo es 0 no se muestra
+                this.comboText.setText('');
+            }
+        }
     }
 
 

@@ -68,8 +68,6 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.CreateCollisionDetector();
     }
     spawnArrow(arrowType, YellowOrPurple) {
-
-
         //AÑADIMOS LA FLECHA AL GRUPO ARROWS.
         let _arrow = this.arrowGroup.get();
         if (_arrow) {
@@ -141,10 +139,11 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         hitObject.y = 999;
 
         if (this.combo > 0) this.combo = 0; // Resetea el combo.
+        this.scene.updateCombo(this.combo);
 
         if (this.health > 0) {
 
-            this.health += --this.combo;
+            this.health--;
             if (this.health <= 0) {
                 this.health = 0;
                 this.updateBar(this.health);
@@ -164,6 +163,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
 
 
         this.combo ++; // el combo aumenta hasta que se falle
+        this.scene.updateCombo(this.combo);
         if (this.health < this.topHealth) {
             this.health ++;
             if (this.health >= this.topHealth){ this.health = this.topHealth};
@@ -182,6 +182,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     updateBar(newHealth) {
         this.scene.changeLifeBar(newHealth);
     }
+    
     onLosing() {
         this.askChangeScene()
     }
