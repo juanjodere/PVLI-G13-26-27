@@ -75,7 +75,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
             _arrow.setActive(true);
             _arrow.setVisible(true);
             _arrow.setArrow({
-                x: this.arrowSpawnerX, y: this.arrowSpawnerY, speed: 0.4, type: arrowType,
+                x: this.arrowSpawnerX, y: this.arrowSpawnerY, speed: 0.5, type: arrowType,
                 state: YellowOrPurple, dirX: -1, dirY: 0
             })
         }
@@ -152,9 +152,6 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
             console.log(this.health);
             this.updateBar(this.health);
         };
-
-
-
     }
     onHit(hitObject) {
         hitObject.setActive(false);
@@ -170,8 +167,6 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
             console.log(this.health);
             this.updateBar(this.health);
         };
-
-        this.hasSongEnded(hitObject);
     }
 
     poseChangeReq(pose, isSuccess){
@@ -186,23 +181,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     onLosing() {
         this.askChangeScene()
     }
-    hasSongEnded() {
-        //Comprobamos que estamos al final de la canción y que no queda ninguna flecha activa
-        if (this.songIndex >= this.arrayLenght && this.arrowGroup.getTotalUsed() == 0) {
-            // Sumar dinero.
-
-            if (!this.isCompleted) {
-                console.log(this.scene.globalAura);
-                this.scene.globalAura += this.auraToGive;
-                //TODO COMPLETAR NIVEL REVISAR LEVERREGISTER
-
-
-                this.scene.levelsCompleted.completeLevelOnLocation(this.level.levelZone, this.level.levelNumber);
-                console.log(this.scene.globalAura);
-            }
-            this.askChangeScene();
-        }
-    }
+    
     readArray(time, deltaTime) {
         //TODO ADD OUTSIDE SPAWN TIME OR SET IT CONSTANT (1000 ms)
         this.timer += deltaTime;
@@ -253,7 +232,6 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     preUpdate(time, deltaTime) {
         super.preUpdate(time, deltaTime);
         this.readArray(time, deltaTime);
-        this.hasSongEnded();
     }
     askChangeScene() {
         this.scene.backToLocation();

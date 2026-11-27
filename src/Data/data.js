@@ -64,7 +64,7 @@ export const misionCondition = {
 
 export const levels = {
     
-    crossing01: {
+    arcade01: {
         levelZone:'Arcade',
         levelNumber:0,
         judgeLineSprite: 'judgementLine',

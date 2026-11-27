@@ -35,6 +35,9 @@ export class testSong extends Phaser.Scene {
             this.add.image(0, 0, levelData.background).setOrigin(0, 0).setScale(levelData.bgScale);
         }
 
+        // barrita por donde pasan las flechas
+        this.trackBar = this.add.rectangle(400, 130, 800, 67, 0xAAAAAA, 0.67).setDepth(0); 
+
         this.lifeBarLeftCornerX = 675;
         this.lifeBarInitialLeftCornerY = 25;
         this.lifeBarLeftCornerY = this.lifeBarInitialLeftCornerY;
@@ -68,6 +71,8 @@ export class testSong extends Phaser.Scene {
         
         //Leemos la salud del archivo (Para la barra)
         this.health = levelData.health;
+
+
         let completed = this.levelsCompleted.returnIfLevelCompletedOnLocation(levelData.levelZone, levelData.levelNumber);
         //Pasamos level (el nombre del nivel no el objeto como tal) para luego buscarlo dentro del dance manager
         this.danceManager = new danceManager(this,this.level, completed)
@@ -78,6 +83,11 @@ export class testSong extends Phaser.Scene {
             volume: 0.8
         })
         this.song.play();
+        
+        // listener para que se complete el nivel cuando la canción termine
+        this.song.once('complete', () => {
+            this.onSongFinished();
+        });
     }
 
 
@@ -114,9 +124,16 @@ export class testSong extends Phaser.Scene {
         }
     }
 
+    // cuando termina la canción
+    onSongFinished() {
+        if (!this.danceManager.levelIsCompleted) {
+            this.globalAura += this.danceManager.auraToGive;
+            this.levelsCompleted.completeLevelOnLocation(levelData.levelZone, levelData.levelNumber);
+        }
+        this.backToLocation();
+    }
 
     backToLocation() {
-
         //se para la música
         if(this.song){
             this.song.stop();
