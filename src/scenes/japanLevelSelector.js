@@ -41,7 +41,7 @@ export class japanLevelSelector extends Phaser.Scene {
 
         // Creamos los nodos sin conectar
         this.alley = new mapNode(this, 734, 544, 'alleyIco', ()=>{this.enterLevel("",this.selectedNode, "dial", "alley01","mision")}).setOrigin(0.5, 0.5);
-        this.donQuijote = new mapNode(this, 400, 67, 'donQuijoteIco',()=>{this.enterLevel("",this.selectedNode)}).setOrigin(0.5, 0.5);
+        this.donQuijote = new mapNode(this, 400, 67, 'donQuijoteIco',()=>{this.goToShop(this.selectedNode, "")}).setOrigin(0.5, 0.5);
         this.trainStation = new mapNode(this, 925, 434, 'trainStationIco', ()=>{this.enterLevel("",this.selectedNode)}).setOrigin(0.5, 0.5);
         this.shibuyaCrossing = new mapNode(this, 777, 200, 'shibuyaCrossIco', ()=>{this.enterLevel('locationBackgrCrossing',this.selectedNode, "dialogs", "crossing01","TestMision")}).setOrigin(0.5, 0.5);
         this.arcade = new mapNode(this, 345, 245, 'arcadeIco',()=>{this.enterLevel('locationBackgrArcade',this.selectedNode, "dialogs", "arcade02","mision")}).setOrigin(0.5, 0.5);
@@ -122,5 +122,18 @@ export class japanLevelSelector extends Phaser.Scene {
             startingDialog: startingDialog,
             level: levelsList,
             mision:mision})
+    }
+
+    goToShop(nodeName, startingDialog){
+        this.scene.sleep();
+        this.scene.launch('shopScene', {
+            character: this.professor, 
+            skin: this.skin, 
+            background: "battleBackgrSixSeven",
+            levelsCompleted: this.levelsCompleted,
+            inventory: this.inventory, 
+            locationNode: nodeName, 
+            globalAura: this.globalAura,
+            startingDialog: startingDialog})
     }
 };
