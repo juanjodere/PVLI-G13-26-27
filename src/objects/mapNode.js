@@ -2,7 +2,7 @@
 //dos nodos no necesitan estar conectados entre si 
 export default class mapNode extends Phaser.GameObjects.Sprite
 {
-    constructor(scene, x, y, sprite, behavior, _nodeUp = null, _nodeDown = null, _nodeLeft = null, _nodeRight = null)
+    constructor(scene, x, y, sprite, behavior, customScale = 1, _nodeUp = null, _nodeDown = null, _nodeLeft = null, _nodeRight = null)
     {
         super(scene, x, y, sprite, 0);
 
@@ -12,6 +12,7 @@ export default class mapNode extends Phaser.GameObjects.Sprite
         this.nodeDown = _nodeDown;
         this.nodeLeft = _nodeLeft;
         this.nodeRight =  _nodeRight;
+        this.baseScale = customScale; // para poder escalar elementos concretos
         //this.targetSceneName = 'testSong';  Esto no es necesario si es la escena del mapa la que inicia la escena del nivel
         // El nodo le pasará a la escena la información necesaria para iniciar la escena de la zona.
         
@@ -94,11 +95,11 @@ export default class mapNode extends Phaser.GameObjects.Sprite
     {
         if (this.selected)
         {
-            this.setScale(0.5,0.5);
+            this.setScale(this.baseScale*0.5,this.baseScale*0.5);
         }
         else
         {
-            this.setScale(0.35,0.35);
+            this.setScale(this.baseScale*0.35,this.baseScale*0.35);
         }
     }
 

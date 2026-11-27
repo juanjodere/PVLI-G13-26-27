@@ -45,7 +45,8 @@ export class locationScene extends Phaser.Scene {
             this.condition = "";
         }
         
-        this.BackButton = new mapNode(this,100,100,'BackButton',()=>{this.backToMap()})//this.add.image(0, 0, 'BackButton').setOrigin(0, 0).setInteractive();
+        this.BackButton = new mapNode(this,35,35,'exitButton',()=>{this.backToMap()}, 2)
+        //this.add.image(0, 0, 'BackButton').setOrigin(0, 0).setInteractive();
 
         /*BackButton.on('pointerdown', () => { this.backToMap() });
         BackButton.on('pointerover', () => { BackButton.setScale(1.1) });
@@ -68,13 +69,12 @@ export class locationScene extends Phaser.Scene {
         let i = 0;
         //Vamos leyendo el nombre del nivel de entrada hasta tener nuestro auxiliar
         this.auxLevelName = '';
-        while(this.level[i] != '0')
-        {
-         this.auxLevelName += this.level[i];
-         i++;
+        while(this.level[i] != '0'){
+            this.auxLevelName += this.level[i];
+            i++;
         }
         //Este nombre lo usaremso para decirle al nodo de batalla a que batalla debe ir
-         this.auxLevelName += '0';
+        this.auxLevelName += '0';
 
       
         
@@ -83,7 +83,7 @@ export class locationScene extends Phaser.Scene {
         //Creamos los nodos de los niveles
         for(let i = 0 ; i<this.nLevels;i++)
         {
-             BattleButton.push(new mapNode(this,300,300+100*i,'BackButton',()=>{this.goToLevel(this.auxLevelName+(i+1))}));
+            BattleButton.push(new mapNode(this,300,350+150*i,'lvl'+ (i+1) + 'Button',()=>{this.goToLevel(this.auxLevelName+(i+1))}, 3.67));
         }
         //Ajustamos el primer nodo de batalla (lo hacemos aparte porque necesita conectarse con text)
         if (BattleButton.length > 0) {
