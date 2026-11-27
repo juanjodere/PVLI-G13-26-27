@@ -9,12 +9,14 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         //CREAMOS EL SPRITE
         let auxLevel = levels[data];
         super(scene, auxLevel.x, auxLevel.y, auxLevel.judgeLineSprite)
+        this.setScale(0.6);
         this.level = auxLevel;
         this.scene = scene;
         //Variables de la partida
         this.moves = this.level.movesArray;
         this.arrayLenght = this.moves.length;
         this.music = this.level.music;
+        this.player = scene.player;
         this.points = 0;
         this.combo = 0;
         this.topHealth = this.level.health; // Vida del jugador
@@ -24,10 +26,10 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.levelIsCompleted = isCompleted;
         this.songIndex = 0;
         this.timer = 0;
-        this.betweenArrowTime = 1500;
+        this.betweenArrowTime = 300;
 
-        this.arrowSpawnerX = 500;
-        this.arrowSpawnerY = 200;
+        this.arrowSpawnerX = 800;
+        this.arrowSpawnerY = 130;
 
         //GRUPO DE FISICAS arrow PARA TENER LAS FLECHAS GUARDADAS Y PROCESARLAS.
         this.arrowGroup = scene.physics.add.group({
@@ -66,15 +68,14 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         this.CreateCollisionDetector();
     }
     spawnArrow(arrowType, YellowOrPurple) {
-
-
         //AÑADIMOS LA FLECHA AL GRUPO ARROWS.
         let _arrow = this.arrowGroup.get();
         if (_arrow) {
+            _arrow.danceManager = this;
             _arrow.setActive(true);
             _arrow.setVisible(true);
             _arrow.setArrow({
-                x: this.arrowSpawnerX, y: this.arrowSpawnerY, speed: 0.1, type: arrowType,
+                x: this.arrowSpawnerX, y: this.arrowSpawnerY, speed: 0.5, type: arrowType,
                 state: YellowOrPurple, dirX: -1, dirY: 0
             })
         }
@@ -88,97 +89,47 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     }
     InputProcessing(hitObject) {
         //Comprobamos que se haya presionado alguna tecla de las de movimiento para evitar psoibles errores
-        if (this.WKey.isDown || this.AKey.isDown || this.SKey.isDown || this.DKey.isDown) 
-        {
-            //Si son lilas primero comprobamos que estemos presionano SOLO la tecla "Lila"
-            if (hitObject.arrowState) 
-            {
-                if (this.YellowKey.isUp && this.PurpleKey.isDown) 
-                {
-                    switch (hitObject.arrowType) 
-                    { // Empieza a leer los tipos de flecha.
-                        case 'd':
-
-                            if (this.SKey.isDown) {
-                                this.onHit(hitObject)
-                            }
-                            else this.onMistake(hitObject);
-
-                            break;
-                        case 'l':
-
-                            if (this.AKey.isDown) {
-                                this.onHit(hitObject)
-                            }
-                            else this.onMistake(hitObject);
-
-                            break;
-                        case 'r':
-
-                            if (this.DKey.isDown) {
-                                this.onHit(hitObject)
-                            }
-                            else this.onMistake(hitObject);
-
-                            break;
-                        case 'u':
-
-                            if (this.WKey.isDown) {
-                                this.onHit(hitObject)
-                            }
-                            else this.onMistake(hitObject);
-                            break;
-                    }
-                }
-                else
-                {this.onMistake(hitObject);}
-            }
-            //Si son Amarillas primero comprobamos que estemos presionano SOLO la tecla "Amarilla"
-            else 
-            {
-                if (this.YellowKey.isDown && this.PurpleKey.isUp) 
-                {
-                    switch (hitObject.arrowType) 
-                    { // Empieza a leer los tipos de flecha.
-                    case 'd':
-
-                        if (this.SKey.isDown) {
-                            this.onHit(hitObject)
-                        }
-                        else this.onMistake(hitObject);
-
-                        break;
-                    case 'l':
-
-                        if (this.AKey.isDown) {
-                            this.onHit(hitObject)
-                        }
-                        else this.onMistake(hitObject);
-
-                        break;
-                    case 'r':
-
-                        if (this.DKey.isDown) {
-                            this.onHit(hitObject)
-                        }
-                        else this.onMistake(hitObject);
-
-                        break;
-                    case 'u':
-
-                        if (this.WKey.isDown) {
-                            this.onHit(hitObject)
-                        }
-                        else this.onMistake(hitObject);
-                        break;
-                    }
-                }
-                else
-                {this.onMistake(hitObject);}
-            }
+        if (!this.WKey.isDown && !this.AKey.isDown && !this.SKey.isDown && !this.DKey.isDown) {
+            return;
         }
-       
+        // mapeo de las flechas a las teclas (WASD)
+        const arrowDirMap = { 'u': 'W', 'l': 'A', 'd': 'S', 'r': 'D' };
+        let dirLetter = arrowDirMap[hitObject.arrowType];
+        // mapeo por color
+        const arrowColMap = {true: 'K', false: 'J'};
+        let colLetter = arrowColMap[hitObject.arrowState];
+        // sacamos la pose que debería salir
+        let poseName = dirLetter + colLetter;
 
+        // se comprueba lo que se está pulsando ahora
+        //color
+        let correctColor;
+        if (hitObject.arrowState) {
+            // si es morado
+            correctColor = (this.YellowKey.isUp && this.PurpleKey.isDown); 
+        } 
+        else {
+            // si es amarillo (que te pillo jeje)
+            correctColor = (this.YellowKey.isDown && this.PurpleKey.isUp); 
+        }
+        // dirección
+        let correctDir = false;
+        switch (hitObject.arrowType) {
+            case 'u': correctDir = this.WKey.isDown; break;
+            case 'l': correctDir = this.AKey.isDown; break;
+            case 'd': correctDir = this.SKey.isDown; break;
+            case 'r': correctDir = this.DKey.isDown; break;
+        }
+
+        // ambos tienen que ser correctos (true)
+        if (correctColor && correctDir) {
+            this.onHit(hitObject);
+            this.poseChangeReq(poseName, true);
+        }
+        else{
+            this.onMistake(hitObject);
+            this.poseChangeReq(poseName, false);
+        }
     }
 
     onMistake(hitObject) {
@@ -186,11 +137,13 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         hitObject.setActive(false);
         hitObject.setVisible(false);
         hitObject.y = 999;
+
         if (this.combo > 0) this.combo = 0; // Resetea el combo.
+        this.scene.updateCombo(this.combo);
 
         if (this.health > 0) {
 
-            this.health += --this.combo;
+            this.health--;
             if (this.health <= 0) {
                 this.health = 0;
                 this.updateBar(this.health);
@@ -199,9 +152,6 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
             console.log(this.health);
             this.updateBar(this.health);
         };
-
-
-
     }
     onHit(hitObject) {
         hitObject.setActive(false);
@@ -209,40 +159,29 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         hitObject.y = 999;
 
 
-        if (this.combo <= 0) this.combo = 1; // Resetea el combo.
+        this.combo ++; // el combo aumenta hasta que se falle
+        this.scene.updateCombo(this.combo);
         if (this.health < this.topHealth) {
-            this.health += this.combo;
+            this.health ++;
             if (this.health >= this.topHealth){ this.health = this.topHealth};
             console.log(this.health);
             this.updateBar(this.health);
         };
-
-        this.hasSongEnded(hitObject);
     }
 
+    poseChangeReq(pose, isSuccess){
+        if(this.player){
+            this.player.changePose(pose, isSuccess);
+        }
+    }
     updateBar(newHealth) {
         this.scene.changeLifeBar(newHealth);
     }
+    
     onLosing() {
         this.askChangeScene()
     }
-    hasSongEnded() {
-        //Comprobamos que estamos al final de la canción y que no queda ninguna flecha activa
-        if (this.songIndex >= this.arrayLenght && this.arrowGroup.getTotalUsed() == 0) {
-            // Sumar dinero.
-
-            if (!this.isCompleted) {
-                console.log(this.scene.globalAura);
-                this.scene.globalAura += this.auraToGive;
-                //TODO COMPLETAR NIVEL REVISAR LEVERREGISTER
-
-
-                this.scene.levelsCompleted.completeLevelOnLocation(this.level.levelZone, this.level.levelNumber);
-                console.log(this.scene.globalAura);
-            }
-            this.askChangeScene();
-        }
-    }
+    
     readArray(time, deltaTime) {
         //TODO ADD OUTSIDE SPAWN TIME OR SET IT CONSTANT (1000 ms)
         this.timer += deltaTime;
@@ -293,7 +232,6 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
     preUpdate(time, deltaTime) {
         super.preUpdate(time, deltaTime);
         this.readArray(time, deltaTime);
-        this.hasSongEnded();
     }
     askChangeScene() {
         this.scene.backToLocation();

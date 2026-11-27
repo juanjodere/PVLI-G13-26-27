@@ -8,15 +8,10 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
         
        
         super(scene, 999, 999, 'arrow');
-
-        this.danceManager = scene.danceManager;
-       
-        
+        //this.danceManager = scene.danceManager;
         
         //Fisica, la añadimos aqui para ajustar el tamaño del collider según la dir
         scene.physics.add.existing(this);
-
-        
         
         //DEBUG
          this.body.showBody = true;
@@ -43,6 +38,13 @@ export default class arrow extends Phaser.Physics.Arcade.Sprite
     preUpdate(time,deltaTime)
     {
         this.move(time,deltaTime);
+
+        // si la flecha se sale de pantalla, para
+        if (this.x < -50) {
+        this.setActive(false);
+        this.setVisible(false);
+        this.body.stop();
+    }
     }
 
     setArrow(data)

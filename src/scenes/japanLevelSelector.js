@@ -20,7 +20,6 @@ export class japanLevelSelector extends Phaser.Scene {
 
         // Estas se necesitan solo para pasar esta información a otra escena.
         this.levelsCompleted = data.levelsCompleted;
-        console.log(this.levelsCompleted);
     }
 
     create() {
@@ -41,12 +40,12 @@ export class japanLevelSelector extends Phaser.Scene {
         this.Background = this.add.image(0, 0, 'levelSelectorBG').setOrigin(0, 0);
 
         // Creamos los nodos sin conectar
-        this.alley = new mapNode(this, 734, 544, 'alleyIco', ()=>{this.enterLevel("",this.selectedNode)}).setOrigin(0.5, 0.5);
+        this.alley = new mapNode(this, 734, 544, 'alleyIco', ()=>{this.enterLevel("",this.selectedNode, "dial", "alley01","mision")}).setOrigin(0.5, 0.5);
         this.donQuijote = new mapNode(this, 400, 67, 'donQuijoteIco',()=>{this.enterLevel("",this.selectedNode)}).setOrigin(0.5, 0.5);
         this.trainStation = new mapNode(this, 925, 434, 'trainStationIco', ()=>{this.enterLevel("",this.selectedNode)}).setOrigin(0.5, 0.5);
-        this.shibuyaCrossing = new mapNode(this, 777, 200, 'shibuyaCrossIco', ()=>{this.enterLevel('locationBackgrCrossing',this.selectedNode)}).setOrigin(0.5, 0.5);
-        this.arcade = new mapNode(this, 345, 245, 'arcadeIco',()=>{this.enterLevel('locationBackgrArcade',this.selectedNode)}).setOrigin(0.5, 0.5);
-        this.sixSevenStore = new mapNode(this, 365, 475, '67elevenIco',()=>{this.enterLevel('locationBackgrSixSeven',this.selectedNode,"shibuyaDial01","shibuya01")}).setOrigin(0.5, 0.5);
+        this.shibuyaCrossing = new mapNode(this, 777, 200, 'shibuyaCrossIco', ()=>{this.enterLevel('locationBackgrCrossing',this.selectedNode, "dialogs", "crossing01","TestMision")}).setOrigin(0.5, 0.5);
+        this.arcade = new mapNode(this, 345, 245, 'arcadeIco',()=>{this.enterLevel('locationBackgrArcade',this.selectedNode, "dialogs", "arcade02","mision")}).setOrigin(0.5, 0.5);
+        this.sixSevenStore = new mapNode(this, 365, 475, '67elevenIco',()=>{this.enterLevel('locationBackgrSixSeven',this.selectedNode,"shibuyaDial01","sixseven02","misionTest")}).setOrigin(0.5, 0.5);
 
         /* // Asignamos la variable del nodo seleccionado en función de 
         if(this.initialNode == "don_quijote") this.selectedNode = this.donQuijote;
@@ -57,13 +56,14 @@ export class japanLevelSelector extends Phaser.Scene {
         else if (this.initialNode == "seven_six_seven") this.selectedNode = this.sixSevenStore;
         else this.selectedNode = this.donQuijote; */
         
+        //Leemos el nodo inicial y si no lo encontramos ponemos el tren por defecto
         if(this.initialNode)
         {
             this.selectedNode = this.initialNode
         }
         else
         {
-            this.selectedNode = this.alley;
+            this.selectedNode = this.trainStation;
         }
         //Conectamos los nodos
         //DonQuijote
@@ -109,9 +109,18 @@ export class japanLevelSelector extends Phaser.Scene {
         //this.Background.setScale(2,2);
     }
 
-    enterLevel(image, nodeName,startingDialog,level){
+    enterLevel(image, nodeName,startingDialog,levelsList,mision){
         this.scene.sleep();
-        this.scene.launch('locationScene', {character: this.professor, skin: this.skin, background: image,
-            levelsCompleted: this.levelsCompleted, inventory: this.inventory, locationNode: nodeName, globalAura: this.globalAura,startingDialog:startingDialog,level:level})
+        this.scene.launch('locationScene', {
+            character: this.professor, 
+            skin: this.skin, 
+            background: image,
+            levelsCompleted: this.levelsCompleted,
+            inventory: this.inventory, 
+            locationNode: nodeName, 
+            globalAura: this.globalAura,
+            startingDialog: startingDialog,
+            level: levelsList,
+            mision:mision})
     }
 };

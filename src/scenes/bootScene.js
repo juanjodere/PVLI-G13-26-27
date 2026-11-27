@@ -16,8 +16,10 @@ export class bootScene extends Phaser.Scene {
         this.load.image('startButton', 'assets/MainMenuSceneAssets/StartButton.jpg');
         this.load.image('creditsButton', 'assets/MainMenuSceneAssets/CreditsButton.jpg');
         }
-        //Arrow
+        //elementos de los niveles
         this.load.image('arrow', 'assets/ObjectAssets/arrow.png');
+        this.load.image('line', 'assets/ObjectAssets/white-line.png');
+        this.load.image('judgementLine', 'assets/ObjectAssets/judgement-line.png');
         //Iconos LevelSelector
         this.load.image('trainStationIco', 'assets/worldMapBuildings/trainStation_MapIcon.png');
         this.load.image('shibuyaCrossIco', 'assets/worldMapBuildings/shibuyaCrossroad_MapIcon.png');
@@ -26,29 +28,61 @@ export class bootScene extends Phaser.Scene {
         this.load.image('67elevenIco', 'assets/worldMapBuildings/67Eleven_MapIcon.png');
         this.load.image('arcadeIco','assets/worldMapBuildings/arcade_MapIcon.png');
         //MainMapBackground
-        this.load.image('levelSelectorBG','./assets/ScenesBackgrounds/JapanLevelSelector/japanLevelSelectorMap.png')
+        this.load.image('levelSelectorBG','./assets/ScenesBackgrounds/JapanLevelSelector/japanLevelSelectorMap.png');
         //levelBackgrounds
-        this.load.image('battleBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenInside.JPG')
-        this.load.image('locationBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenMenu.jpg')
-        this.load.image('battleBackgrArcade', './assets/ScenesBackgrounds/Arcade/arcadeInside.jpg')
-        this.load.image('locationBackgrArcade', './assets/ScenesBackgrounds/Arcade/arcadeMenu.jpg')
-        this.load.image('battleBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingInside.png')
-        this.load.image('locationBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingMenu.jpg')
+        this.load.image('battleBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenInside.JPG');
+        this.load.image('locationBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenMenu.jpg');
+        this.load.image('battleBackgrArcade', './assets/ScenesBackgrounds/Arcade/arcadeInside.jpg');
+        this.load.image('locationBackgrArcade', './assets/ScenesBackgrounds/Arcade/arcadeMenu.jpg');
+        this.load.image('battleBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingInside.png');
+        this.load.image('locationBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingMenu.jpg');
+        // canciones
+        this.load.audio('arcade1Song', './assets/LevelSongs/arcade-1.mp3');
+        this.load.audio('arcade2Song', './assets/LevelSongs/arcade-2.mp3');
+        this.load.audio('crossingSong', './assets/LevelSongs/crossing.mp3');
+        this.load.audio('alleySong', './assets/LevelSongs/alley.mp3');
+        this.load.audio('sevensixseven1Song', './assets/LevelSongs/7sixseven-1.mp3');
+        this.load.audio('sevensixseven2Song', './assets/LevelSongs/7sixseven-2.mp3');
+        this.load.audio('TestSong','./assets/LevelSongs/TestSong.mp3');
         // Credits images
         this.load.image('Credits','assets/CreditsSceneAssets/Credits.png');
+        // otros bottones
         this.load.image('BackButton','assets/MainMenuSceneAssets/BackButton.jpg');
+        this.load.image('exitButton','assets/MainMenuSceneAssets/exitButton.png');
+        this.load.image('Abutton','assets/ObjectAssets/Abutton.png')
+        this.load.image('Bbutton','assets/ObjectAssets/Bbutton.png')
         //Imagenes para dialogos
         this.load.image('textBox', 'assets/ObjectAssets/textBox.png');
+        //Indicadores de mision,nivel completado etc
+        this.load.image('alert','assets/ObjectAssets/indicators/alert.png')
         //Cargamos los iconos del mapa de los profesores.
-        this.load.image('IsmaelDefaultIcon','assets/ObjectAssets/player/isma-default-icon.png')
-        //Carga de los spritesheets de los profesores y sus skins, se cargan con un nombre (nombre+skin)
+        this.load.image('IsmaDefaultIcon','assets/ObjectAssets/player/isma-default-icon.png');
+        // se cargan las idles de los profes (nombre+skin) // de momento es un sprite, si da tiempo se hace spritesheet para animarlo
+        this.load.image('IsmaDefaultIdle', 'assets/ObjectAssets/player/isma-default-idle.png');
+        //Carga de los spritesheets de los profesores y sus skins, se cargan con un nombre (nombre+skin+move/+fail)
+        this.load.image('IsmaDefaultWJ', 'assets/ObjectAssets/player/isma-default-wj.png');
+        this.load.image('IsmaDefaultWJFail', 'assets/ObjectAssets/player/isma-default-wj-fail.png');
+        this.load.image('IsmaDefaultWK', 'assets/ObjectAssets/player/isma-default-wk.png');
+        this.load.image('IsmaDefaultWJFail', 'assets/ObjectAssets/player/isma-default-wk-fail.png');
+        this.load.image('IsmaDefaultSJ', 'assets/ObjectAssets/player/isma-default-sj.png');
+        this.load.image('IsmaDefaultSJFail', 'assets/ObjectAssets/player/isma-default-sj-fail.png');
+        this.load.image('IsmaDefaultSK', 'assets/ObjectAssets/player/isma-default-sk.png');
+        this.load.image('IsmaDefaultSKFail', 'assets/ObjectAssets/player/isma-default-sk-fail.png');
+        this.load.image('IsmaDefaultAJ', 'assets/ObjectAssets/player/isma-default-aj.png');
+        this.load.image('IsmaDefaultAJFail', 'assets/ObjectAssets/player/isma-default-aj-fail.png');
+        this.load.image('IsmaDefaultAK', 'assets/ObjectAssets/player/isma-default-ak.png');
+        this.load.image('IsmaDefaultAKFail', 'assets/ObjectAssets/player/isma-default-ak-fail.png');
+        this.load.image('IsmaDefaultDJ', 'assets/ObjectAssets/player/isma-default-dj.png');
+        this.load.image('IsmaDefaultDJFail', 'assets/ObjectAssets/player/isma-default-dj-fail.png');
+        this.load.image('IsmaDefaultDK', 'assets/ObjectAssets/player/isma-default-dk.png');
+        this.load.image('IsmaDefaultDKFail', 'assets/ObjectAssets/player/isma-default-dk-fail.png');
         //Test
-        this.load.spritesheet('defaultDefault','assets/ObjectAssets/player/testPlayer.png', {
+        /*this.load.spritesheet('defaultDefault','assets/ObjectAssets/player/testPlayer.png', {
             frameWidth:100,
             frameHeight:180,
             
             endFrame:19
-        });
+        });*/
         
        
         //TODO REVISAR COMO FUNCIONA
