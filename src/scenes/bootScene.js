@@ -14,7 +14,7 @@ export class bootScene extends Phaser.Scene {
         this.load.image('menuBG', 'assets/MainMenuSceneAssets/mainMenuBackground.png')
         //ButtonAssets
         this.load.image('startButton', 'assets/MainMenuSceneAssets/playButton.png');
-        this.load.image('creditsButton', 'assets/MainMenuSceneAssets/CreditsButton.png');
+        this.load.image('creditsButton', 'assets/MainMenuSceneAssets/creditsButton.png');
         }
         //elementos de los niveles
         this.load.image('arrow', 'assets/ObjectAssets/arrow.png');
@@ -29,6 +29,8 @@ export class bootScene extends Phaser.Scene {
         this.load.image('arcadeIco','assets/worldMapBuildings/arcade_MapIcon.png');
         //MainMapBackground
         this.load.image('levelSelectorBG','./assets/ScenesBackgrounds/JapanLevelSelector/japanLevelSelectorMap.png');
+        // creditsBackgroung
+        this.load.image('creditsBG', 'assets/MainMenuSceneAssets/creditsBackground.png');
         //levelBackgrounds
         this.load.image('battleBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenInside.JPG');
         this.load.image('locationBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenMenu.jpg');

@@ -36,10 +36,10 @@ export class testSong extends Phaser.Scene {
         }
 
         // barrita por donde pasan las flechas
-        this.trackBar = this.add.rectangle(400, 130, 800, 67, 0xAAAAAA, 0.67).setDepth(0); 
+        this.trackBar = this.add.rectangle(400, 130, 800, 67, 0x8ea3d1, 0.67).setDepth(0); 
 
         this.lifeBarLeftCornerX = 675;
-        this.lifeBarInitialLeftCornerY = 50;
+        this.lifeBarInitialLeftCornerY = 60;
         this.lifeBarLeftCornerY = this.lifeBarInitialLeftCornerY;
         this.lifeBarWidth = 75;
         this.lifeBarInitialHeight = 500;
@@ -49,10 +49,10 @@ export class testSong extends Phaser.Scene {
         // Creamos la barra de vida
         this.progressBar = this.add.graphics();
         const progressBox = this.add.graphics();
-        progressBox.fillStyle(0x222222, 0.8);
+        progressBox.fillStyle(0x17bda7, 0.8);
         progressBox.fillRect(this.lifeBarLeftCornerX, this.lifeBarLeftCornerY, this.lifeBarWidth, this.lifeBarHeight);
         this.progressBar.clear();
-        this.progressBar.fillStyle(0xffffff, 1);
+        this.progressBar.fillStyle(0x12fcdd, 1);
         this.progressBar.fillRect(this.lifeBarLeftCornerX + this.lifeBarOffset, this.lifeBarLeftCornerY + this.lifeBarOffset,
         this.lifeBarWidth - 2 * this.lifeBarOffset, this.lifeBarHeight - 2 * this.lifeBarOffset);
 
@@ -107,7 +107,7 @@ export class testSong extends Phaser.Scene {
         let updatedYCorner = this.lifeBarLeftCornerY + this.lifeBarOffset + ((this.lifeBarHeight - 2 * this.lifeBarOffset) - updatedHeight);
 
         this.progressBar.clear();
-        this.progressBar.fillStyle(0xffffff, 1);
+        this.progressBar.fillStyle(0x12fcdd, 1);
         this.progressBar.fillRect(this.lifeBarLeftCornerX + this.lifeBarOffset, updatedYCorner, this.lifeBarWidth - 2 * this.lifeBarOffset, updatedHeight)
     }
 
