@@ -24,7 +24,7 @@ export class CharacterSelectorScene extends Phaser.Scene {
         //Las funciones las pasamos con ()=> porque si no javascript evalua la funcion en lugar de "Guardarla"
         this.Toni = new mapNode(this, 100, 300, 'alleyIco',()=>{selectCharacter(this,"Toni","Default")}).setOrigin(0.5, 0.5);
         this.Pablo = new mapNode(this, 350, 300, 'donQuijoteIco',()=>{selectCharacter(this,"Pablo","Default")}).setOrigin(0.5, 0.5);
-        this.Isma = new mapNode(this, 600, 300, 'trainStationIco',()=>{selectCharacter(this,"Ismael","Default")}).setOrigin(0.5, 0.5);
+        this.Isma = new mapNode(this, 600, 300, 'IsmaDefaultIdle',()=>{selectCharacter(this,"Isma","Default")}).setOrigin(0.5, 0.5);
        
         this.Toni.nodeRight = this.Pablo;
         this.Toni.nodeLeft = this.Isma;

@@ -66,20 +66,95 @@ export const misionCondition = {
 
 
 export const levels = {
-    shibuya01: {
-        levelZone:'Crossing',
+    
+    arcade01: {
+        levelZone:'Arcade',
         levelNumber:0,
-        judgeLineSprite: 'playerSkin',
-        x: 200, y: 200,
-        judgeLineSize: 30,
+        judgeLineSprite: 'judgementLine',
+        x: 100, y: 130,
+        judgeLineSize: 67,
 
-        movesArray: ['u','','d.','','','d.','','',''], 
-        music: "",
+        movesArray: ['','u','','d.','','','d.','','','',''], 
+        music: "arcade1Song",
         aura: 10,
         health: 10,
-        background:'battleBackgrArcade'
+        background:'battleBackgrArcade',
+        bgScale: 1
+    },
+
+    arcade02: {
+        levelZone:'Arcade',
+        levelNumber:1,
+        judgeLineSprite: 'judgementLine',
+        x: 100, y: 130,
+        judgeLineSize: 67,
+
+        movesArray: ['','u','','d.','','','d.','','','',''], 
+        music: "arcade2Song",
+        aura: 10,
+        health: 10,
+        background:'battleBackgrArcade',
+        bgScale: 0.2
+    },
+    
+    crossing01: {
+        levelZone:'Crossing',
+        levelNumber:0,
+        judgeLineSprite: 'judgementLine',
+        x: 100, y: 130,
+        judgeLineSize: 67,
+
+        movesArray: ['','u','','d.','','','d.','','','',''], 
+        music: "crossingSong",
+        aura: 10,
+        health: 10,
+        background:'battleBackgrCrossing',
+        bgScale: 0.95
+    },
+    
+    alley01: {
+        levelZone:'Alley',
+        levelNumber:0,
+        judgeLineSprite: 'judgementLine',
+        x: 100, y: 130,
+        judgeLineSize: 67,
+
+        movesArray: ['','u','','d.','','','d.','','','',''], 
+        music: "alleySong",
+        aura: 10,
+        health: 10,
+        background:'battleBackgrAlley',
+        bgScale: 1
+    },
+    
+    sixseven01: {
+        levelZone:'SevenSixSeven',
+        levelNumber:0,
+        judgeLineSprite: 'judgementLine',
+        x: 100, y: 130,
+        judgeLineSize: 67,
+
+        movesArray: ['','u','','d.','','','d.','','','',''], 
+        music: "sevensixseven1Song",
+        aura: 10,
+        health: 10,
+        background:'battleBackgrSixSeven',
+        bgScale: 0.2
+    },
+    
+    sixseven02: {
+        levelZone:'SevenSixseven',
+        levelNumber:1,
+        judgeLineSprite: 'judgementLine',
+        x: 100, y: 130,
+        judgeLineSize: 67,
+
+        movesArray: ['','u','','d.','','','d.','','','',''], 
+        music: "sevensixseven2Song",
+        aura: 10,
+        health: 10,
+        background:'battleBackgrSixSeven',
+        bgScale: 0.2
     }
-
-
 
 }

@@ -16,20 +16,21 @@ export default class locationsRegister{
     }
 
     completeLevelOnLocation(locName, index){ // Marca un nivel ya existente de una localización ya existente como terminado.
-        let isTheWanted = (elem) => (elem.name == locName);
-        console.log(elem.name);
+        let isTheWanted = (elem) => (console.log(elem.name), elem.name == locName);
         let loc = this.locationsArray.findIndex(isTheWanted);
         if (loc != -1) this.locationsArray[loc].completeLevel(index);
     }
 
     uncompleteLevelOnLocation(locName, index){ // Marca un nivel ya existente de una localización ya existente como no terminado.
-        let loc = this.locationsArray.find((elem) => elem.name == locName);
-        if (loc != null) loc.uncompleteLevel(index);
+        let isTheWanted = (elem) => (console.log(elem.name), elem.name == locName);
+        let loc = this.locationsArray.findIndex(isTheWanted);
+        if (loc != -1) this.locationsArray[loc].uncompleteLevel(index);
     }
 
     returnIfLevelCompletedOnLocation(locName, index){ // Accede al estado de un nivel de una lozalización dada.
-        let loc = this.locationsArray.find((elem) => elem.name == locName);
-        if (loc != null) loc.returnIfLevelCompleted(index);
+        let isTheWanted = (elem) => (console.log(elem.name), elem.name == locName);
+        let loc = this.locationsArray.findIndex(isTheWanted);
+        if (loc != -1) this.locationsArray[loc].returnIfLevelCompleted(index);
     }
 
     checkMisionCondition(mision)
