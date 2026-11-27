@@ -9,7 +9,6 @@ export class testSong extends Phaser.Scene {
         super({ key: 'testSong' });
     }
 
-
     init(data) {
         // Estas variables se usarán en esta escena
         this.professor = data.character;
@@ -154,8 +153,8 @@ export class testSong extends Phaser.Scene {
             background: this.locationBackground, inventory: this.inventory, locationNode: this.locationNode,
             globalAura: this.globalAura,
             level:this.level,
-           startingDialog: this.startingDialog,
-           mision:this.mision
+            startingDialog: this.startingDialog,
+            mision:this.mision
         });
 
     }
