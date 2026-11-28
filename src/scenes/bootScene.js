@@ -46,6 +46,9 @@ export class bootScene extends Phaser.Scene {
         this.load.audio('sevensixseven1Song', './assets/LevelSongs/7sixseven-1.mp3');
         this.load.audio('sevensixseven2Song', './assets/LevelSongs/7sixseven-2.mp3');
         this.load.audio('TestSong','./assets/LevelSongs/TestSong.mp3');
+        // efectos de sonido
+        this.load.audio('hitSound','./assets/LevelSongs/sfx-correct.wav');
+        this.load.audio('missSound','./assets/LevelSongs/sfx-fail.wav');
         // Credits images
         this.load.image('Credits','assets/CreditsSceneAssets/Credits.png');
         // otros bottones
@@ -63,11 +66,11 @@ export class bootScene extends Phaser.Scene {
         this.load.image('IsmaDefaultIcon','assets/ObjectAssets/player/isma-default-icon.png');
         // se cargan las idles de los profes (nombre+skin) // de momento es un sprite, si da tiempo se hace spritesheet para animarlo
         this.load.image('IsmaDefaultIdle', 'assets/ObjectAssets/player/isma-default-idle.png');
-        //Carga de los spritesheets de los profesores y sus skins, se cargan con un nombre (nombre+skin+move/+fail)
+        //Carga de los sprites de los profesores y sus skins, se cargan con un nombre (nombre+skin+move/+fail)
         this.load.image('IsmaDefaultWJ', 'assets/ObjectAssets/player/isma-default-wj.png');
         this.load.image('IsmaDefaultWJFail', 'assets/ObjectAssets/player/isma-default-wj-fail.png');
         this.load.image('IsmaDefaultWK', 'assets/ObjectAssets/player/isma-default-wk.png');
-        this.load.image('IsmaDefaultWJFail', 'assets/ObjectAssets/player/isma-default-wk-fail.png');
+        this.load.image('IsmaDefaultWKFail', 'assets/ObjectAssets/player/isma-default-wk-fail.png');
         this.load.image('IsmaDefaultSJ', 'assets/ObjectAssets/player/isma-default-sj.png');
         this.load.image('IsmaDefaultSJFail', 'assets/ObjectAssets/player/isma-default-sj-fail.png');
         this.load.image('IsmaDefaultSK', 'assets/ObjectAssets/player/isma-default-sk.png');

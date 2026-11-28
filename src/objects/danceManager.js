@@ -75,7 +75,7 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
             _arrow.setActive(true);
             _arrow.setVisible(true);
             _arrow.setArrow({
-                x: this.arrowSpawnerX, y: this.arrowSpawnerY, speed: 0.5, type: arrowType,
+                x: this.arrowSpawnerX, y: this.arrowSpawnerY, speed: 0.76, type: arrowType,
                 state: YellowOrPurple, dirX: -1, dirY: 0
             })
         }
@@ -138,6 +138,9 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         hitObject.setVisible(false);
         hitObject.y = 999;
 
+        // suena el efecto de fallo
+        this.scene.sound.play('missSound',{volume:0.5});
+
         if (this.combo > 0) this.combo = 0; // Resetea el combo.
         this.scene.updateCombo(this.combo);
 
@@ -158,6 +161,8 @@ export default class danceManager extends Phaser.Physics.Arcade.Sprite {
         hitObject.setVisible(false);
         hitObject.y = 999;
 
+        // suena el efecto de acierto
+        this.scene.sound.play('hitSound',{volume:0.5});
 
         this.combo ++; // el combo aumenta hasta que se falle
         this.scene.updateCombo(this.combo);
