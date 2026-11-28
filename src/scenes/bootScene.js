@@ -32,11 +32,11 @@ export class bootScene extends Phaser.Scene {
         // creditsBackgroung
         this.load.image('creditsBG', 'assets/MainMenuSceneAssets/creditsBackground.png');
         //levelBackgrounds
-        this.load.image('battleBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenInside.JPG');
-        this.load.image('locationBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenMenu.jpg');
+        this.load.image('battleBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenInside.jpg');
+        this.load.image('locationBackgrSixSeven', './assets/ScenesBackgrounds/SevenEleven/sevenElevenMenu.JPG');
         this.load.image('battleBackgrArcade', './assets/ScenesBackgrounds/Arcade/arcadeInside.jpg');
         this.load.image('locationBackgrArcade', './assets/ScenesBackgrounds/Arcade/arcadeMenu.jpg');
-        this.load.image('battleBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingInside.png');
+        this.load.image('battleBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/ShibuyaCrossingInside.png');
         this.load.image('locationBackgrCrossing', './assets/ScenesBackgrounds/ShibuyaCrossing/shibuyaCrossingMenu.jpg');
         // canciones
         this.load.audio('arcade1Song', './assets/LevelSongs/arcade-1.mp3');
